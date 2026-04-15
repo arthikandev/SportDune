@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football News – SportDune</title>
+  <meta name="description" content="Latest football news, match reports, analysis and live scores from Premier League, Champions League, La Liga and more.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-inner">
+      <a href="sports-homepage.html" class="logo">Sport<span>Dune</span></a>
+      <ul class="nav-links">
+        <li><a href="sports-homepage.html">Home</a></li>
+        <li><a href="football.html" class="active">Football</a></li>
+        <li><a href="cricket.html">Cricket</a></li>
+        <li><a href="basketball.html">Basketball</a></li>
+        <li><a href="f1.html">F1</a></li>
+        <li><a href="tennis.html">Tennis</a></li>
+        <li><a href="hockey.html">Hockey</a></li>
+        <li class="dropdown"><a href="#">More &#9662;</a>
+          <div class="dropdown-menu">
+            <a href="rugby.html">Rugby</a><a href="esports.html">Esports</a>
+            <a href="combat.html">Combat</a><a href="nfl.html">NFL</a><a href="olympics.html">Olympics</a>
+          </div>
+        </li>
+        <li><a href="#" class="nav-trending">Trending</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="search-btn" onclick="location.href='search.html'">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search
+        </button>
+        <button class="live-btn" onclick="location.href='live.html'"><span class="live-dot"></span> Live Scores</button>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="sports-homepage.html">Home</a><a href="football.html">Football</a><a href="cricket.html">Cricket</a>
+    <a href="basketball.html">Basketball</a><a href="f1.html">F1</a><a href="tennis.html">Tennis</a>
+    <a href="hockey.html">Hockey</a><a href="rugby.html">Rugby</a><a href="esports.html">Esports</a>
+    <a href="combat.html">Combat</a><a href="nfl.html">NFL</a><a href="olympics.html">Olympics</a>
+    <a href="live.html" style="color:var(--accent);">Live Scores</a>
+  </div>
+
+  <!-- PAGE BANNER -->
+  <div class="page-banner" style="background:linear-gradient(135deg,#1a1a3e 0%,#3d1010 60%,#1a1a3e 100%);">
+    <span class="banner-emoji">⚽</span>
+    <div class="page-banner-inner">
+      <span class="page-banner-tag">Sport</span>
+      <h1 class="page-banner-title">⚽ Football</h1>
+      <p class="page-banner-sub">Premier League · Champions League · La Liga · Bundesliga · Serie A</p>
+    </div>
+  </div>
+
+  <!-- TRENDING STRIP -->
+  <div class="trending-strip">
+    <div class="trending-inner">
+      <div class="trending-label">Trending</div>
+      <div class="trending-scroll">
+        <a href="#" class="trending-card"><div class="trending-thumb t1">⚽</div><span class="trending-card-title">Mbappe nets hat-trick as PSG thrash Lyon 5–1</span></a>
+        <a href="#" class="trending-card"><div class="trending-thumb t2">🏆</div><span class="trending-card-title">Arsenal one win away from Premier League title</span></a>
+        <a href="#" class="trending-card"><div class="trending-thumb t3">⚽</div><span class="trending-card-title">Yamal breaks Messi's age record at Barcelona</span></a>
+        <a href="#" class="trending-card"><div class="trending-thumb t4">🏟️</div><span class="trending-card-title">Champions League semi-final draw: Madrid vs City</span></a>
+        <a href="#" class="trending-card"><div class="trending-thumb t1">⚽</div><span class="trending-card-title">Haaland breaks Premier League scoring record</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE BODY -->
+  <div class="page-body">
+    <main class="main-content">
+      <div class="section-heading">
+        <div class="section-bar"></div>
+        <h2 class="section-title">Football News</h2>
+      </div>
+      <div class="article-grid">
+        <a href="#" class="article-card featured">
+          <div class="card-img t1">⚽</div>
+          <div class="card-body">
+            <span class="card-tag">Football · Champions League</span>
+            <h3 class="card-title">Bellingham's Last-Minute Header Sends Real Madrid to Semis in Dramatic Fashion</h3>
+            <p class="card-snippet">Jude Bellingham rose highest to nod in the decisive header in the 93rd minute, sending the Santiago Bernabeu into absolute delirium as Madrid overturned a first-leg deficit against Bayern Munich. The English midfielder now has 8 UCL goals this season.</p>
+            <div class="card-meta">March 27, 2026 &nbsp;·&nbsp; 5 min read &nbsp;·&nbsp; By Jamie Torres</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t2">🏆</div>
+          <div class="card-body">
+            <span class="card-tag">Football · Premier League</span>
+            <h3 class="card-title">Arsenal Close in on Title After Manchester United Collapse</h3>
+            <p class="card-snippet">A stunning late collapse saw United concede twice in injury time as Arsenal's title dream grows stronger with seven games to play.</p>
+            <div class="card-meta">March 26, 2026 &nbsp;·&nbsp; 4 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t3">🌟</div>
+          <div class="card-body">
+            <span class="card-tag">Football · La Liga</span>
+            <h3 class="card-title">Barcelona's Yamal: The 18-Year-Old Rewriting Football History</h3>
+            <p class="card-snippet">Already surpassing Messi's record appearances at his age, Lamine Yamal continues to stun the football world week after week.</p>
+            <div class="card-meta">March 25, 2026 &nbsp;·&nbsp; 3 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t4">⚡</div>
+          <div class="card-body">
+            <span class="card-tag">Football · Bundesliga</span>
+            <h3 class="card-title">Leverkusen's Unbeaten Run Reaches 40 Games Under Alonso</h3>
+            <p class="card-snippet">Bayer Leverkusen extended their remarkable unbeaten run, cementing Xabi Alonso's genius in German football history.</p>
+            <div class="card-meta">March 24, 2026 &nbsp;·&nbsp; 3 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t5">🎯</div>
+          <div class="card-body">
+            <span class="card-tag">Football · Serie A</span>
+            <h3 class="card-title">Inter Milan Clinch Scudetto With Four Games to Spare</h3>
+            <p class="card-snippet">Simone Inzaghi's Inter side confirmed their dominance with a clinical 3–0 win over AC Milan in the Derby della Madonnina.</p>
+            <div class="card-meta">March 23, 2026 &nbsp;·&nbsp; 4 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t1">🔥</div>
+          <div class="card-body">
+            <span class="card-tag">Football · Transfer News</span>
+            <h3 class="card-title">Haaland to PSG? Mega Transfer Saga Heats Up This Summer</h3>
+            <p class="card-snippet">Reports claim Erling Haaland has held talks with PSG's sporting director, with Man City unwilling to sell below €200M.</p>
+            <div class="card-meta">March 22, 2026 &nbsp;·&nbsp; 5 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t2">📊</div>
+          <div class="card-body">
+            <span class="card-tag">Football · Analysis</span>
+            <h3 class="card-title">The Pressing Revolution: How Modern Football Became a Fitness Contest</h3>
+            <p class="card-snippet">Data analytics reveals teams are running record distances per match. We break down the tactical evolution reshaping the beautiful game.</p>
+            <div class="card-meta">March 21, 2026 &nbsp;·&nbsp; 8 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t3">🥅</div>
+          <div class="card-body">
+            <span class="card-tag">Football · World Cup 2026</span>
+            <h3 class="card-title">2026 World Cup Venues: The 16 Stadiums Hosting the Greatest Show</h3>
+            <p class="card-snippet">From MetLife Stadium to Estadio Azteca, a complete guide to all 16 host venues for the expanded 48-team World Cup.</p>
+            <div class="card-meta">March 20, 2026 &nbsp;·&nbsp; 6 min read</div>
+          </div>
+        </a>
+      </div>
+      <div class="load-more-wrap"><button class="load-more-btn">Load More Articles</button></div>
+    </main>
+
+    <aside class="sidebar">
+      <div class="sidebar-widget">
+        <div class="widget-header"><div class="widget-title">Live Scores</div><span class="widget-badge">Live</span></div>
+        <div class="match-item"><div class="match-league">Champions League · QF</div><div class="match-teams"><span class="match-team">Real Madrid</span><div style="text-align:center;"><div class="match-score">2 – 1</div><div class="match-status live">76′</div></div><span class="match-team right">Man City</span></div></div>
+        <div class="match-item"><div class="match-league">Premier League · GW 32</div><div class="match-teams"><span class="match-team">Arsenal</span><div style="text-align:center;"><div class="match-score">1 – 0</div><div class="match-status live">HT</div></div><span class="match-team right">Liverpool</span></div></div>
+        <div class="match-item"><div class="match-league">La Liga · MD 30</div><div class="match-teams"><span class="match-team">Atletico</span><div style="text-align:center;"><div class="match-score">0 – 0</div><div class="match-status live">22′</div></div><span class="match-team right">Sevilla</span></div></div>
+        <div class="match-item"><div class="match-league">Bundesliga · MD 28</div><div class="match-teams"><span class="match-team">Bayern</span><div style="text-align:center;"><div class="match-score">3 – 2</div><div class="match-status">FT</div></div><span class="match-team right">Dortmund</span></div></div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="widget-header"><div class="widget-title">Fan Poll</div><span class="widget-badge blue">Vote</span></div>
+        <div class="poll-body">
+          <p class="poll-question">Who will win the 2026 Champions League?</p>
+          <div class="poll-option"><div class="poll-label"><span>Real Madrid</span><span class="poll-pct">42%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill" style="width:42%"></div></div></div>
+          <div class="poll-option"><div class="poll-label"><span>Man City</span><span class="poll-pct">31%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill blue" style="width:31%"></div></div></div>
+          <div class="poll-option"><div class="poll-label"><span>Arsenal</span><span class="poll-pct">18%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill gray" style="width:18%"></div></div></div>
+          <div class="poll-option"><div class="poll-label"><span>Other</span><span class="poll-pct">9%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill gray" style="width:9%"></div></div></div>
+          <p class="poll-total">14,382 votes</p>
+        </div>
+      </div>
+      <div class="ad-slot"><p class="ad-label">Sponsored</p><p class="ad-title">Fantasy Football Pro</p><p class="ad-sub">Build your dream XI and win big</p><a href="#" class="ad-cta">Play Now</a></div>
+      <div class="sidebar-widget">
+        <div class="widget-header"><div class="widget-title">Upcoming Fixtures</div></div>
+        <div class="match-item"><div class="match-league">La Liga · March 29</div><div class="match-teams"><span class="match-team">Barcelona</span><div style="text-align:center;"><div class="match-score" style="font-size:12px;padding:4px 8px;background:#F0F0F8;">vs</div><div class="match-status">20:00 CET</div></div><span class="match-team right">Atletico</span></div></div>
+        <div class="match-item"><div class="match-league">UCL Semi · April 2</div><div class="match-teams"><span class="match-team">Arsenal</span><div style="text-align:center;"><div class="match-score" style="font-size:12px;padding:4px 8px;background:#F0F0F8;">vs</div><div class="match-status">20:00 BST</div></div><span class="match-team right">PSG</span></div></div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="sports-homepage.html" class="logo">Sport<span>Dune</span></a>
+          <p>Your definitive source for live scores, breaking news, and in-depth analysis across every major sport worldwide.</p>
+          <div class="social-links">
+            <a href="#" class="social-link">&#120143;</a><a href="#" class="social-link">&#102;</a>
+            <a href="#" class="social-link">&#9825;</a><a href="#" class="social-link">&#9654;</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-col-title">Sports</p>
+          <ul class="footer-links">
+            <li><a href="football.html">Football</a></li><li><a href="cricket.html">Cricket</a></li>
+            <li><a href="basketball.html">Basketball</a></li><li><a href="f1.html">Formula 1</a></li>
+            <li><a href="tennis.html">Tennis</a></li><li><a href="hockey.html">Hockey</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">More Sports</p>
+          <ul class="footer-links">
+            <li><a href="rugby.html">Rugby</a></li><li><a href="esports.html">Esports</a></li>
+            <li><a href="combat.html">Combat Sports</a></li><li><a href="nfl.html">NFL</a></li>
+            <li><a href="olympics.html">Olympics</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Company</p>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li><li><a href="#">Careers</a></li>
+            <li><a href="#">Advertise</a></li><li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 SportDune Media. All rights reserved.</p>
+        <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Cookie Settings</a></div>
+      </div>
+    </div>
+  </footer>
+  <script src="shared.js"></script>
+</body>
+</html>

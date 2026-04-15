@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esports News – SportDune</title>
+  <meta name="description" content="Latest esports news covering Valorant, CS2, Dota 2, tournaments and gaming coverage.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+  <nav><div class="nav-inner">
+    <a href="sports-homepage.html" class="logo">Sport<span>Dune</span></a>
+    <ul class="nav-links">
+      <li><a href="sports-homepage.html">Home</a></li><li><a href="football.html">Football</a></li>
+      <li><a href="cricket.html">Cricket</a></li><li><a href="basketball.html">Basketball</a></li>
+      <li><a href="f1.html">F1</a></li><li><a href="tennis.html">Tennis</a></li><li><a href="hockey.html">Hockey</a></li>
+      <li class="dropdown"><a href="#" style="color:var(--accent);">More &#9662;</a><div class="dropdown-menu"><a href="rugby.html">Rugby</a><a href="esports.html" style="color:var(--accent);">Esports</a><a href="combat.html">Combat</a><a href="nfl.html">NFL</a><a href="olympics.html">Olympics</a></div></li>
+      <li><a href="#" class="nav-trending">Trending</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="search-btn" onclick="location.href='search.html'"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search</button>
+      <button class="live-btn" onclick="location.href='live.html'"><span class="live-dot"></span> Live Scores</button>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div></nav>
+  <div class="mobile-nav" id="mobileNav"><a href="sports-homepage.html">Home</a><a href="football.html">Football</a><a href="cricket.html">Cricket</a><a href="basketball.html">Basketball</a><a href="f1.html">F1</a><a href="tennis.html">Tennis</a><a href="hockey.html">Hockey</a><a href="rugby.html">Rugby</a><a href="esports.html">Esports</a><a href="combat.html">Combat</a><a href="nfl.html">NFL</a><a href="olympics.html">Olympics</a><a href="live.html" style="color:var(--accent);">Live Scores</a></div>
+
+  <div class="page-banner" style="background:linear-gradient(135deg,#0d001a 0%,#1a0033 40%,#000d1a 100%);">
+    <span class="banner-emoji">🎮</span>
+    <div class="page-banner-inner">
+      <span class="page-banner-tag">Sport</span>
+      <h1 class="page-banner-title">🎮 Esports</h1>
+      <p class="page-banner-sub">Valorant · CS2 · Dota 2 · League of Legends · Global Tournaments</p>
+    </div>
+  </div>
+
+  <div class="trending-strip"><div class="trending-inner"><div class="trending-label">Trending</div><div class="trending-scroll">
+    <a href="#" class="trending-card"><div class="trending-thumb t5">🎮</div><span class="trending-card-title">Sentinels win Valorant Champions 2026</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t2">💻</div><span class="trending-card-title">CS2 Major: NaVi claim record 4th title</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t1">🔥</div><span class="trending-card-title">TI12 Dota 2: OG make stunning comeback run</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t3">🏆</div><span class="trending-card-title">LoL Worlds: T1 defeat G2 in five-game final</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t4">💰</div><span class="trending-card-title">$50M Valorant VCT prize pool announced</span></a>
+  </div></div></div>
+
+  <div class="page-body">
+    <main class="main-content">
+      <div class="section-heading"><div class="section-bar"></div><h2 class="section-title">Esports News</h2></div>
+      <div class="article-grid">
+        <a href="#" class="article-card featured">
+          <div class="card-img t5" style="background:#1a0933;">🎮</div>
+          <div class="card-body">
+            <span class="card-tag">Esports · Valorant · VCT</span>
+            <h3 class="card-title">Sentinels Claim Valorant Champions 2026 in Breathtaking Five-Game Grand Final</h3>
+            <p class="card-snippet">Sentinels staged a historic comeback to defeat Team Vitality 3–2 in the Valorant Champions 2026 Grand Final in Los Angeles, sealing their first-ever world championship in front of 20,000 screaming fans. TenZ's 42-2 performance in the deciding game was otherworldly.</p>
+            <div class="card-meta">March 27, 2026 &nbsp;·&nbsp; 5 min read &nbsp;·&nbsp; By Jake Chen</div>
+          </div>
+        </a>
+        <a href="#" class="article-card"><div class="card-img t2" style="background:#001a33;">💻</div><div class="card-body"><span class="card-tag">Esports · CS2 Major</span><h3 class="card-title">NaVi's s1mple Returns from Retirement to Lead Ukraine to Record 4th Major Title</h3><p class="card-snippet">In the most emotional esports moment of the year, Aleksandr "s1mple" Kostyliev returned from a 12-month hiatus to guide NaVi to an unprecedented fourth Major championship.</p><div class="card-meta">March 26, 2026 &nbsp;·&nbsp; 6 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t1" style="background:#1a0a00;">🔥</div><div class="card-body"><span class="card-tag">Esports · Dota 2 · TI12</span><h3 class="card-title">OG's Cinderella Run at The International 12 Captivates the Whole Gaming World</h3><p class="card-snippet">Starting from the lower bracket on Day 1, OG defeated four top-four teams in a row to reach the TI12 Grand Final in the most dramatic tournament run in Dota history.</p><div class="card-meta">March 25, 2026 &nbsp;·&nbsp; 5 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t3" style="background:#001a0a;">🏆</div><div class="card-body"><span class="card-tag">Esports · League of Legends · Worlds</span><h3 class="card-title">T1's Faker Wins Record 5th World Championship at LoL Worlds 2026</h3><p class="card-snippet">Lee "Faker" Sang-hyeok became the undisputed GOAT of competitive League of Legends, claiming his fifth World Championship at age 29 in a dominant five-game series against G2 Escobar.</p><div class="card-meta">March 24, 2026 &nbsp;·&nbsp; 5 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t4" style="background:#1a1500;">💰</div><div class="card-body"><span class="card-tag">Esports · Industry</span><h3 class="card-title">VCT Announces Record $50M Prize Pool for 2026 Season — Esports Hits New Heights</h3><p class="card-snippet">Riot Games' Valorant Champions Tour unveiled the largest prize pool in esports history for 2026, signaling the game's explosive growth and mainstream appeal worldwide.</p><div class="card-meta">March 23, 2026 &nbsp;·&nbsp; 4 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t5" style="background:#0d001a;">🧠</div><div class="card-body"><span class="card-tag">Esports · Analysis</span><h3 class="card-title">How AI Coaching Tools Are Revolutionizing Esports Team Preparation</h3><p class="card-snippet">Top esports organizations are now using AI-powered analytics tools to analyze opponents' playstyles, draft tendencies, and individual player behaviors in unprecedented detail.</p><div class="card-meta">March 22, 2026 &nbsp;·&nbsp; 7 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t2" style="background:#001a33;">🌍</div><div class="card-body"><span class="card-tag">Esports · Overwatch League</span><h3 class="card-title">Shanghai Dragons Claim Back-to-Back Overwatch League Grand Finals in Seoul</h3><p class="card-snippet">The Shanghai Dragons completed consecutive OWL titles in front of a record 40,000 live crowd in Seoul, cementing their dynasty in the Overwatch competitive scene.</p><div class="card-meta">March 21, 2026 &nbsp;·&nbsp; 3 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t1" style="background:#1a0a00;">📱</div><div class="card-body"><span class="card-tag">Esports · Mobile</span><h3 class="card-title">Mobile Esports Surpasses $2 Billion in Prize Money — BGMI and MLBB Lead the Way</h3><p class="card-snippet">Mobile gaming tournaments now account for nearly a third of all esports prize money globally, with South and Southeast Asian markets driving explosive growth in competitive mobile gaming.</p><div class="card-meta">March 20, 2026 &nbsp;·&nbsp; 5 min read</div></div></a>
+      </div>
+      <div class="load-more-wrap"><button class="load-more-btn">Load More Articles</button></div>
+    </main>
+    <aside class="sidebar">
+      <div class="sidebar-widget">
+        <div class="widget-header"><div class="widget-title">Live Tournaments</div><span class="widget-badge">Live</span></div>
+        <div class="match-item"><div class="match-league">Valorant · VCT GF</div><div class="match-teams"><span class="match-team">Sentinels</span><div style="text-align:center;"><div class="match-score">2 – 1</div><div class="match-status live">Map 4</div></div><span class="match-team right">Vitality</span></div></div>
+        <div class="match-item"><div class="match-league">CS2 · IEM Katowice</div><div class="match-teams"><span class="match-team">NaVi</span><div style="text-align:center;"><div class="match-score">16 – 12</div><div class="match-status">Done</div></div><span class="match-team right">FaZe</span></div></div>
+        <div class="match-item"><div class="match-league">Dota 2 · TI12</div><div class="match-teams"><span class="match-team">OG</span><div style="text-align:center;"><div class="match-score">1 – 0</div><div class="match-status live">Live</div></div><span class="match-team right">EG</span></div></div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="widget-header"><div class="widget-title">Fan Poll</div><span class="widget-badge blue">Vote</span></div>
+        <div class="poll-body">
+          <p class="poll-question">Best game to watch competitively?</p>
+          <div class="poll-option"><div class="poll-label"><span>Valorant</span><span class="poll-pct">38%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill" style="width:38%"></div></div></div>
+          <div class="poll-option"><div class="poll-label"><span>CS2</span><span class="poll-pct">32%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill blue" style="width:32%"></div></div></div>
+          <div class="poll-option"><div class="poll-label"><span>Dota 2</span><span class="poll-pct">19%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill gray" style="width:19%"></div></div></div>
+          <div class="poll-option"><div class="poll-label"><span>LoL</span><span class="poll-pct">11%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill gray" style="width:11%"></div></div></div>
+          <p class="poll-total">24,880 votes</p>
+        </div>
+      </div>
+      <div class="ad-slot"><p class="ad-label">Sponsored</p><p class="ad-title">GamePass Ultimate</p><p class="ad-sub">Hundreds of games + EA Play + PC Game Pass</p><a href="#" class="ad-cta">Try Free</a></div>
+    </aside>
+  </div>
+
+  <footer><div class="footer-inner"><div class="footer-grid">
+    <div class="footer-brand"><a href="sports-homepage.html" class="logo">Sport<span>Dune</span></a><p>Your definitive source for live scores, breaking news, and in-depth analysis across every major sport worldwide.</p><div class="social-links"><a href="#" class="social-link">&#120143;</a><a href="#" class="social-link">&#102;</a><a href="#" class="social-link">&#9825;</a><a href="#" class="social-link">&#9654;</a></div></div>
+    <div><p class="footer-col-title">Sports</p><ul class="footer-links"><li><a href="football.html">Football</a></li><li><a href="cricket.html">Cricket</a></li><li><a href="basketball.html">Basketball</a></li><li><a href="f1.html">Formula 1</a></li><li><a href="tennis.html">Tennis</a></li><li><a href="hockey.html">Hockey</a></li></ul></div>
+    <div><p class="footer-col-title">More Sports</p><ul class="footer-links"><li><a href="rugby.html">Rugby</a></li><li><a href="esports.html">Esports</a></li><li><a href="combat.html">Combat Sports</a></li><li><a href="nfl.html">NFL</a></li><li><a href="olympics.html">Olympics</a></li></ul></div>
+    <div><p class="footer-col-title">Company</p><ul class="footer-links"><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Advertise</a></li><li><a href="#">Contact</a></li></ul></div>
+  </div><div class="footer-bottom"><p class="footer-copy">&copy; 2026 SportDune Media. All rights reserved.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Cookie Settings</a></div></div></div></footer>
+  <script src="shared.js"></script>
+</body>
+</html>

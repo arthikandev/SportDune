@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olympics Coverage – SportDune</title>
+  <meta name="description" content="Olympics coverage: events, athletes, medals, results and analysis from the Summer and Winter Games.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+  <nav><div class="nav-inner">
+    <a href="sports-homepage.html" class="logo">Sport<span>Dune</span></a>
+    <ul class="nav-links">
+      <li><a href="sports-homepage.html">Home</a></li><li><a href="football.html">Football</a></li>
+      <li><a href="cricket.html">Cricket</a></li><li><a href="basketball.html">Basketball</a></li>
+      <li><a href="f1.html">F1</a></li><li><a href="tennis.html">Tennis</a></li><li><a href="hockey.html">Hockey</a></li>
+      <li class="dropdown"><a href="#" style="color:var(--accent);">More &#9662;</a><div class="dropdown-menu"><a href="rugby.html">Rugby</a><a href="esports.html">Esports</a><a href="combat.html">Combat</a><a href="nfl.html">NFL</a><a href="olympics.html" style="color:var(--accent);">Olympics</a></div></li>
+      <li><a href="#" class="nav-trending">Trending</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="search-btn" onclick="location.href='search.html'"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search</button>
+      <button class="live-btn" onclick="location.href='live.html'"><span class="live-dot"></span> Live Scores</button>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div></nav>
+  <div class="mobile-nav" id="mobileNav"><a href="sports-homepage.html">Home</a><a href="football.html">Football</a><a href="cricket.html">Cricket</a><a href="basketball.html">Basketball</a><a href="f1.html">F1</a><a href="tennis.html">Tennis</a><a href="hockey.html">Hockey</a><a href="rugby.html">Rugby</a><a href="esports.html">Esports</a><a href="combat.html">Combat</a><a href="nfl.html">NFL</a><a href="olympics.html">Olympics</a><a href="live.html" style="color:var(--accent);">Live Scores</a></div>
+
+  <div class="page-banner" style="background:linear-gradient(135deg,#0a0a2a 0%,#1a0a00 30%,#001a1a 70%,#0a0a2a 100%);">
+    <span class="banner-emoji">🏅</span>
+    <div class="page-banner-inner">
+      <span class="page-banner-tag">Sport</span>
+      <h1 class="page-banner-title">🏅 Olympics</h1>
+      <p class="page-banner-sub">Summer Games · Winter Games · Athletes · Medal Table · LA 2028</p>
+    </div>
+  </div>
+
+  <div class="trending-strip"><div class="trending-inner"><div class="trending-label">Trending</div><div class="trending-scroll">
+    <a href="#" class="trending-card"><div class="trending-thumb t4">🏅</div><span class="trending-card-title">LA 2028: Full athletics schedule revealed</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t2">🏊</div><span class="trending-card-title">Caeleb Dressel breaks 100m freestyle world record</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t3">🏃</div><span class="trending-card-title">Marcell Jacobs defends Olympic 100m sprint title</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t1">🌟</div><span class="trending-card-title">Simone Biles returns with perfect 10 at Worlds</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t4">🏅</div><span class="trending-card-title">China leads medal table at Asian Games 2026</span></a>
+  </div></div></div>
+
+  <div class="page-body">
+    <main class="main-content">
+      <div class="section-heading"><div class="section-bar"></div><h2 class="section-title">Olympics News</h2></div>
+      <div class="article-grid">
+        <a href="#" class="article-card featured">
+          <div class="card-img t4">🏅</div>
+          <div class="card-body">
+            <span class="card-tag">Olympics · LA 2028 · Preview</span>
+            <h3 class="card-title">LA 2028 Olympics: The Complete Preview of the Most Anticipated Summer Games in Modern History</h3>
+            <p class="card-snippet">With Los Angeles set to host the Olympics for the third time, we take a comprehensive look at the 16 venues, the athlete villages, the new sports being added, the environmental initiatives, and why LA 2028 is poised to be the most commercially successful and culturally impactful Summer Games since Sydney 2000.</p>
+            <div class="card-meta">March 27, 2026 &nbsp;·&nbsp; 8 min read &nbsp;·&nbsp; By Emily Park</div>
+          </div>
+        </a>
+        <a href="#" class="article-card"><div class="card-img t2">🏊</div><div class="card-body"><span class="card-tag">Olympics · Swimming</span><h3 class="card-title">Dressel Demolishes World Record in 100m Freestyle at World Aquatics Championships</h3><p class="card-snippet">Caeleb Dressel lowered his own world record by 0.04 seconds in Fukuoka, clocking 46.82 seconds to become the first male swimmer under 46.85 in the 100m freestyle.</p><div class="card-meta">March 26, 2026 &nbsp;·&nbsp; 4 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t3">🏃</div><div class="card-body"><span class="card-tag">Olympics · Athletics</span><h3 class="card-title">Jacobs Defends Olympic 100m Title in World Championships First for Italy</h3><p class="card-snippet">Marcell Jacobs wrote his name into Italian sporting legend by becoming the first man in history to successfully defend an Olympic 100m title at the World Athletics Championships.</p><div class="card-meta">March 25, 2026 &nbsp;·&nbsp; 5 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t1">🌟</div><div class="card-body"><span class="card-tag">Olympics · Gymnastics</span><h3 class="card-title">Simone Biles Returns to Competition with Perfect 10 Score at Gymnastics World Championships</h3><p class="card-snippet">In an emotional return to competition at 29, Simone Biles became the first gymnast to score a perfect 10 in an international competition under the current code of points.</p><div class="card-meta">March 24, 2026 &nbsp;·&nbsp; 6 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t5">📊</div><div class="card-body"><span class="card-tag">Olympics · Analysis</span><h3 class="card-title">How Each Nation Is Preparing for LA 2028: The Science of Peak Timing in Elite Sport</h3><p class="card-snippet">Sports scientists from five continents explain how national Olympic committees are now planning four-year performance peaks with unprecedented precision and personalization.</p><div class="card-meta">March 23, 2026 &nbsp;·&nbsp; 9 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t2">🏋️</div><div class="card-body"><span class="card-tag">Olympics · Weightlifting</span><h3 class="card-title">Lasha Talakhadze Sets Third World Weightlifting Record in 12 Months</h3><p class="card-snippet">Georgian superheavyweight Lasha Talakhadze extended his own world records in the snatch and clean & jerk, maintaining his status as the strongest man who has ever competed.</p><div class="card-meta">March 22, 2026 &nbsp;·&nbsp; 3 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t3">🌍</div><div class="card-body"><span class="card-tag">Olympics · Esports</span><h3 class="card-title">IOC Confirms Esports at LA 2028 Olympics — Six Games Included in Full Programme</h3><p class="card-snippet">The International Olympic Committee confirmed that competitive esports will be a full medal sport at the 2028 Los Angeles Olympics, with League of Legends and Rocket League among the six titles confirmed.</p><div class="card-meta">March 21, 2026 &nbsp;·&nbsp; 5 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t4">🏂</div><div class="card-body"><span class="card-tag">Olympics · Winter</span><h3 class="card-title">2026 Winter Olympics Milan-Cortina: Complete Medal Table and Top Performances</h3><p class="card-snippet">Norway led the overall medal table at the 2026 Milan-Cortina Winter Olympics with 20 gold medals, while Norway's Johannes Boe became the most decorated Winter Olympian of all time.</p><div class="card-meta">March 20, 2026 &nbsp;·&nbsp; 6 min read</div></div></a>
+      </div>
+      <div class="load-more-wrap"><button class="load-more-btn">Load More Articles</button></div>
+    </main>
+    <aside class="sidebar">
+      <div class="sidebar-widget">
+        <div class="widget-header"><div class="widget-title">Medal Table</div><span class="widget-badge blue">LA 2028</span></div>
+        <div class="match-item"><div class="match-teams"><span class="match-team">🇺🇸 USA</span><div style="text-align:center;"><div class="match-score" style="font-size:11px;padding:3px 8px;">Projected: 38🥇</div></div><span class="match-team right">1st</span></div></div>
+        <div class="match-item"><div class="match-teams"><span class="match-team">🇨🇳 China</span><div style="text-align:center;"><div class="match-score" style="font-size:11px;padding:3px 8px;background:#EDF6FF;color:var(--link);">Projected: 34🥇</div></div><span class="match-team right">2nd</span></div></div>
+        <div class="match-item"><div class="match-teams"><span class="match-team">🇬🇧 GB</span><div style="text-align:center;"><div class="match-score" style="font-size:11px;padding:3px 8px;background:#EDFFF5;color:#2e8a59;">Projected: 22🥇</div></div><span class="match-team right">3rd</span></div></div>
+        <div class="match-item"><div class="match-teams"><span class="match-team">🇦🇺 Australia</span><div style="text-align:center;"><div class="match-score" style="font-size:11px;padding:3px 8px;background:#FFFBED;color:#b8860b;">Projected: 19🥇</div></div><span class="match-team right">4th</span></div></div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="widget-header"><div class="widget-title">Fan Poll</div><span class="widget-badge blue">Vote</span></div>
+        <div class="poll-body">
+          <p class="poll-question">Best Olympic moment ever?</p>
+          <div class="poll-option"><div class="poll-label"><span>Usain Bolt 9.58s</span><span class="poll-pct">41%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill" style="width:41%"></div></div></div>
+          <div class="poll-option"><div class="poll-label"><span>Biles' comeback</span><span class="poll-pct">28%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill blue" style="width:28%"></div></div></div>
+          <div class="poll-option"><div class="poll-label"><span>Phelps 8 golds</span><span class="poll-pct">22%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill gray" style="width:22%"></div></div></div>
+          <div class="poll-option"><div class="poll-label"><span>Other</span><span class="poll-pct">9%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill gray" style="width:9%"></div></div></div>
+          <p class="poll-total">12,300 votes</p>
+        </div>
+      </div>
+      <div class="ad-slot"><p class="ad-label">Sponsored</p><p class="ad-title">Olympics Shop</p><p class="ad-sub">Official LA 2028 Olympic merchandise</p><a href="#" class="ad-cta">Shop Now</a></div>
+    </aside>
+  </div>
+
+  <footer><div class="footer-inner"><div class="footer-grid">
+    <div class="footer-brand"><a href="sports-homepage.html" class="logo">Sport<span>Dune</span></a><p>Your definitive source for live scores, breaking news, and in-depth analysis across every major sport worldwide.</p><div class="social-links"><a href="#" class="social-link">&#120143;</a><a href="#" class="social-link">&#102;</a><a href="#" class="social-link">&#9825;</a><a href="#" class="social-link">&#9654;</a></div></div>
+    <div><p class="footer-col-title">Sports</p><ul class="footer-links"><li><a href="football.html">Football</a></li><li><a href="cricket.html">Cricket</a></li><li><a href="basketball.html">Basketball</a></li><li><a href="f1.html">Formula 1</a></li><li><a href="tennis.html">Tennis</a></li><li><a href="hockey.html">Hockey</a></li></ul></div>
+    <div><p class="footer-col-title">More Sports</p><ul class="footer-links"><li><a href="rugby.html">Rugby</a></li><li><a href="esports.html">Esports</a></li><li><a href="combat.html">Combat Sports</a></li><li><a href="nfl.html">NFL</a></li><li><a href="olympics.html">Olympics</a></li></ul></div>
+    <div><p class="footer-col-title">Company</p><ul class="footer-links"><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Advertise</a></li><li><a href="#">Contact</a></li></ul></div>
+  </div><div class="footer-bottom"><p class="footer-copy">&copy; 2026 SportDune Media. All rights reserved.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Cookie Settings</a></div></div></div></footer>
+  <script src="shared.js"></script>
+</body>
+</html>

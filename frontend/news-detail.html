@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article – SportDune</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .article-header { padding: 80px 24px; text-align: center; position: relative; color: #fff; overflow: hidden; margin-bottom: 40px; background: #1E1E2F; }
+    .article-header-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; }
+    .article-category { display: inline-block; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 24px; }
+    .article-title { font-size: 48px; font-weight: 900; line-height: 1.1; margin-bottom: 24px; letter-spacing: -1px; }
+    .article-meta { font-size: 14px; color: rgba(255,255,255,0.7); font-weight: 500; display: flex; justify-content: center; gap: 20px; }
+    .article-header-bg { position: absolute; inset: 0; z-index: 1; opacity: 0.2; filter: blur(40px); transform: scale(1.2); }
+    .article-header-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(30,30,47,0.7), rgba(30,30,47,1)); z-index: 1; }
+
+    .article-container { max-width: 840px; margin: 0 auto; padding: 0 24px 100px; }
+    .article-content { font-size: 19px; line-height: 1.85; color: #333345; }
+    .article-content p { margin-bottom: 32px; }
+    .article-content h2 { font-size: 32px; font-weight: 800; margin: 56px 0 24px; color: var(--text); letter-spacing: -0.5px; }
+    .article-content blockquote { border-left: 5px solid var(--accent); padding: 10px 0 10px 32px; font-style: italic; font-size: 24px; color: var(--text); margin: 48px 0; font-weight: 600; line-height: 1.5; background: var(--section-bg); border-radius: 0 12px 12px 0; }
+    
+    .article-footer { border-top: 2px solid var(--border); padding-top: 48px; margin-top: 80px; display: flex; justify-content: space-between; align-items: center; }
+    .share-btns { display: flex; gap: 12px; }
+    .share-btn { width: 44px; height: 44px; border-radius: 12px; background: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--text); transition: all 0.2s; border: 1.5px solid var(--border); font-weight: 700; }
+    .share-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(255, 76, 41, 0.3); }
+
+    .related-section { background: var(--section-bg); padding: 100px 24px; border-top: 1px solid var(--border); }
+    .related-inner { max-width: 1340px; margin: 0 auto; }
+
+    @media (max-width: 768px) {
+      .article-title { font-size: 32px; }
+      .article-header { padding: 60px 20px; }
+      .article-content { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="sports-homepage.html" class="logo">Sport<span>Dune</span></a>
+      <ul class="nav-links">
+        <li><a href="sports-homepage.html">Home</a></li>
+        <li><a href="football.html">Football</a></li>
+        <li><a href="cricket.html">Cricket</a></li>
+        <li><a href="basketball.html">Basketball</a></li>
+        <li><a href="f1.html">F1</a></li>
+        <li><a href="tennis.html">Tennis</a></li>
+        <li><a href="hockey.html">Hockey</a></li>
+        <li class="dropdown"><a href="#">More &#9662;</a>
+          <div class="dropdown-menu">
+            <a href="rugby.html">Rugby</a><a href="esports.html">Esports</a>
+            <a href="combat.html">Combat</a><a href="nfl.html">NFL</a><a href="olympics.html">Olympics</a>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-right">
+        <button class="search-btn" onclick="location.href='search.html'">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="article-header" id="articleHeader">
+    <div class="article-header-bg" id="headerBg"></div>
+    <div class="article-header-overlay"></div>
+    <div class="article-header-inner">
+      <span class="article-category" id="articleCategory">Sport News</span>
+      <h1 class="article-title" id="articleTitle">Loading Article...</h1>
+      <div class="article-meta">
+        <span id="articleDate">March 28, 2026</span>
+        <span>&bull;</span>
+        <span>By SportDune Editorial</span>
+        <span>&bull;</span>
+        <span>5 min read</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="article-container">
+    <article class="article-content" id="articleContent">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      
+      <p id="dynamicIntro">The sports world is abuzz following today's significant announcement, which promises to reshape the competitive landscape for seasons to come. Analysts and fans alike are dissecting every detail of this developing story.</p>
+
+      <blockquote>
+        "This moment represents more than just a win; it's a testament to the dedication and resilience of everyone involved. We're looking at a new era for the sport."
+      </blockquote>
+
+      <h2>Comprehensive Analysis</h2>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+      
+      <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</p>
+
+      <h2>The Road Ahead</h2>
+      <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+    </article>
+
+    <div class="article-footer">
+      <div class="share-btns">
+        <a href="#" class="share-btn">𝕏</a>
+        <a href="#" class="share-btn">f</a>
+        <a href="#" class="share-btn">in</a>
+      </div>
+      <a href="sports-homepage.html" class="load-more-btn" style="text-decoration:none;">Back to Home</a>
+    </div>
+  </main>
+
+  <!-- RELATED STORIES -->
+  <section class="related-section">
+    <div class="related-inner">
+      <div class="section-heading">
+        <div class="section-bar"></div>
+        <h2 class="section-title">Related Stories</h2>
+      </div>
+      <div class="article-grid three-col">
+        <a href="#" class="article-card">
+          <div class="card-img t2">⚽</div>
+          <div class="card-body">
+            <span class="card-tag">Football</span>
+            <h3 class="card-title">Top 10 Emerging Talents to Watch This Season</h3>
+            <div class="card-meta">3 hours ago</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t4">🏆</div>
+          <div class="card-body">
+            <span class="card-tag">Championship</span>
+            <h3 class="card-title">Inside the Training Regimen of Elite Champions</h3>
+            <div class="card-meta">6 hours ago</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t5">🌟</div>
+          <div class="card-body">
+            <span class="card-tag">Profiles</span>
+            <h3 class="card-title">Retiring Legends: A Look Back at Iconic Careers</h3>
+            <div class="card-meta">Yesterday</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 SportDune Media. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="shared.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const titleParam = params.get('t');
+      const categoryParam = params.get('c');
+      const imageClass = params.get('i') || 't1';
+
+      if (titleParam) {
+        const title = decodeURIComponent(titleParam);
+        document.title = `${title} – SportDune`;
+        document.getElementById('articleTitle').innerText = title;
+        
+        const intro = document.getElementById('dynamicIntro');
+        intro.innerHTML = `Regarding the latest updates on <strong>${title}</strong>, our editorial team has gathered exclusive insights that point to a transformative period ahead. The impact of this development is being felt across all levels of the sport.`;
+      }
+
+      if (categoryParam) {
+        document.getElementById('articleCategory').innerText = decodeURIComponent(categoryParam).replace('·', '|');
+      }
+
+      if (imageClass) {
+        document.getElementById('headerBg').className = `article-header-bg ${imageClass}`;
+      }
+      
+      // Auto-scroll to top
+      window.scrollTo(0, 0);
+    });
+  </script>
+</body>
+</html>

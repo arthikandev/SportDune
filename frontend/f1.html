@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formula 1 News – SportDune</title>
+  <meta name="description" content="Latest F1 news, race results, driver standings, team analysis and live timing from Formula 1.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+  <nav><div class="nav-inner">
+    <a href="sports-homepage.html" class="logo">Sport<span>Dune</span></a>
+    <ul class="nav-links">
+      <li><a href="sports-homepage.html">Home</a></li><li><a href="football.html">Football</a></li>
+      <li><a href="cricket.html">Cricket</a></li><li><a href="basketball.html">Basketball</a></li>
+      <li><a href="f1.html" class="active">F1</a></li><li><a href="tennis.html">Tennis</a></li><li><a href="hockey.html">Hockey</a></li>
+      <li class="dropdown"><a href="#">More &#9662;</a><div class="dropdown-menu"><a href="rugby.html">Rugby</a><a href="esports.html">Esports</a><a href="combat.html">Combat</a><a href="nfl.html">NFL</a><a href="olympics.html">Olympics</a></div></li>
+      <li><a href="#" class="nav-trending">Trending</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="search-btn" onclick="location.href='search.html'"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search</button>
+      <button class="live-btn" onclick="location.href='live.html'"><span class="live-dot"></span> Live Scores</button>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div></nav>
+  <div class="mobile-nav" id="mobileNav"><a href="sports-homepage.html">Home</a><a href="football.html">Football</a><a href="cricket.html">Cricket</a><a href="basketball.html">Basketball</a><a href="f1.html">F1</a><a href="tennis.html">Tennis</a><a href="hockey.html">Hockey</a><a href="rugby.html">Rugby</a><a href="esports.html">Esports</a><a href="combat.html">Combat</a><a href="nfl.html">NFL</a><a href="olympics.html">Olympics</a><a href="live.html" style="color:var(--accent);">Live Scores</a></div>
+
+  <div class="page-banner" style="background:linear-gradient(135deg,#1a0a00 0%,#3d2000 50%,#1a0a00 100%);">
+    <span class="banner-emoji">🏎️</span>
+    <div class="page-banner-inner">
+      <span class="page-banner-tag">Sport</span>
+      <h1 class="page-banner-title">🏎️ Formula 1</h1>
+      <p class="page-banner-sub">Race Reports · Driver Standings · Technical Analysis · Team News</p>
+    </div>
+  </div>
+
+  <div class="trending-strip"><div class="trending-inner"><div class="trending-label">Trending</div><div class="trending-scroll">
+    <a href="#" class="trending-card"><div class="trending-thumb t4">🏎️</div><span class="trending-card-title">Verstappen claims Bahrain pole, Ferrari struggles</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t1">🔴</div><span class="trending-card-title">Hamilton's Ferrari debut: first race preview</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t2">⚙️</div><span class="trending-card-title">Ferrari's new floor upgrade analyzed in detail</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t3">📊</div><span class="trending-card-title">Constructor standings after Round 3</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t4">🏎️</div><span class="trending-card-title">Verstappen signs Red Bull extension to 2030</span></a>
+  </div></div></div>
+
+  <div class="page-body">
+    <main class="main-content">
+      <div class="section-heading"><div class="section-bar"></div><h2 class="section-title">Formula 1 News</h2></div>
+      <div class="article-grid">
+        <a href="#" class="article-card featured">
+          <div class="card-img t4">🏎️</div>
+          <div class="card-body">
+            <span class="card-tag">F1 · Bahrain Grand Prix</span>
+            <h3 class="card-title">Verstappen Claims Dominant Bahrain Pole as Ferrari and Hamilton Struggle in Qualifying</h3>
+            <p class="card-snippet">Max Verstappen delivered a stunning lap to claim pole position at the Bahrain Grand Prix, extending his early-season dominance as Lewis Hamilton's Ferrari debut failed to live up to the enormous hype. Verstappen's Red Bull was 0.412 seconds clear of the field.</p>
+            <div class="card-meta">March 27, 2026 &nbsp;·&nbsp; 5 min read &nbsp;·&nbsp; By Alex Mercer</div>
+          </div>
+        </a>
+        <a href="#" class="article-card"><div class="card-img t1">🔴</div><div class="card-body"><span class="card-tag">F1 · Driver News</span><h3 class="card-title">Hamilton's Ferrari Debut: The Performance Data Behind the Disappointing Start</h3><p class="card-snippet">Lewis Hamilton's highly anticipated switch to Ferrari has had a rocky start. We analyze the telemetry data and technical reasons behind his adaptation difficulties.</p><div class="card-meta">March 26, 2026 &nbsp;·&nbsp; 6 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t2">⚙️</div><div class="card-body"><span class="card-tag">F1 · Technical</span><h3 class="card-title">Ferrari's New Floor Upgrade: A Detailed Technical Breakdown</h3><p class="card-snippet">Ferrari arrived in Bahrain with a significant aerodynamic update. Our technical analyst breaks down the changes and what they mean for Ferrari's season.</p><div class="card-meta">March 25, 2026 &nbsp;·&nbsp; 7 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t3">💰</div><div class="card-body"><span class="card-tag">F1 · Contract</span><h3 class="card-title">Verstappen Signs Massive Red Bull Extension — Locked In Until 2030</h3><p class="card-snippet">Max Verstappen committed his long-term future to Red Bull Racing in a deal worth a reported $60M per year, quashing intense interest from rival teams.</p><div class="card-meta">March 24, 2026 &nbsp;·&nbsp; 4 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t5">📊</div><div class="card-body"><span class="card-tag">F1 · Championship</span><h3 class="card-title">2026 F1 Driver Standings: Verstappen Leads by 18 Points After Bahrain</h3><p class="card-snippet">The updated championship picture after three rounds shows Red Bull's dominance but hints that Mercedes and McLaren are closing the gap in Canada.</p><div class="card-meta">March 23, 2026 &nbsp;·&nbsp; 3 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t4">🆕</div><div class="card-body"><span class="card-tag">F1 · 2026 Rules</span><h3 class="card-title">The 2026 F1 Regulation Revolution: Every Change Explained</h3><p class="card-snippet">Smaller cars, more powerful hybrid systems, and a complete aerodynamic overhaul — we break down every rule change coming to Formula 1 in 2026.</p><div class="card-meta">March 22, 2026 &nbsp;·&nbsp; 9 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t1">🔥</div><div class="card-body"><span class="card-tag">F1 · Race Preview</span><h3 class="card-title">Saudi Arabian GP Preview: Street Circuit Battles and Strategic Warfare</h3><p class="card-snippet">The Jeddah Corniche Circuit produces the fastest average speeds in F1. Our race preview breaks down the key strategic scenarios and contenders for victory.</p><div class="card-meta">March 21, 2026 &nbsp;·&nbsp; 5 min read</div></div></a>
+        <a href="#" class="article-card"><div class="card-img t2">🌱</div><div class="card-body"><span class="card-tag">F1 · Sustainability</span><h3 class="card-title">F1's Push for Net Zero: Is the Sport's Green Pledge Achievable by 2030?</h3><p class="card-snippet">Formula 1 committed to becoming net-zero carbon by 2030, but how realistic is the goal? We speak to engineers and environmental experts about the roadmap.</p><div class="card-meta">March 20, 2026 &nbsp;·&nbsp; 7 min read</div></div></a>
+      </div>
+      <div class="load-more-wrap"><button class="load-more-btn">Load More Articles</button></div>
+    </main>
+    <aside class="sidebar">
+      <div class="sidebar-widget">
+        <div class="widget-header"><div class="widget-title">Championship</div><span class="widget-badge blue">2026</span></div>
+        <div class="match-item"><div class="match-league">Driver Standings – Top 4</div><div class="match-teams"><span class="match-team">1. Verstappen</span><div style="text-align:center;"><div class="match-score" style="font-size:13px;">75 pts</div></div><span class="match-team right">Red Bull</span></div></div>
+        <div class="match-item"><div class="match-teams"><span class="match-team">2. Leclerc</span><div style="text-align:center;"><div class="match-score" style="font-size:13px;background:#EDF6FF;color:var(--link);">57 pts</div></div><span class="match-team right">Ferrari</span></div></div>
+        <div class="match-item"><div class="match-teams"><span class="match-team">3. Norris</span><div style="text-align:center;"><div class="match-score" style="font-size:13px;background:#EDFFF5;color:#2e8a59;">52 pts</div></div><span class="match-team right">McLaren</span></div></div>
+        <div class="match-item"><div class="match-teams"><span class="match-team">4. Hamilton</span><div style="text-align:center;"><div class="match-score" style="font-size:13px;background:#FFFBED;color:#b8860b;">44 pts</div></div><span class="match-team right">Ferrari</span></div></div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="widget-header"><div class="widget-title">Fan Poll</div><span class="widget-badge blue">Vote</span></div>
+        <div class="poll-body">
+          <p class="poll-question">Who wins the 2026 F1 Championship?</p>
+          <div class="poll-option"><div class="poll-label"><span>Verstappen</span><span class="poll-pct">51%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill" style="width:51%"></div></div></div>
+          <div class="poll-option"><div class="poll-label"><span>Leclerc</span><span class="poll-pct">22%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill blue" style="width:22%"></div></div></div>
+          <div class="poll-option"><div class="poll-label"><span>Norris</span><span class="poll-pct">18%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill gray" style="width:18%"></div></div></div>
+          <div class="poll-option"><div class="poll-label"><span>Other</span><span class="poll-pct">9%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill gray" style="width:9%"></div></div></div>
+          <p class="poll-total">31,004 votes</p>
+        </div>
+      </div>
+      <div class="ad-slot"><p class="ad-label">Sponsored</p><p class="ad-title">F1 TV Pro</p><p class="ad-sub">Watch every race live with onboards & radio</p><a href="#" class="ad-cta">Subscribe</a></div>
+      <div class="sidebar-widget">
+        <div class="widget-header"><div class="widget-title">Race Calendar</div></div>
+        <div class="match-item"><div class="match-league">Round 4 · March 30</div><div class="match-teams"><span class="match-team">Saudi Arabia GP</span><div style="text-align:center;"><div class="match-score" style="font-size:12px;padding:4px 8px;background:#FFF0ED;color:var(--accent);">Race</div></div><span class="match-team right">Jeddah</span></div></div>
+        <div class="match-item"><div class="match-league">Round 5 · April 13</div><div class="match-teams"><span class="match-team">Australian GP</span><div style="text-align:center;"><div class="match-score" style="font-size:12px;padding:4px 8px;background:#F0F0F8;">Race</div></div><span class="match-team right">Melbourne</span></div></div>
+      </div>
+    </aside>
+  </div>
+
+  <footer><div class="footer-inner"><div class="footer-grid">
+    <div class="footer-brand"><a href="sports-homepage.html" class="logo">Sport<span>Dune</span></a><p>Your definitive source for live scores, breaking news, and in-depth analysis across every major sport worldwide.</p><div class="social-links"><a href="#" class="social-link">&#120143;</a><a href="#" class="social-link">&#102;</a><a href="#" class="social-link">&#9825;</a><a href="#" class="social-link">&#9654;</a></div></div>
+    <div><p class="footer-col-title">Sports</p><ul class="footer-links"><li><a href="football.html">Football</a></li><li><a href="cricket.html">Cricket</a></li><li><a href="basketball.html">Basketball</a></li><li><a href="f1.html">Formula 1</a></li><li><a href="tennis.html">Tennis</a></li><li><a href="hockey.html">Hockey</a></li></ul></div>
+    <div><p class="footer-col-title">More Sports</p><ul class="footer-links"><li><a href="rugby.html">Rugby</a></li><li><a href="esports.html">Esports</a></li><li><a href="combat.html">Combat Sports</a></li><li><a href="nfl.html">NFL</a></li><li><a href="olympics.html">Olympics</a></li></ul></div>
+    <div><p class="footer-col-title">Company</p><ul class="footer-links"><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Advertise</a></li><li><a href="#">Contact</a></li></ul></div>
+  </div><div class="footer-bottom"><p class="footer-copy">&copy; 2026 SportDune Media. All rights reserved.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Cookie Settings</a></div></div></div></footer>
+  <script src="shared.js"></script>
+</body>
+</html>

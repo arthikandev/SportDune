@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Scores – SportDune</title>
+  <meta name="description" content="Live scores, real-time match updates and results across football, cricket, basketball, tennis, F1 and more.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="live-scores.css">
+</head>
+<body>
+  <nav><div class="nav-inner">
+<a href="sports-homepage.html" class="logo">Sport<span>Dune</span></a>
+    <ul class="nav-links">
+      <li><a href="sports-homepage.html">Home</a></li><li><a href="football.html">Football</a></li>
+      <li><a href="cricket.html">Cricket</a></li><li><a href="basketball.html">Basketball</a></li>
+      <li><a href="f1.html">F1</a></li><li><a href="tennis.html">Tennis</a></li><li><a href="hockey.html">Hockey</a></li>
+      <li class="dropdown"><a href="#">More &#9662;</a><div class="dropdown-menu"><a href="rugby.html">Rugby</a><a href="esports.html">Esports</a><a href="combat.html">Combat</a><a href="nfl.html">NFL</a><a href="olympics.html">Olympics</a></div></li>
+      <li><a href="#" class="nav-trending">Trending</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="search-btn" onclick="location.href='search.html'"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search</button>
+      <button class="live-btn" style="background:var(--accent);" onclick="location.href='live.html'"><span class="live-dot" style="background:#fff;"></span> Live Scores</button>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div></nav>
+  <div class="mobile-nav" id="mobileNav"><a href="sports-homepage.html">Home</a><a href="football.html">Football</a><a href="cricket.html">Cricket</a><a href="basketball.html">Basketball</a><a href="f1.html">F1</a><a href="tennis.html">Tennis</a><a href="hockey.html">Hockey</a><a href="rugby.html">Rugby</a><a href="esports.html">Esports</a><a href="combat.html">Combat</a><a href="nfl.html">NFL</a><a href="olympics.html">Olympics</a><a href="live.html" style="color:var(--accent);">Live Scores</a></div>
+
+  <!-- LIVE HEADER -->
+  <div class="ls-header">
+    <div class="ls-header-inner">
+      <div class="ls-header-left">
+        <span class="ls-live-indicator"><span class="ls-pulse"></span> LIVE</span>
+        <h1 class="ls-header-title">Live Scores</h1>
+      </div>
+      <p class="ls-header-sub">Real-time scores across all major sports</p>
+      <div class="ls-date-strip">
+        <button class="ls-date-btn" data-offset="-2">Apr 8</button>
+        <button class="ls-date-btn" data-offset="-1">Yesterday</button>
+        <button class="ls-date-btn active" data-offset="0">Today</button>
+        <button class="ls-date-btn" data-offset="1">Tomorrow</button>
+        <button class="ls-date-btn" data-offset="2">Apr 12</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="ls-container">
+    <!-- SPORT SIDEBAR -->
+    <aside class="ls-sidebar" id="sportSidebar">
+      <div class="ls-sidebar-title">Sports</div>
+      <button class="ls-sport-btn active" data-sport="all">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span>All Sports</span>
+        <span class="ls-sport-count">24</span>
+      </button>
+      <button class="ls-sport-btn" data-sport="football">
+        <span class="ls-sport-icon">⚽</span><span>Football</span><span class="ls-sport-count ls-live-count">5</span>
+      </button>
+      <button class="ls-sport-btn" data-sport="cricket">
+        <span class="ls-sport-icon">🏏</span><span>Cricket</span><span class="ls-sport-count ls-live-count">2</span>
+      </button>
+      <button class="ls-sport-btn" data-sport="basketball">
+        <span class="ls-sport-icon">🏀</span><span>Basketball</span><span class="ls-sport-count ls-live-count">3</span>
+      </button>
+      <button class="ls-sport-btn" data-sport="tennis">
+        <span class="ls-sport-icon">🎾</span><span>Tennis</span><span class="ls-sport-count ls-live-count">4</span>
+      </button>
+      <button class="ls-sport-btn" data-sport="hockey">
+        <span class="ls-sport-icon">🏒</span><span>Hockey</span><span class="ls-sport-count ls-live-count">2</span>
+      </button>
+      <button class="ls-sport-btn" data-sport="f1">
+        <span class="ls-sport-icon">🏎️</span><span>Formula 1</span><span class="ls-sport-count">1</span>
+      </button>
+      <button class="ls-sport-btn" data-sport="rugby">
+        <span class="ls-sport-icon">🏉</span><span>Rugby</span><span class="ls-sport-count ls-live-count">2</span>
+      </button>
+      <button class="ls-sport-btn" data-sport="nfl">
+        <span class="ls-sport-icon">🏈</span><span>NFL</span><span class="ls-sport-count">3</span>
+      </button>
+      <button class="ls-sport-btn" data-sport="combat">
+        <span class="ls-sport-icon">🥊</span><span>Combat</span><span class="ls-sport-count">2</span>
+      </button>
+    </aside>
+
+    <!-- MOBILE SPORT CHIPS -->
+    <div class="ls-mobile-sports" id="mobileSports">
+      <button class="ls-chip active" data-sport="all">All</button>
+      <button class="ls-chip" data-sport="football">⚽ Football</button>
+      <button class="ls-chip" data-sport="cricket">🏏 Cricket</button>
+      <button class="ls-chip" data-sport="basketball">🏀 Basketball</button>
+      <button class="ls-chip" data-sport="tennis">🎾 Tennis</button>
+      <button class="ls-chip" data-sport="hockey">🏒 Hockey</button>
+      <button class="ls-chip" data-sport="f1">🏎️ F1</button>
+      <button class="ls-chip" data-sport="rugby">🏉 Rugby</button>
+      <button class="ls-chip" data-sport="nfl">🏈 NFL</button>
+      <button class="ls-chip" data-sport="combat">🥊 Combat</button>
+    </div>
+
+    <!-- MATCHES AREA -->
+    <main class="ls-main">
+      <!-- STATUS TABS -->
+      <div class="ls-status-tabs">
+        <button class="ls-status-tab active" data-status="live"><span class="ls-tab-dot"></span> Live <span class="ls-tab-count">16</span></button>
+        <button class="ls-status-tab" data-status="upcoming">Upcoming <span class="ls-tab-count">12</span></button>
+        <button class="ls-status-tab" data-status="finished">Finished <span class="ls-tab-count">18</span></button>
+      </div>
+
+      <!-- MATCHES FEED -->
+      <div class="ls-feed" id="matchFeed">
+
+        <!-- FOOTBALL LIVE -->
+        <div class="ls-league-group" data-sport="football" data-status="live">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">⚽</span>
+            <div class="ls-league-info"><span class="ls-league-name">UEFA Champions League</span><span class="ls-league-round">Quarter-Finals</span></div>
+          </div>
+          <div class="ls-match" data-sport="football" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">76'</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Real Madrid</span><span class="ls-team-score ls-winner">2</span></div>
+              <div class="ls-team"><span class="ls-team-name">Manchester City</span><span class="ls-team-score">1</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">⚽ Vinícius 23', 68'</span><span class="ls-event">⚽ Haaland 41'</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="football" data-status="live">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">⚽</span>
+            <div class="ls-league-info"><span class="ls-league-name">Premier League</span><span class="ls-league-round">Gameweek 32</span></div>
+          </div>
+          <div class="ls-match" data-sport="football" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">HT</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Arsenal</span><span class="ls-team-score ls-winner">1</span></div>
+              <div class="ls-team"><span class="ls-team-name">Liverpool</span><span class="ls-team-score">0</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">⚽ Saka 34'</span></div>
+          </div>
+          <div class="ls-match" data-sport="football" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">62'</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Chelsea</span><span class="ls-team-score">2</span></div>
+              <div class="ls-team"><span class="ls-team-name">Tottenham</span><span class="ls-team-score ls-winner">3</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">⚽ Palmer 12', 55'</span><span class="ls-event">⚽ Son 8', 29', 50'</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="football" data-status="live">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">⚽</span>
+            <div class="ls-league-info"><span class="ls-league-name">La Liga</span><span class="ls-league-round">Matchday 30</span></div>
+          </div>
+          <div class="ls-match" data-sport="football" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">22'</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Atletico Madrid</span><span class="ls-team-score">0</span></div>
+              <div class="ls-team"><span class="ls-team-name">Sevilla</span><span class="ls-team-score">0</span></div>
+            </div>
+            <div class="ls-match-events"></div>
+          </div>
+          <div class="ls-match" data-sport="football" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">58'</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Barcelona</span><span class="ls-team-score ls-winner">3</span></div>
+              <div class="ls-team"><span class="ls-team-name">Real Betis</span><span class="ls-team-score">1</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">⚽ Yamal 15', Lewandowski 33', 52'</span></div>
+          </div>
+        </div>
+
+        <!-- CRICKET LIVE -->
+        <div class="ls-league-group" data-sport="cricket" data-status="live">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🏏</span>
+            <div class="ls-league-info"><span class="ls-league-name">IPL 2026</span><span class="ls-league-round">Match 14</span></div>
+          </div>
+          <div class="ls-match" data-sport="cricket" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">LIVE</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Mumbai Indians</span><span class="ls-team-score ls-winner">186/6 (18.2)</span></div>
+              <div class="ls-team"><span class="ls-team-name">Chennai Super Kings</span><span class="ls-team-score ls-dim">chasing 198</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">MI need 12 off 10 balls</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="cricket" data-status="live">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🏏</span>
+            <div class="ls-league-info"><span class="ls-league-name">Test Championship</span><span class="ls-league-round">3rd Test – Lord's</span></div>
+          </div>
+          <div class="ls-match" data-sport="cricket" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">Day 3</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">India</span><span class="ls-team-score ls-winner">480/7 dec</span></div>
+              <div class="ls-team"><span class="ls-team-name">England</span><span class="ls-team-score">220 all out</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">India lead by 260 runs</span></div>
+          </div>
+        </div>
+
+        <!-- BASKETBALL LIVE -->
+        <div class="ls-league-group" data-sport="basketball" data-status="live">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🏀</span>
+            <div class="ls-league-info"><span class="ls-league-name">NBA</span><span class="ls-league-round">Regular Season</span></div>
+          </div>
+          <div class="ls-match" data-sport="basketball" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">Q3 4:12</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">LA Lakers</span><span class="ls-team-score ls-winner">86</span></div>
+              <div class="ls-team"><span class="ls-team-name">Boston Celtics</span><span class="ls-team-score">82</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">LeBron: 28pts 8reb</span></div>
+          </div>
+          <div class="ls-match" data-sport="basketball" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">Q4 2:30</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Dallas Mavericks</span><span class="ls-team-score ls-winner">104</span></div>
+              <div class="ls-team"><span class="ls-team-name">Golden State</span><span class="ls-team-score">99</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">Doncic: 32pts 10ast</span></div>
+          </div>
+          <div class="ls-match" data-sport="basketball" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">Q2 8:44</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Denver Nuggets</span><span class="ls-team-score ls-winner">48</span></div>
+              <div class="ls-team"><span class="ls-team-name">Phoenix Suns</span><span class="ls-team-score">42</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">Jokic: 18pts 6reb 5ast</span></div>
+          </div>
+        </div>
+
+        <!-- TENNIS LIVE -->
+        <div class="ls-league-group" data-sport="tennis" data-status="live">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🎾</span>
+            <div class="ls-league-info"><span class="ls-league-name">ATP Masters 1000</span><span class="ls-league-round">Monte Carlo – Round of 16</span></div>
+          </div>
+          <div class="ls-match" data-sport="tennis" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">Set 2</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">C. Alcaraz</span><span class="ls-team-score ls-winner">6 &nbsp;4</span></div>
+              <div class="ls-team"><span class="ls-team-name">S. Tsitsipas</span><span class="ls-team-score">3 &nbsp;2</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">Alcaraz serving</span></div>
+          </div>
+          <div class="ls-match" data-sport="tennis" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">Set 3</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">N. Djokovic</span><span class="ls-team-score">4 &nbsp;6 &nbsp;3</span></div>
+              <div class="ls-team"><span class="ls-team-name">J. Sinner</span><span class="ls-team-score ls-winner">6 &nbsp;3 &nbsp;5</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">Sinner on serve, break point</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="tennis" data-status="live">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🎾</span>
+            <div class="ls-league-info"><span class="ls-league-name">WTA 1000</span><span class="ls-league-round">Stuttgart Open – QF</span></div>
+          </div>
+          <div class="ls-match" data-sport="tennis" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">Set 1</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">I. Swiatek</span><span class="ls-team-score ls-winner">5</span></div>
+              <div class="ls-team"><span class="ls-team-name">A. Sabalenka</span><span class="ls-team-score">4</span></div>
+            </div>
+            <div class="ls-match-events"></div>
+          </div>
+          <div class="ls-match" data-sport="tennis" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">Set 2</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">C. Gauff</span><span class="ls-team-score">6 &nbsp;2</span></div>
+              <div class="ls-team"><span class="ls-team-name">J. Pegula</span><span class="ls-team-score ls-winner">7 &nbsp;4</span></div>
+            </div>
+            <div class="ls-match-events"></div>
+          </div>
+        </div>
+
+        <!-- HOCKEY LIVE -->
+        <div class="ls-league-group" data-sport="hockey" data-status="live">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🏒</span>
+            <div class="ls-league-info"><span class="ls-league-name">NHL</span><span class="ls-league-round">Regular Season</span></div>
+          </div>
+          <div class="ls-match" data-sport="hockey" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">P3 8:14</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Edmonton Oilers</span><span class="ls-team-score ls-winner">4</span></div>
+              <div class="ls-team"><span class="ls-team-name">Vancouver Canucks</span><span class="ls-team-score">2</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">McDavid: 2G 1A</span></div>
+          </div>
+          <div class="ls-match" data-sport="hockey" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">P2 12:00</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">NY Rangers</span><span class="ls-team-score">1</span></div>
+              <div class="ls-team"><span class="ls-team-name">Carolina</span><span class="ls-team-score ls-winner">2</span></div>
+            </div>
+            <div class="ls-match-events"></div>
+          </div>
+        </div>
+
+        <!-- RUGBY LIVE -->
+        <div class="ls-league-group" data-sport="rugby" data-status="live">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🏉</span>
+            <div class="ls-league-info"><span class="ls-league-name">Six Nations</span><span class="ls-league-round">Round 5</span></div>
+          </div>
+          <div class="ls-match" data-sport="rugby" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">65'</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">France</span><span class="ls-team-score ls-winner">24</span></div>
+              <div class="ls-team"><span class="ls-team-name">Ireland</span><span class="ls-team-score">18</span></div>
+            </div>
+            <div class="ls-match-events"></div>
+          </div>
+          <div class="ls-match" data-sport="rugby" data-status="live">
+            <div class="ls-match-time"><span class="ls-match-live">HT</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">England</span><span class="ls-team-score">12</span></div>
+              <div class="ls-team"><span class="ls-team-name">Scotland</span><span class="ls-team-score ls-winner">15</span></div>
+            </div>
+            <div class="ls-match-events"></div>
+          </div>
+        </div>
+
+        <!-- UPCOMING MATCHES -->
+        <div class="ls-league-group" data-sport="football" data-status="upcoming">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">⚽</span>
+            <div class="ls-league-info"><span class="ls-league-name">La Liga</span><span class="ls-league-round">Matchday 31</span></div>
+          </div>
+          <div class="ls-match" data-sport="football" data-status="upcoming">
+            <div class="ls-match-time"><span class="ls-match-scheduled">20:00</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Barcelona</span><span class="ls-team-score ls-dim">-</span></div>
+              <div class="ls-team"><span class="ls-team-name">Atletico Madrid</span><span class="ls-team-score ls-dim">-</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event-upcoming">Apr 11 – 20:00 CET</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="football" data-status="upcoming">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">⚽</span>
+            <div class="ls-league-info"><span class="ls-league-name">UEFA Champions League</span><span class="ls-league-round">Semi-Final 1st Leg</span></div>
+          </div>
+          <div class="ls-match" data-sport="football" data-status="upcoming">
+            <div class="ls-match-time"><span class="ls-match-scheduled">20:00</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Arsenal</span><span class="ls-team-score ls-dim">-</span></div>
+              <div class="ls-team"><span class="ls-team-name">PSG</span><span class="ls-team-score ls-dim">-</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event-upcoming">Apr 15 – 20:00 BST</span></div>
+          </div>
+          <div class="ls-match" data-sport="football" data-status="upcoming">
+            <div class="ls-match-time"><span class="ls-match-scheduled">20:00</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Man City</span><span class="ls-team-score ls-dim">-</span></div>
+              <div class="ls-team"><span class="ls-team-name">Inter Milan</span><span class="ls-team-score ls-dim">-</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event-upcoming">Apr 16 – 20:00 BST</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="cricket" data-status="upcoming">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🏏</span>
+            <div class="ls-league-info"><span class="ls-league-name">IPL 2026</span><span class="ls-league-round">Match 15</span></div>
+          </div>
+          <div class="ls-match" data-sport="cricket" data-status="upcoming">
+            <div class="ls-match-time"><span class="ls-match-scheduled">19:30</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">RCB</span><span class="ls-team-score ls-dim">-</span></div>
+              <div class="ls-team"><span class="ls-team-name">KKR</span><span class="ls-team-score ls-dim">-</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event-upcoming">Apr 11 – 19:30 IST</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="basketball" data-status="upcoming">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🏀</span>
+            <div class="ls-league-info"><span class="ls-league-name">NBA</span><span class="ls-league-round">Regular Season</span></div>
+          </div>
+          <div class="ls-match" data-sport="basketball" data-status="upcoming">
+            <div class="ls-match-time"><span class="ls-match-scheduled">19:30</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Milwaukee Bucks</span><span class="ls-team-score ls-dim">-</span></div>
+              <div class="ls-team"><span class="ls-team-name">Miami Heat</span><span class="ls-team-score ls-dim">-</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event-upcoming">Apr 11 – 19:30 ET</span></div>
+          </div>
+          <div class="ls-match" data-sport="basketball" data-status="upcoming">
+            <div class="ls-match-time"><span class="ls-match-scheduled">22:00</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">LA Clippers</span><span class="ls-team-score ls-dim">-</span></div>
+              <div class="ls-team"><span class="ls-team-name">Sacramento Kings</span><span class="ls-team-score ls-dim">-</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event-upcoming">Apr 11 – 22:00 ET</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="tennis" data-status="upcoming">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🎾</span>
+            <div class="ls-league-info"><span class="ls-league-name">ATP Masters 1000</span><span class="ls-league-round">Monte Carlo – Semi-Finals</span></div>
+          </div>
+          <div class="ls-match" data-sport="tennis" data-status="upcoming">
+            <div class="ls-match-time"><span class="ls-match-scheduled">14:00</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">C. Alcaraz</span><span class="ls-team-score ls-dim">-</span></div>
+              <div class="ls-team"><span class="ls-team-name">A. Zverev</span><span class="ls-team-score ls-dim">-</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event-upcoming">Apr 12 – 14:00 CET</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="f1" data-status="upcoming">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🏎️</span>
+            <div class="ls-league-info"><span class="ls-league-name">Formula 1</span><span class="ls-league-round">Round 4 – Saudi Arabian GP</span></div>
+          </div>
+          <div class="ls-match" data-sport="f1" data-status="upcoming">
+            <div class="ls-match-time"><span class="ls-match-scheduled">18:00</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Saudi Arabian Grand Prix</span><span class="ls-team-score ls-dim"></span></div>
+              <div class="ls-team"><span class="ls-team-name ls-dim">Jeddah Corniche Circuit</span><span class="ls-team-score ls-dim"></span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event-upcoming">Apr 13 – Race 18:00 AST</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="hockey" data-status="upcoming">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🏒</span>
+            <div class="ls-league-info"><span class="ls-league-name">NHL</span><span class="ls-league-round">Regular Season</span></div>
+          </div>
+          <div class="ls-match" data-sport="hockey" data-status="upcoming">
+            <div class="ls-match-time"><span class="ls-match-scheduled">19:00</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Toronto Maple Leafs</span><span class="ls-team-score ls-dim">-</span></div>
+              <div class="ls-team"><span class="ls-team-name">Montreal Canadiens</span><span class="ls-team-score ls-dim">-</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event-upcoming">Apr 11 – 19:00 ET</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="nfl" data-status="upcoming">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🏈</span>
+            <div class="ls-league-info"><span class="ls-league-name">NFL</span><span class="ls-league-round">Pre-Season Week 1</span></div>
+          </div>
+          <div class="ls-match" data-sport="nfl" data-status="upcoming">
+            <div class="ls-match-time"><span class="ls-match-scheduled">20:00</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Kansas City Chiefs</span><span class="ls-team-score ls-dim">-</span></div>
+              <div class="ls-team"><span class="ls-team-name">Philadelphia Eagles</span><span class="ls-team-score ls-dim">-</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event-upcoming">Aug 8 – 20:00 ET</span></div>
+          </div>
+        </div>
+
+        <!-- FINISHED MATCHES -->
+        <div class="ls-league-group" data-sport="football" data-status="finished">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">⚽</span>
+            <div class="ls-league-info"><span class="ls-league-name">Bundesliga</span><span class="ls-league-round">Matchday 28</span></div>
+          </div>
+          <div class="ls-match" data-sport="football" data-status="finished">
+            <div class="ls-match-time"><span class="ls-match-ft">FT</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Bayern Munich</span><span class="ls-team-score ls-winner">3</span></div>
+              <div class="ls-team"><span class="ls-team-name">Borussia Dortmund</span><span class="ls-team-score">2</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">⚽ Müller 22', Kane 55', 78'</span></div>
+          </div>
+          <div class="ls-match" data-sport="football" data-status="finished">
+            <div class="ls-match-time"><span class="ls-match-ft">FT</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Leverkusen</span><span class="ls-team-score ls-winner">2</span></div>
+              <div class="ls-team"><span class="ls-team-name">Stuttgart</span><span class="ls-team-score">0</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">⚽ Wirtz 31', Schick 67'</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="football" data-status="finished">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">⚽</span>
+            <div class="ls-league-info"><span class="ls-league-name">Serie A</span><span class="ls-league-round">Matchday 29</span></div>
+          </div>
+          <div class="ls-match" data-sport="football" data-status="finished">
+            <div class="ls-match-time"><span class="ls-match-ft">FT</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Inter Milan</span><span class="ls-team-score ls-winner">3</span></div>
+              <div class="ls-team"><span class="ls-team-name">AC Milan</span><span class="ls-team-score">0</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">⚽ Lautaro 18', Barella 55', Thuram 82'</span></div>
+          </div>
+          <div class="ls-match" data-sport="football" data-status="finished">
+            <div class="ls-match-time"><span class="ls-match-ft">FT</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Napoli</span><span class="ls-team-score">1</span></div>
+              <div class="ls-team"><span class="ls-team-name">Juventus</span><span class="ls-team-score ls-winner">2</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">⚽ Vlahovic 39', 71'</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="basketball" data-status="finished">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🏀</span>
+            <div class="ls-league-info"><span class="ls-league-name">NBA</span><span class="ls-league-round">Regular Season</span></div>
+          </div>
+          <div class="ls-match" data-sport="basketball" data-status="finished">
+            <div class="ls-match-time"><span class="ls-match-ft">FT OT</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">LA Lakers</span><span class="ls-team-score ls-winner">108</span></div>
+              <div class="ls-team"><span class="ls-team-name">Boston Celtics</span><span class="ls-team-score">104</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">LeBron: 36pts 12reb 8ast</span></div>
+          </div>
+          <div class="ls-match" data-sport="basketball" data-status="finished">
+            <div class="ls-match-time"><span class="ls-match-ft">Final</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">OKC Thunder</span><span class="ls-team-score ls-winner">118</span></div>
+              <div class="ls-team"><span class="ls-team-name">Minnesota</span><span class="ls-team-score">105</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">SGA: 38pts 6ast</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="hockey" data-status="finished">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🏒</span>
+            <div class="ls-league-info"><span class="ls-league-name">NHL</span><span class="ls-league-round">Regular Season</span></div>
+          </div>
+          <div class="ls-match" data-sport="hockey" data-status="finished">
+            <div class="ls-match-time"><span class="ls-match-ft">Final</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Washington Capitals</span><span class="ls-team-score ls-winner">6</span></div>
+              <div class="ls-team"><span class="ls-team-name">Toronto Maple Leafs</span><span class="ls-team-score">3</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">Ovechkin: 2 goals</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="tennis" data-status="finished">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🎾</span>
+            <div class="ls-league-info"><span class="ls-league-name">ATP Masters 1000</span><span class="ls-league-round">Monte Carlo – Round of 32</span></div>
+          </div>
+          <div class="ls-match" data-sport="tennis" data-status="finished">
+            <div class="ls-match-time"><span class="ls-match-ft">Final</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">R. Nadal</span><span class="ls-team-score ls-winner">6 &nbsp;7</span></div>
+              <div class="ls-team"><span class="ls-team-name">F. Auger-Aliassime</span><span class="ls-team-score">4 &nbsp;5</span></div>
+            </div>
+            <div class="ls-match-events"></div>
+          </div>
+          <div class="ls-match" data-sport="tennis" data-status="finished">
+            <div class="ls-match-time"><span class="ls-match-ft">Final</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">D. Medvedev</span><span class="ls-team-score">3 &nbsp;6 &nbsp;4</span></div>
+              <div class="ls-team"><span class="ls-team-name">H. Rune</span><span class="ls-team-score ls-winner">6 &nbsp;4 &nbsp;6</span></div>
+            </div>
+            <div class="ls-match-events"></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="combat" data-status="finished">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🥊</span>
+            <div class="ls-league-info"><span class="ls-league-name">UFC 310</span><span class="ls-league-round">Main Card</span></div>
+          </div>
+          <div class="ls-match" data-sport="combat" data-status="finished">
+            <div class="ls-match-time"><span class="ls-match-ft">KO R3</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">I. Adesanya</span><span class="ls-team-score ls-winner">W</span></div>
+              <div class="ls-team"><span class="ls-team-name">R. Whittaker</span><span class="ls-team-score">L</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">Middleweight Title Bout</span></div>
+          </div>
+          <div class="ls-match" data-sport="combat" data-status="finished">
+            <div class="ls-match-time"><span class="ls-match-ft">UD</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">A. Volkanovski</span><span class="ls-team-score ls-winner">W</span></div>
+              <div class="ls-team"><span class="ls-team-name">Y. Rodriguez</span><span class="ls-team-score">L</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">Featherweight Title Bout</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="nfl" data-status="finished">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🏈</span>
+            <div class="ls-league-info"><span class="ls-league-name">NFL</span><span class="ls-league-round">Super Bowl LX</span></div>
+          </div>
+          <div class="ls-match" data-sport="nfl" data-status="finished">
+            <div class="ls-match-time"><span class="ls-match-ft">Final</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Kansas City Chiefs</span><span class="ls-team-score ls-winner">31</span></div>
+              <div class="ls-team"><span class="ls-team-name">Detroit Lions</span><span class="ls-team-score">28</span></div>
+            </div>
+            <div class="ls-match-events"><span class="ls-event">Mahomes MVP – 3 TD</span></div>
+          </div>
+        </div>
+
+        <div class="ls-league-group" data-sport="rugby" data-status="finished">
+          <div class="ls-league-header">
+            <span class="ls-league-icon">🏉</span>
+            <div class="ls-league-info"><span class="ls-league-name">Six Nations</span><span class="ls-league-round">Round 4</span></div>
+          </div>
+          <div class="ls-match" data-sport="rugby" data-status="finished">
+            <div class="ls-match-time"><span class="ls-match-ft">FT</span></div>
+            <div class="ls-match-teams">
+              <div class="ls-team"><span class="ls-team-name">Wales</span><span class="ls-team-score">14</span></div>
+              <div class="ls-team"><span class="ls-team-name">Italy</span><span class="ls-team-score ls-winner">28</span></div>
+            </div>
+            <div class="ls-match-events"></div>
+          </div>
+        </div>
+
+        <!-- EMPTY STATE -->
+        <div class="ls-empty" id="lsEmpty" style="display:none;">
+          <div class="ls-empty-icon">🏟️</div>
+          <h3>No matches found</h3>
+          <p>Try selecting a different sport or status filter</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer><div class="footer-inner"><div class="footer-grid">
+    <div class="footer-brand"><a href="sports-homepage.html" class="logo">Sport<span>Skyline</span></a><p>Your definitive source for live scores, breaking news, and in-depth analysis across every major sport worldwide.</p><div class="social-links"><a href="#" class="social-link">&#120143;</a><a href="#" class="social-link">&#102;</a><a href="#" class="social-link">&#9825;</a><a href="#" class="social-link">&#9654;</a></div></div>
+    <div><p class="footer-col-title">Sports</p><ul class="footer-links"><li><a href="football.html">Football</a></li><li><a href="cricket.html">Cricket</a></li><li><a href="basketball.html">Basketball</a></li><li><a href="f1.html">Formula 1</a></li><li><a href="tennis.html">Tennis</a></li><li><a href="hockey.html">Hockey</a></li></ul></div>
+    <div><p class="footer-col-title">More Sports</p><ul class="footer-links"><li><a href="rugby.html">Rugby</a></li><li><a href="esports.html">Esports</a></li><li><a href="combat.html">Combat Sports</a></li><li><a href="nfl.html">NFL</a></li><li><a href="olympics.html">Olympics</a></li></ul></div>
+    <div><p class="footer-col-title">Company</p><ul class="footer-links"><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Advertise</a></li><li><a href="#">Contact</a></li></ul></div>
+  </div><div class="footer-bottom"><p class="footer-copy">&copy; 2026 SportDune Media. All rights reserved.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Cookie Settings</a></div></div></div></footer>
+  <script src="shared.js"></script>
+  <script src="live-scores.js"></script>
+</body>
+</html>

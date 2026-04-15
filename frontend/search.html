@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search – SportDune</title>
+  <meta name="description" content="Search all SportDune articles, videos, scores, teams and athletes across every sport.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+  <nav><div class="nav-inner">
+<a href="sports-homepage.html" class="logo">Sport<span>Dune</span></a>
+    <ul class="nav-links">
+      <li><a href="sports-homepage.html">Home</a></li><li><a href="football.html">Football</a></li>
+      <li><a href="cricket.html">Cricket</a></li><li><a href="basketball.html">Basketball</a></li>
+      <li><a href="f1.html">F1</a></li><li><a href="tennis.html">Tennis</a></li><li><a href="hockey.html">Hockey</a></li>
+      <li class="dropdown"><a href="#">More &#9662;</a><div class="dropdown-menu"><a href="rugby.html">Rugby</a><a href="esports.html">Esports</a><a href="combat.html">Combat</a><a href="nfl.html">NFL</a><a href="olympics.html">Olympics</a></div></li>
+      <li><a href="#" class="nav-trending">Trending</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="search-btn" onclick="location.href='search.html'" style="color:var(--accent);"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search</button>
+      <button class="live-btn" onclick="location.href='live.html'"><span class="live-dot"></span> Live Scores</button>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div></nav>
+  <div class="mobile-nav" id="mobileNav"><a href="sports-homepage.html">Home</a><a href="football.html">Football</a><a href="cricket.html">Cricket</a><a href="basketball.html">Basketball</a><a href="f1.html">F1</a><a href="tennis.html">Tennis</a><a href="hockey.html">Hockey</a><a href="rugby.html">Rugby</a><a href="esports.html">Esports</a><a href="combat.html">Combat</a><a href="nfl.html">NFL</a><a href="olympics.html">Olympics</a><a href="live.html" style="color:var(--accent);">Live Scores</a></div>
+
+  <!-- SEARCH HERO -->
+  <div class="search-hero">
+    <div class="search-hero-inner">
+      <h1 class="search-hero-title">Search SportDune</h1>
+      <p class="search-hero-sub">Find news and articles across every sport</p>
+      <div class="search-bar-wrap">
+        <svg class="search-bar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" class="search-bar-input" placeholder="Search for news, teams, athletes, scores…" autocomplete="off">
+        <button id="searchSubmit" class="search-bar-btn">Search</button>
+      </div>
+      <!-- Trending Searches -->
+      <div class="search-suggestions">
+        <span class="suggestions-label">Trending:</span>
+        <button class="suggest-tag" onclick="document.getElementById('searchInput').value=this.textContent;document.getElementById('searchSubmit').click()">Verstappen</button>
+        <button class="suggest-tag" onclick="document.getElementById('searchInput').value=this.textContent;document.getElementById('searchSubmit').click()">IPL 2026</button>
+        <button class="suggest-tag" onclick="document.getElementById('searchInput').value=this.textContent;document.getElementById('searchSubmit').click()">Alcaraz</button>
+        <button class="suggest-tag" onclick="document.getElementById('searchInput').value=this.textContent;document.getElementById('searchSubmit').click()">Super Bowl</button>
+        <button class="suggest-tag" onclick="document.getElementById('searchInput').value=this.textContent;document.getElementById('searchSubmit').click()">NBA Playoffs</button>
+        <button class="suggest-tag" onclick="document.getElementById('searchInput').value=this.textContent;document.getElementById('searchSubmit').click()">Olympics 2028</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:40px 24px;">
+
+    <!-- DEFAULT STATE -->
+    <div id="defaultResults">
+      <!-- Browse by Category -->
+      <div class="section-heading"><div class="section-bar"></div><h2 class="section-title">Browse by Sport</h2></div>
+      <div class="search-category-grid">
+        <a href="football.html" class="search-cat-card" style="background:linear-gradient(135deg,#1a3d00,#003d1a);">⚽<span>Football</span></a>
+        <a href="cricket.html" class="search-cat-card" style="background:linear-gradient(135deg,#001f4d,#003d1a);">🏏<span>Cricket</span></a>
+        <a href="basketball.html" class="search-cat-card" style="background:linear-gradient(135deg,#1a2a0a,#0a1a3d);">🏀<span>Basketball</span></a>
+        <a href="f1.html" class="search-cat-card" style="background:linear-gradient(135deg,#1a0a00,#3d2000);">🏎️<span>Formula 1</span></a>
+        <a href="tennis.html" class="search-cat-card" style="background:linear-gradient(135deg,#001a2a,#0a3a1a);">🎾<span>Tennis</span></a>
+        <a href="hockey.html" class="search-cat-card" style="background:linear-gradient(135deg,#001430,#003060);">🏒<span>Hockey</span></a>
+        <a href="rugby.html" class="search-cat-card" style="background:linear-gradient(135deg,#0a2010,#1a3d00);">🏉<span>Rugby</span></a>
+        <a href="esports.html" class="search-cat-card" style="background:linear-gradient(135deg,#0d001a,#1a0033);">🎮<span>Esports</span></a>
+        <a href="combat.html" class="search-cat-card" style="background:linear-gradient(135deg,#1a0000,#3d0000);">🥊<span>Combat</span></a>
+        <a href="nfl.html" class="search-cat-card" style="background:linear-gradient(135deg,#001030,#002060);">🏈<span>NFL</span></a>
+        <a href="olympics.html" class="search-cat-card" style="background:linear-gradient(135deg,#0a0a2a,#1a0a00);">🏅<span>Olympics</span></a>
+        <a href="live.html" class="search-cat-card" style="background:linear-gradient(135deg,#1a0a00,#3d0a00);">📊<span>Live Scores</span></a>
+      </div>
+
+      <!-- Trending Articles Preview -->
+      <div class="section-heading" style="margin-top:48px;"><div class="section-bar"></div><h2 class="section-title">Trending Articles</h2></div>
+      <div class="search-results-list">
+        <a href="#" class="search-result-item"><div class="result-thumb t1">⚽</div><div class="result-body"><span class="card-tag">Football · Champions League</span><h3 class="result-title">Real Madrid 2–1 Man City: Champions League Quarter-Final Highlights</h3><div class="card-meta">March 27, 2026 &nbsp;·&nbsp; Trending Now</div></div></a>
+        <a href="#" class="search-result-item"><div class="result-thumb t2">🏏</div><div class="result-body"><span class="card-tag">Cricket · Test</span><h3 class="result-title">Rohit Sharma's Record-Breaking 250 Leads India to Historic Win</h3><div class="card-meta">March 27, 2026 &nbsp;·&nbsp; Trending Now</div></div></a>
+        <a href="#" class="search-result-item"><div class="result-thumb t4">🏎️</div><div class="result-body"><span class="card-tag">F1 · Bahrain GP</span><h3 class="result-title">Verstappen Claims Pole in Bahrain as Hamilton Struggles on Ferrari Debut</h3><div class="card-meta">March 27, 2026 &nbsp;·&nbsp; Trending Now</div></div></a>
+        <a href="#" class="search-result-item"><div class="result-thumb t3">🏀</div><div class="result-body"><span class="card-tag">Basketball · NBA</span><h3 class="result-title">Lakers Edge Celtics in Overtime Classic to Claim Western Conference Top Seed</h3><div class="card-meta">March 27, 2026 &nbsp;·&nbsp; Trending Now</div></div></a>
+        <a href="#" class="search-result-item"><div class="result-thumb t5">🥊</div><div class="result-body"><span class="card-tag">UFC · Heavyweight</span><h3 class="result-title">Jon Jones Dominates at UFC 310 to Retain Heavyweight Title</h3><div class="card-meta">March 27, 2026 &nbsp;·&nbsp; Trending Now</div></div></a>
+      </div>
+    </div>
+
+    <!-- SEARCH RESULTS STATE (hidden by default) -->
+    <div id="searchResults" style="display:none;">
+      <div class="search-results-header">
+        <p class="results-count">Results for: <strong id="searchQuery"></strong></p>
+        <span style="font-size:13px;font-weight:600;color:var(--light-gray);">Showing news articles</span>
+      </div>
+      <div class="search-results-list">
+        <a href="#" class="search-result-item"><div class="result-thumb t1">⚽</div><div class="result-body"><span class="card-tag">Football · Champions League</span><h3 class="result-title">Real Madrid 2–1 Man City: Champions League Quarter-Final Highlights</h3><div class="card-meta">March 27, 2026 &nbsp;·&nbsp; Article &nbsp;·&nbsp; 5 min read</div></div></a>
+        <a href="#" class="search-result-item"><div class="result-thumb t2">🏏</div><div class="result-body"><span class="card-tag">Cricket · Test</span><h3 class="result-title">Rohit Sharma's Record-Breaking 250 Leads India to Historic Win</h3><div class="card-meta">March 27, 2026 &nbsp;·&nbsp; Article &nbsp;·&nbsp; 6 min read</div></div></a>
+        <a href="#" class="search-result-item"><div class="result-thumb t4">🏎️</div><div class="result-body"><span class="card-tag">F1 · Bahrain</span><h3 class="result-title">Verstappen Claims Pole as Hamilton Struggles on Ferrari Debut</h3><div class="card-meta">March 26, 2026 &nbsp;·&nbsp; Article &nbsp;·&nbsp; 4 min read</div></div></a>
+        <a href="#" class="search-result-item"><div class="result-thumb t3">🏀</div><div class="result-body"><span class="card-tag">Basketball · NBA</span><h3 class="result-title">Lakers Edge Celtics in Overtime Classic</h3><div class="card-meta">March 27, 2026 &nbsp;·&nbsp; Article &nbsp;·&nbsp; 5 min read</div></div></a>
+        <a href="#" class="search-result-item"><div class="result-thumb t5">🥊</div><div class="result-body"><span class="card-tag">UFC · Heavyweight</span><h3 class="result-title">Jon Jones Dominates at UFC 310 to Retain Title</h3><div class="card-meta">March 27, 2026 &nbsp;·&nbsp; Article &nbsp;·&nbsp; 5 min read</div></div></a>
+      </div>
+    </div>
+  </div>
+
+  <footer><div class="footer-inner"><div class="footer-grid">
+    <div class="footer-brand"><a href="sports-homepage.html" class="logo">Sport<span>Skyline</span></a><p>Your definitive source for live scores, breaking news, and in-depth analysis across every major sport worldwide.</p><div class="social-links"><a href="#" class="social-link">&#120143;</a><a href="#" class="social-link">&#102;</a><a href="#" class="social-link">&#9825;</a><a href="#" class="social-link">&#9654;</a></div></div>
+    <div><p class="footer-col-title">Sports</p><ul class="footer-links"><li><a href="football.html">Football</a></li><li><a href="cricket.html">Cricket</a></li><li><a href="basketball.html">Basketball</a></li><li><a href="f1.html">Formula 1</a></li><li><a href="tennis.html">Tennis</a></li><li><a href="hockey.html">Hockey</a></li></ul></div>
+    <div><p class="footer-col-title">More Sports</p><ul class="footer-links"><li><a href="rugby.html">Rugby</a></li><li><a href="esports.html">Esports</a></li><li><a href="combat.html">Combat Sports</a></li><li><a href="nfl.html">NFL</a></li><li><a href="olympics.html">Olympics</a></li></ul></div>
+    <div><p class="footer-col-title">Company</p><ul class="footer-links"><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Advertise</a></li><li><a href="#">Contact</a></li></ul></div>
+  </div><div class="footer-bottom"><p class="footer-copy">&copy; 2026 SportDune Media. All rights reserved.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Cookie Settings</a></div></div></div></footer>
+  <script src="shared.js"></script>
+</body>
+</html>

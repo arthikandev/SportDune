@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cricket News – SportDune</title>
+  <meta name="description" content="Latest cricket news, match reports, IPL updates, Test series analysis and live scores.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="sports-homepage.html" class="logo">Sport<span>Dune</span></a>
+      <ul class="nav-links">
+        <li><a href="sports-homepage.html">Home</a></li><li><a href="football.html">Football</a></li>
+        <li><a href="cricket.html" class="active">Cricket</a></li><li><a href="basketball.html">Basketball</a></li>
+        <li><a href="f1.html">F1</a></li><li><a href="tennis.html">Tennis</a></li><li><a href="hockey.html">Hockey</a></li>
+        <li class="dropdown"><a href="#">More &#9662;</a>
+          <div class="dropdown-menu"><a href="rugby.html">Rugby</a><a href="esports.html">Esports</a><a href="combat.html">Combat</a><a href="nfl.html">NFL</a><a href="olympics.html">Olympics</a></div>
+        </li>
+        <li><a href="#" class="nav-trending">Trending</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="search-btn" onclick="location.href='search.html'"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search</button>
+        <button class="live-btn" onclick="location.href='live.html'"><span class="live-dot"></span> Live Scores</button>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="sports-homepage.html">Home</a><a href="football.html">Football</a><a href="cricket.html">Cricket</a><a href="basketball.html">Basketball</a><a href="f1.html">F1</a><a href="tennis.html">Tennis</a><a href="hockey.html">Hockey</a><a href="rugby.html">Rugby</a><a href="esports.html">Esports</a><a href="combat.html">Combat</a><a href="nfl.html">NFL</a><a href="olympics.html">Olympics</a><a href="live.html" style="color:var(--accent);">Live Scores</a>
+  </div>
+
+  <div class="page-banner" style="background:linear-gradient(135deg,#001f4d 0%,#003d1a 60%,#001f4d 100%);">
+    <span class="banner-emoji">🏏</span>
+    <div class="page-banner-inner">
+      <span class="page-banner-tag">Sport</span>
+      <h1 class="page-banner-title">🏏 Cricket</h1>
+      <p class="page-banner-sub">Test Cricket · ODI · T20I · IPL · The Ashes · World Cup</p>
+    </div>
+  </div>
+
+  <div class="trending-strip"><div class="trending-inner"><div class="trending-label">Trending</div><div class="trending-scroll">
+    <a href="#" class="trending-card"><div class="trending-thumb t2">🏏</div><span class="trending-card-title">Rohit Sharma's record-breaking 250 in Tests</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t3">🏆</div><span class="trending-card-title">Kohli announces T20I retirement</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t4">⚡</div><span class="trending-card-title">Maxwell's 185 off 100 balls rescues Australia</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t1">🎯</div><span class="trending-card-title">IPL 2026 auction sets spending record</span></a>
+    <a href="#" class="trending-card"><div class="trending-thumb t2">🏏</div><span class="trending-card-title">Bumrah claims 9-wicket match haul</span></a>
+  </div></div></div>
+
+  <div class="page-body">
+    <main class="main-content">
+      <div class="section-heading"><div class="section-bar"></div><h2 class="section-title">Cricket News</h2></div>
+      <div class="article-grid">
+        <a href="#" class="article-card featured">
+          <div class="card-img t2">🏏</div>
+          <div class="card-body">
+            <span class="card-tag">Cricket · Test Series</span>
+            <h3 class="card-title">Rohit Sharma's Record-Breaking 250 Leads India to Historic Test Victory Over England</h3>
+            <p class="card-snippet">In a knock that will be spoken about for generations, Rohit Sharma defied injury concerns to post the highest individual Test score by an Indian captain, breaking Virender Sehwag's long-standing record as India sealed a 4–1 series triumph on English soil.</p>
+            <div class="card-meta">March 27, 2026 &nbsp;·&nbsp; 6 min read &nbsp;·&nbsp; By Priya Menon</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t3">🏆</div>
+          <div class="card-body">
+            <span class="card-tag">Cricket · IPL 2026</span>
+            <h3 class="card-title">IPL 2026 Auction: Record Bids Shake Up the Franchise Landscape</h3>
+            <p class="card-snippet">A mystery overseas spinner shattered all records as five franchises entered a bidding war, pushing the final price to an unprecedented level.</p>
+            <div class="card-meta">March 26, 2026 &nbsp;·&nbsp; 4 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t4">⚡</div>
+          <div class="card-body">
+            <span class="card-tag">Cricket · ODI</span>
+            <h3 class="card-title">Maxwell's 185 Off 100 Balls Rescues Australia from the Brink</h3>
+            <p class="card-snippet">Glenn Maxwell defied the critics, rescuing Australia from 90/5 to post a mammoth 340 in the second ODI against New Zealand.</p>
+            <div class="card-meta">March 25, 2026 &nbsp;·&nbsp; 3 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t1">🎯</div>
+          <div class="card-body">
+            <span class="card-tag">Cricket · T20I</span>
+            <h3 class="card-title">Kohli Announces Retirement from T20 Internationals After World Cup Win</h3>
+            <p class="card-snippet">Virat Kohli ends his T20I career on a high, having guided India to the 2026 T20 World Cup title with a vintage 82* in the final.</p>
+            <div class="card-meta">March 24, 2026 &nbsp;·&nbsp; 5 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t5">🔥</div>
+          <div class="card-body">
+            <span class="card-tag">Cricket · The Ashes</span>
+            <h3 class="card-title">Ashes 2026 Preview: England's New Generation Ready to Reclaim the Urn</h3>
+            <p class="card-snippet">With a refreshed batting lineup and returning veterans, England head to Australia with genuine optimism for the first time in a decade.</p>
+            <div class="card-meta">March 23, 2026 &nbsp;·&nbsp; 7 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t2">📊</div>
+          <div class="card-body">
+            <span class="card-tag">Cricket · Analysis</span>
+            <h3 class="card-title">Bumrah's Biomechanics: The Science Behind the World's Best Bowling Action</h3>
+            <p class="card-snippet">Sports scientists break down Jasprit Bumrah's unique action, explaining how it generates reverse swing at express pace while avoiding injury.</p>
+            <div class="card-meta">March 22, 2026 &nbsp;·&nbsp; 9 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t3">🌍</div>
+          <div class="card-body">
+            <span class="card-tag">Cricket · Women's</span>
+            <h3 class="card-title">Australia Women Retain World Cup with Dominant Six-Wicket Win</h3>
+            <p class="card-snippet">Alyssa Healy's veteran leadership and Beth Mooney's 118* guided Australia to their third consecutive Women's ODI World Cup title.</p>
+            <div class="card-meta">March 21, 2026 &nbsp;·&nbsp; 4 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t4">🏟️</div>
+          <div class="card-body">
+            <span class="card-tag">Cricket · IPL Preview</span>
+            <h3 class="card-title">IPL 2026: Key Players and Title Contenders for the New Season</h3>
+            <p class="card-snippet">From MI's new overseas recruits to CSK's veteran core, we rank the eight teams most likely to lift the IPL trophy in 2026.</p>
+            <div class="card-meta">March 20, 2026 &nbsp;·&nbsp; 5 min read</div>
+          </div>
+        </a>
+      </div>
+      <div class="load-more-wrap"><button class="load-more-btn">Load More Articles</button></div>
+    </main>
+    <aside class="sidebar">
+      <div class="sidebar-widget">
+        <div class="widget-header"><div class="widget-title">Live Scores</div><span class="widget-badge">Live</span></div>
+        <div class="match-item"><div class="match-league">IPL 2026 · Match 14</div><div class="match-teams"><span class="match-team">MI</span><div style="text-align:center;"><div class="match-score" style="font-size:12px;">186/6</div><div class="match-status live">18.2 ov</div></div><span class="match-team right">CSK</span></div></div>
+        <div class="match-item"><div class="match-league">Test · India vs England · D3</div><div class="match-teams"><span class="match-team">India</span><div style="text-align:center;"><div class="match-score" style="font-size:12px;">480/7</div><div class="match-status live">Live</div></div><span class="match-team right">ENG 220</span></div></div>
+        <div class="match-item"><div class="match-league">T20I · AUS vs NZ</div><div class="match-teams"><span class="match-team">Australia</span><div style="text-align:center;"><div class="match-score">187 – 6</div><div class="match-status">FT</div></div><span class="match-team right">NZ 175</span></div></div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="widget-header"><div class="widget-title">Fan Poll</div><span class="widget-badge blue">Vote</span></div>
+        <div class="poll-body">
+          <p class="poll-question">Who is the greatest Test batter of this era?</p>
+          <div class="poll-option"><div class="poll-label"><span>Virat Kohli</span><span class="poll-pct">47%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill" style="width:47%"></div></div></div>
+          <div class="poll-option"><div class="poll-label"><span>Joe Root</span><span class="poll-pct">28%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill blue" style="width:28%"></div></div></div>
+          <div class="poll-option"><div class="poll-label"><span>Steve Smith</span><span class="poll-pct">19%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill gray" style="width:19%"></div></div></div>
+          <div class="poll-option"><div class="poll-label"><span>Other</span><span class="poll-pct">6%</span></div><div class="poll-bar-bg"><div class="poll-bar-fill gray" style="width:6%"></div></div></div>
+          <p class="poll-total">22,150 votes</p>
+        </div>
+      </div>
+      <div class="ad-slot"><p class="ad-label">Sponsored</p><p class="ad-title">Dream11 Fantasy</p><p class="ad-sub">Pick your IPL XI and win daily prizes</p><a href="#" class="ad-cta">Join Now</a></div>
+      <div class="sidebar-widget">
+        <div class="widget-header"><div class="widget-title">Upcoming Matches</div></div>
+        <div class="match-item"><div class="match-league">IPL · March 28</div><div class="match-teams"><span class="match-team">RCB</span><div style="text-align:center;"><div class="match-score" style="font-size:12px;padding:4px 8px;background:#F0F0F8;">vs</div><div class="match-status">19:30 IST</div></div><span class="match-team right">KKR</span></div></div>
+        <div class="match-item"><div class="match-league">Test · March 30</div><div class="match-teams"><span class="match-team">Australia</span><div style="text-align:center;"><div class="match-score" style="font-size:12px;padding:4px 8px;background:#F0F0F8;">vs</div><div class="match-status">Day 1</div></div><span class="match-team right">Sth Africa</span></div></div>
+      </div>
+    </aside>
+  </div>
+
+  <footer><div class="footer-inner"><div class="footer-grid">
+    <div class="footer-brand"><a href="sports-homepage.html" class="logo">Sport<span>Dune</span></a><p>Your definitive source for live scores, breaking news, and in-depth analysis across every major sport worldwide.</p><div class="social-links"><a href="#" class="social-link">&#120143;</a><a href="#" class="social-link">&#102;</a><a href="#" class="social-link">&#9825;</a><a href="#" class="social-link">&#9654;</a></div></div>
+    <div><p class="footer-col-title">Sports</p><ul class="footer-links"><li><a href="football.html">Football</a></li><li><a href="cricket.html">Cricket</a></li><li><a href="basketball.html">Basketball</a></li><li><a href="f1.html">Formula 1</a></li><li><a href="tennis.html">Tennis</a></li><li><a href="hockey.html">Hockey</a></li></ul></div>
+    <div><p class="footer-col-title">More Sports</p><ul class="footer-links"><li><a href="rugby.html">Rugby</a></li><li><a href="esports.html">Esports</a></li><li><a href="combat.html">Combat Sports</a></li><li><a href="nfl.html">NFL</a></li><li><a href="olympics.html">Olympics</a></li></ul></div>
+    <div><p class="footer-col-title">Company</p><ul class="footer-links"><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Advertise</a></li><li><a href="#">Contact</a></li></ul></div>
+  </div><div class="footer-bottom"><p class="footer-copy">&copy; 2026 SportDune Media. All rights reserved.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Cookie Settings</a></div></div></div></footer>
+  <script src="shared.js"></script>
+</body>
+</html>
