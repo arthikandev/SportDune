@@ -1447,7 +1447,25 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- Supabase SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script>
+    // Wait for Supabase to load
+    window.addEventListener('DOMContentLoaded', function() {
+      if (typeof window.supabase === 'undefined') {
+        document.getElementById('loginBtn').innerHTML = 'Loading...';
+        setTimeout(function() {
+          if (typeof window.supabase !== 'undefined') {
+            initSupabase();
+          } else {
+            document.getElementById('loginBtn').innerHTML = 'Error: Supabase Failed';
+            document.getElementById('loginBtn').style.background = '#EF4444';
+          }
+        }, 3000);
+      } else {
+        initSupabase();
+      }
+    });
+  </script>
   
   <script>
     // ================================================
@@ -1462,8 +1480,18 @@
     
     function initSupabase() {
       if (typeof window.supabase !== 'undefined') {
-        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+          auth: {
+            autoRefreshToken: true,
+            persistSession: true,
+            detectSessionInUrl: true
+          }
+        });
         checkAuth();
+      } else {
+        console.error('Supabase SDK not loaded');
+        document.getElementById('loginBtn').innerHTML = 'Supabase Failed to Load';
+        document.getElementById('loginBtn').style.background = '#EF4444';
       }
     }
     
@@ -1481,13 +1509,19 @@
     }
     
     async function login(email, password) {
+      console.log('Attempting login for:', email);
       const { data, error } = await supabase.auth.signInWithPassword({
         email: email,
         password: password
       });
       
+      console.log('Login response:', { data, error });
+      
       if (error) {
+        console.error('Login error:', error);
         showToast('error', 'Login Failed', error.message);
+        document.getElementById('loginBtn').disabled = false;
+        document.getElementById('loginBtn').innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
         return;
       }
       
