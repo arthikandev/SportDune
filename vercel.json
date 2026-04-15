@@ -3,9 +3,6 @@
   "buildCommand": "echo 'No build needed'",
   "outputDirectory": "frontend",
   "cleanUrls": true,
-  "images": {
-    "unoptimized": true
-  },
   "headers": [
     {
       "source": "/(.*)",
