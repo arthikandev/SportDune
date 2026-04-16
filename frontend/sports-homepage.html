@@ -1811,6 +1811,169 @@
     });
   </script>
   <script src="shared.js"></script>
+  <script src="data-service.js"></script>
+  <script>
+    // Load dynamic articles from Supabase
+    document.addEventListener('DOMContentLoaded', async function() {
+      try {
+        // Fetch categories first
+        const categories = await getCategories();
+        const categoryMap = {};
+        if (Array.isArray(categories)) {
+          categories.forEach(cat => categoryMap[cat.id] = cat);
+        }
+        
+        // Fetch published articles
+        const articles = await getArticles({ limit: 20 });
+        
+        if (articles && articles.length > 0) {
+          // Update hero slider
+          const heroSlider = document.getElementById('heroSlider');
+          if (heroSlider) {
+            let heroHTML = '';
+            articles.slice(0, 3).forEach((article, i) => {
+              const cat = article.categories || {};
+              const bgColors = ['#4a1a0a', '#0a2a4a', '#1a3a0a'];
+              heroHTML += `
+                <div class="slide ${i === 0 ? 'active' : ''}" data-index="${i}">
+                  <div class="slide-bg" style="background: radial-gradient(ellipse at 60% 40%, ${bgColors[i]} 0%, #1E1E2F 65%);"></div>
+                  <div class="slide-overlay"></div>
+                  <div class="slide-content">
+                    <span class="slide-tag">${cat.icon || ''} ${cat.name || 'News'}</span>
+                    <h1 class="slide-title">${article.title}</h1>
+                    <p class="slide-meta">${formatDate(article.published_at)} &nbsp;&middot;&nbsp; ${article.read_time || 3} min read</p>
+                    <a href="news-detail.html?slug=${article.slug}" class="slide-btn">Read More</a>
+                  </div>
+                </div>
+              `;
+            });
+            // Keep arrows and nav, replace slides
+            const prevBtn = heroSlider.querySelector('.hero-arrow.prev');
+            const nextBtn = heroSlider.querySelector('.hero-arrow.next');
+            const nav = heroSlider.querySelector('.hero-nav');
+            heroSlider.innerHTML = heroHTML;
+            if (prevBtn) heroSlider.appendChild(prevBtn);
+            if (nextBtn) heroSlider.appendChild(nextBtn);
+            if (nav) heroSlider.appendChild(nav);
+            initHeroSlider();
+          }
+          
+          // Update trending strip
+          const trendingScroll = document.querySelector('.trending-scroll');
+          if (trendingScroll) {
+            let trendingHTML = '';
+            articles.slice(0, 6).forEach(article => {
+              const cat = article.categories || {};
+              trendingHTML += `
+                <a href="news-detail.html?slug=${article.slug}" class="trending-card">
+                  <div class="trending-thumb t${Math.abs(article.slug.charCodeAt(0)) % 5 + 1}">${cat.icon || '📰'}</div>
+                  <span class="trending-card-title">${article.title}</span>
+                </a>
+              `;
+            });
+            trendingScroll.innerHTML = trendingHTML;
+          }
+          
+          // Group articles by category and update sections
+          const byCategory = {};
+          articles.forEach(article => {
+            const catId = article.category_id;
+            if (!byCategory[catId]) byCategory[catId] = [];
+            byCategory[catId].push(article);
+          });
+          
+          // Update specific sections
+          const mainContent = document.querySelector('.main-content');
+          if (mainContent) {
+            // Find and update football section (category with slug 'football')
+            const footballCat = categories?.find(c => c.slug === 'football');
+            const cricketCat = categories?.find(c => c.slug === 'cricket');
+            const basketballCat = categories?.find(c => c.slug === 'basketball');
+            const f1Cat = categories?.find(c => c.slug === 'f1');
+            const tennisCat = categories?.find(c => c.slug === 'tennis');
+            
+            // Update football articles
+            const footballSection = document.querySelector('[data-category="football"]');
+            if (footballSection && footballCat && byCategory[footballCat.id]) {
+              const grid = footballSection.querySelector('.article-grid');
+              if (grid) {
+                let html = '';
+                byCategory[footballCat.id].slice(0, 3).forEach((article, i) => {
+                  const cat = article.categories || {};
+                  html += `
+                    <a href="news-detail.html?slug=${article.slug}" class="article-card ${i === 0 ? 'featured' : ''}">
+                      <div class="card-img t${i + 1}">${cat.icon || '⚽'}</div>
+                      <div class="card-body">
+                        <span class="card-tag">${cat.name || 'Football'}</span>
+                        <h3 class="card-title">${article.title}</h3>
+                        ${i === 0 ? `<p class="card-snippet">${article.excerpt || ''}</p>` : ''}
+                        <div class="card-meta">${formatDate(article.published_at)} &nbsp;·&nbsp; ${article.read_time || 3} min read</div>
+                      </div>
+                    </a>
+                  `;
+                });
+                grid.innerHTML = html;
+              }
+            }
+            
+            // Update cricket articles
+            const cricketSection = document.querySelector('[data-category="cricket"]');
+            if (cricketSection && cricketCat && byCategory[cricketCat.id]) {
+              const grid = cricketSection.querySelector('.article-grid');
+              if (grid) {
+                let html = '';
+                byCategory[cricketCat.id].slice(0, 3).forEach((article, i) => {
+                  const cat = article.categories || {};
+                  html += `
+                    <a href="news-detail.html?slug=${article.slug}" class="article-card">
+                      <div class="card-img t${i + 2}">${cat.icon || '🏏'}</div>
+                      <div class="card-body">
+                        <span class="card-tag">${cat.name || 'Cricket'}</span>
+                        <h3 class="card-title">${article.title}</h3>
+                        ${i === 0 ? `<p class="card-snippet">${article.excerpt || ''}</p>` : ''}
+                        <div class="card-meta">${formatDate(article.published_at)} &nbsp;·&nbsp; ${article.read_time || 3} min read</div>
+                      </div>
+                    </a>
+                  `;
+                });
+                grid.innerHTML = html;
+              }
+            }
+          }
+        }
+      } catch (e) {
+        console.log('Using demo data - Supabase not configured or empty');
+      }
+    });
+    
+    // Hero slider initialization
+    function initHeroSlider() {
+      const slider = document.getElementById('heroSlider');
+      if (!slider) return;
+      
+      const slides = slider.querySelectorAll('.slide');
+      const dots = slider.querySelectorAll('.hero-dot');
+      const prevBtn = slider.querySelector('.hero-arrow.prev');
+      const nextBtn = slider.querySelector('.hero-arrow.next');
+      let currentSlide = 0;
+      
+      function showSlide(index) {
+        if (slides.length === 0) return;
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        currentSlide = index;
+        slides.forEach((s, i) => s.classList.toggle('active', i === index));
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+      }
+      
+      if (prevBtn) prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+      dots.forEach((dot, i) => dot.addEventListener('click', () => showSlide(i)));
+      
+      // Auto slide
+      setInterval(() => showSlide(currentSlide + 1), 5000);
+    }
+  </script>
 </body>
 
 </html>
