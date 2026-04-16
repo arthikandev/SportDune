@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SportDune Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1E1E2F 0%, #2d2d4a 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-container {
+      background: white;
+      border-radius: 16px;
+      padding: 48px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .logo { text-align: center; margin-bottom: 32px; }
+    .logo h1 { font-size: 28px; font-weight: 800; color: #1E1E2F; }
+    .logo span { color: #FF4C29; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #1E1E2F; }
+    .form-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #E5E7EB;
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus { outline: none; border-color: #FF4C29; }
+    .btn {
+      width: 100%;
+      padding: 14px 24px;
+      background: #FF4C29;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #e03a1a; }
+    .btn:disabled { background: #ccc; cursor: not-allowed; }
+    .error { color: #EF4444; margin-top: 16px; padding: 12px; background: #FEE2E2; border-radius: 8px; font-size: 14px; }
+    .success { color: #10B981; margin-top: 16px; padding: 12px; background: #D1FAE5; border-radius: 8px; font-size: 14px; }
+    .demo { color: #666; font-size: 12px; text-align: center; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="logo">
+      <h1>Sport<span>Dune</span></h1>
+      <p>Admin Dashboard</p>
+    </div>
+    
+    <form id="loginForm">
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="email" class="form-input" value="sportdune@gmail.com" required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="password" class="form-input" value="SportDune2026" required>
+      </div>
+      <button type="submit" class="btn" id="loginBtn">Sign In</button>
+    </form>
+    
+    <div id="message"></div>
+    <p class="demo">Demo: sportdune@gmail.com / SportDune2026</p>
+  </div>
+
+  <script src="https://pvmtcwqupalurwqlvdxy.supabase.co/auth/v1/widgets.js" onerror="initFallback()"></script>
+  <script>
+    let useFallback = true;
+    
+    function initFallback() {
+      useFallback = true;
+    }
+    
+    async function handleLogin(email, password) {
+      const btn = document.getElementById('loginBtn');
+      const msg = document.getElementById('message');
+      
+      btn.disabled = true;
+      btn.textContent = 'Signing in...';
+      msg.innerHTML = '';
+      
+      try {
+        // Direct Supabase auth call
+        const response = await fetch('https://pvmtcwqupalurwqlvdxy.supabase.co/auth/v1/token?grant_type=password', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': 'sb_publishable_fuqgloaY9Hi7mHi0HsH8DQ_fjvXS_E6'
+          },
+          body: JSON.stringify({ email, password }),
+          mode: 'cors',
+          credentials: 'omit'
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(data.msg || data.error_description || 'Invalid credentials');
+        }
+        
+        msg.innerHTML = '<p class="success">Login successful! Redirecting...</p>';
+        localStorage.setItem('sportdune_token', data.access_token);
+        localStorage.setItem('sportdune_user', JSON.stringify(data.user || { email: email }));
+        
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 500);
+        
+      } catch (error) {
+        msg.innerHTML = '<p class="error">' + error.message + '</p>';
+        btn.disabled = false;
+        btn.textContent = 'Sign In';
+      }
+    }
+    
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      handleLogin(email, password);
+    });
+  </script>
+</body>
+</html>
