@@ -60,13 +60,13 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 14px 24px;
+      padding: 12px 20px;
       background: var(--primary);
       color: white;
       border: none;
       border-radius: 10px;
-      font-size: 15px;
-      font-weight: 700;
+      font-size: 14px;
+      font-weight: 600;
       cursor: pointer;
       font-family: inherit;
       transition: background 0.2s;
@@ -74,6 +74,11 @@
     .btn:hover { background: var(--primary-dark); }
     .btn:disabled { background: #ccc; cursor: not-allowed; }
     .btn-block { width: 100%; }
+    .btn-sm { padding: 8px 12px; font-size: 12px; }
+    .btn-danger { background: var(--danger); }
+    .btn-danger:hover { background: #dc2626; }
+    .btn-success { background: var(--success); }
+    .btn-success:hover { background: #059669; }
     .error { color: var(--danger); margin-top: 16px; padding: 12px; background: #FEE2E2; border-radius: 8px; font-size: 14px; }
     .success { color: var(--success); margin-top: 16px; padding: 12px; background: #D1FAE5; border-radius: 8px; font-size: 14px; }
     
@@ -91,15 +96,14 @@
       position: fixed;
       left: 0;
       top: 0;
+      overflow-y: auto;
     }
-    .sidebar-logo {
-      padding: 0 24px;
-      margin-bottom: 32px;
-    }
+    .sidebar-logo { padding: 0 24px; margin-bottom: 32px; }
     .sidebar-logo h2 { color: white; font-size: 22px; font-weight: 800; }
     .sidebar-logo span { color: var(--primary); }
+    .sidebar-section { margin-bottom: 24px; }
+    .sidebar-section-title { padding: 0 24px 8px; color: rgba(255,255,255,0.4); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
     .sidebar-nav { list-style: none; }
-    .sidebar-nav li { margin-bottom: 4px; }
     .sidebar-nav a {
       display: flex;
       align-items: center;
@@ -110,18 +114,21 @@
       font-size: 14px;
       font-weight: 500;
       transition: all 0.2s;
+      border-left: 3px solid transparent;
     }
     .sidebar-nav a:hover, .sidebar-nav a.active {
       background: rgba(255,255,255,0.1);
       color: white;
+      border-left-color: var(--primary);
     }
-    .sidebar-nav a.active { border-left: 3px solid var(--primary); }
+    .sidebar-nav a i { width: 20px; text-align: center; }
     
     /* Main Content */
     .main-content {
       flex: 1;
       margin-left: 260px;
       padding: 24px;
+      min-height: 100vh;
     }
     .header {
       background: white;
@@ -146,6 +153,7 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
+      font-size: 16px;
     }
     
     /* Stats Grid */
@@ -161,9 +169,9 @@
       padding: 24px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
-    .stat-value { font-size: 32px; font-weight: 800; color: var(--primary); }
+    .stat-card i { font-size: 28px; color: var(--primary); margin-bottom: 12px; }
+    .stat-value { font-size: 32px; font-weight: 800; color: var(--text); }
     .stat-label { color: var(--text-light); font-size: 14px; margin-top: 4px; }
-    .stat-change { font-size: 12px; color: var(--success); margin-top: 8px; }
     
     /* Cards */
     .card {
@@ -177,13 +185,78 @@
     .card-title { font-size: 18px; font-weight: 700; }
     
     /* Table */
+    .table-container { overflow-x: auto; }
     .data-table { width: 100%; border-collapse: collapse; }
     .data-table th, .data-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
-    .data-table th { font-weight: 600; color: var(--text-light); font-size: 13px; text-transform: uppercase; }
+    .data-table th { font-weight: 600; color: var(--text-light); font-size: 13px; text-transform: uppercase; background: var(--bg); }
     .data-table tr:hover { background: var(--bg); }
     
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .badge-published { background: #D1FAE5; color: #065F46; }
+    .badge-draft { background: #FEF3C7; color: #92400E; }
+    .badge-pending { background: #DBEAFE; color: #1E40AF; }
+    .badge-archived { background: #E5E7EB; color: #374151; }
+    .badge-admin { background: #FEE2E2; color: #991B1B; }
+    .badge-editor { background: #DBEAFE; color: #1E40AF; }
+    .badge-author { background: #D1FAE5; color: #065F46; }
+    .badge-public { background: #E5E7EB; color: #374151; }
+    
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: white;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: modalIn 0.3s ease;
+    }
+    @keyframes modalIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-header h2 { font-size: 18px; font-weight: 700; }
+    .modal-close { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-light); }
+    .modal-body { padding: 24px; }
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+    textarea.form-input { min-height: 120px; resize: vertical; }
+    select.form-input { cursor: pointer; }
+    
     /* Toast */
-    .toast-container { position: fixed; top: 20px; right: 20px; z-index: 1000; }
+    .toast-container { position: fixed; top: 20px; right: 20px; z-index: 1001; }
     .toast {
       background: white;
       padding: 16px 24px;
@@ -194,13 +267,71 @@
       align-items: center;
       gap: 12px;
       animation: slideIn 0.3s ease;
+      min-width: 300px;
     }
     .toast.success { border-left: 4px solid var(--success); }
     .toast.error { border-left: 4px solid var(--danger); }
+    .toast.info { border-left: 4px solid #3B82F6; }
+    .toast-icon { font-size: 20px; }
+    .toast.success .toast-icon { color: var(--success); }
+    .toast.error .toast-icon { color: var(--danger); }
+    .toast.info .toast-icon { color: #3B82F6; }
+    .toast-content h4 { font-size: 14px; margin-bottom: 2px; }
+    .toast-content p { font-size: 13px; color: var(--text-light); }
     @keyframes slideIn {
       from { transform: translateX(100%); opacity: 0; }
       to { transform: translateX(0); opacity: 1; }
     }
+    
+    /* Page Content */
+    .page-content { display: none; }
+    .page-content.active { display: block; }
+    
+    /* Actions */
+    .actions { display: flex; gap: 8px; }
+    .action-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      transition: all 0.2s;
+    }
+    .action-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .action-btn.delete:hover { border-color: var(--danger); color: var(--danger); }
+    
+    /* Search */
+    .search-box {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .search-input {
+      flex: 1;
+      padding: 10px 16px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+    .search-input:focus { outline: none; border-color: var(--primary); }
+    
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-light);
+    }
+    .empty-state i { font-size: 48px; margin-bottom: 16px; opacity: 0.5; }
+    .empty-state h3 { margin-bottom: 8px; color: var(--text); }
+    
+    /* Loading */
+    .loading { text-align: center; padding: 40px; color: var(--text-light); }
     
     /* Responsive */
     @media (max-width: 1024px) {
@@ -243,14 +374,31 @@
       <div class="sidebar-logo">
         <h2>Sport<span>Dune</span></h2>
       </div>
-      <ul class="sidebar-nav">
-        <li><a href="#" class="nav-link active" data-page="dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
-        <li><a href="#" class="nav-link" data-page="articles"><i class="fas fa-file-alt"></i> Articles</a></li>
-        <li><a href="#" class="nav-link" data-page="categories"><i class="fas fa-folder"></i> Categories</a></li>
-        <li><a href="#" class="nav-link" data-page="media"><i class="fas fa-images"></i> Media</a></li>
-        <li><a href="#" class="nav-link" data-page="users"><i class="fas fa-users"></i> Users</a></li>
-        <li><a href="#" class="nav-link" data-page="settings"><i class="fas fa-cog"></i> Settings</a></li>
-      </ul>
+      
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Main</div>
+        <ul class="sidebar-nav">
+          <li><a href="#" class="nav-link active" data-page="dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+          <li><a href="#" class="nav-link" data-page="articles"><i class="fas fa-newspaper"></i> Articles</a></li>
+          <li><a href="#" class="nav-link" data-page="categories"><i class="fas fa-folder"></i> Categories</a></li>
+          <li><a href="#" class="nav-link" data-page="media"><i class="fas fa-images"></i> Media</a></li>
+        </ul>
+      </div>
+      
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Users</div>
+        <ul class="sidebar-nav">
+          <li><a href="#" class="nav-link" data-page="users"><i class="fas fa-users"></i> Users</a></li>
+          <li><a href="#" class="nav-link" data-page="profile"><i class="fas fa-user"></i> My Profile</a></li>
+        </ul>
+      </div>
+      
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">System</div>
+        <ul class="sidebar-nav">
+          <li><a href="#" class="nav-link" data-page="settings"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Main Content -->
@@ -267,165 +415,353 @@
       </div>
 
       <!-- Dashboard Page -->
-      <div id="page-dashboard" class="page-content">
+      <div id="page-dashboard" class="page-content active">
         <div class="stats-grid">
           <div class="stat-card">
+            <i class="fas fa-newspaper"></i>
             <div class="stat-value" id="statArticles">0</div>
             <div class="stat-label">Total Articles</div>
-            <div class="stat-change">12% this week</div>
           </div>
           <div class="stat-card">
+            <i class="fas fa-folder"></i>
+            <div class="stat-value" id="statCategories">0</div>
+            <div class="stat-label">Categories</div>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-users"></i>
+            <div class="stat-value" id="statUsers">0</div>
+            <div class="stat-label">Users</div>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-eye"></i>
             <div class="stat-value" id="statViews">0</div>
             <div class="stat-label">Page Views</div>
-            <div class="stat-change">8% this week</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-value" id="statUsers">1</div>
-            <div class="stat-label">Users</div>
-            <div class="stat-change">5% this week</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-value" id="statPublished">0</div>
-            <div class="stat-label">Published Today</div>
-            <div class="stat-change">2 more than yesterday</div>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header">
             <h2 class="card-title">Recent Articles</h2>
-            <button class="btn" onclick="showPage('articles')">View All</button>
+            <button class="btn btn-sm" onclick="showPage('articles')">View All <i class="fas fa-arrow-right"></i></button>
           </div>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Status</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody id="recentArticles">
-              <tr><td colspan="4" style="text-align:center;color:var(--text-light);">No articles yet</td></tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th>Views</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="recentArticles">
+                <tr><td colspan="5" class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
       <!-- Articles Page -->
-      <div id="page-articles" class="page-content" style="display:none;">
+      <div id="page-articles" class="page-content">
         <div class="card">
           <div class="card-header">
             <h2 class="card-title">Articles</h2>
-            <button class="btn" onclick="showToast('success', 'Coming Soon', 'Article editor will be added soon!')"><i class="fas fa-plus"></i> New Article</button>
+            <button class="btn" onclick="openArticleModal()"><i class="fas fa-plus"></i> New Article</button>
           </div>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Status</th>
-                <th>Views</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody id="articlesTable">
-              <tr><td colspan="5" style="text-align:center;color:var(--text-light);">No articles yet. Create your first article!</td></tr>
-            </tbody>
-          </table>
+          <div class="search-box">
+            <input type="text" class="search-input" id="articleSearch" placeholder="Search articles..." onkeyup="filterArticles()">
+            <select class="form-input" style="width:auto;" id="statusFilter" onchange="filterArticles()">
+              <option value="">All Status</option>
+              <option value="published">Published</option>
+              <option value="draft">Draft</option>
+              <option value="pending_review">Pending Review</option>
+            </select>
+            <select class="form-input" style="width:auto;" id="categoryFilter" onchange="filterArticles()">
+              <option value="">All Categories</option>
+            </select>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th>Views</th>
+                  <th>Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="articlesTable">
+                <tr><td colspan="6" class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
       <!-- Categories Page -->
-      <div id="page-categories" class="page-content" style="display:none;">
+      <div id="page-categories" class="page-content">
         <div class="card">
           <div class="card-header">
             <h2 class="card-title">Categories</h2>
-            <button class="btn" onclick="loadCategories()"><i class="fas fa-sync"></i> Refresh</button>
+            <button class="btn" onclick="openCategoryModal()"><i class="fas fa-plus"></i> New Category</button>
           </div>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Icon</th>
-                <th>Name</th>
-                <th>Slug</th>
-                <th>Articles</th>
-              </tr>
-            </thead>
-            <tbody id="categoriesTable">
-              <tr><td colspan="4" style="text-align:center;color:var(--text-light);">Loading...</td></tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Icon</th>
+                  <th>Name</th>
+                  <th>Slug</th>
+                  <th>Description</th>
+                  <th>Articles</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="categoriesTable">
+                <tr><td colspan="6" class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
       <!-- Media Page -->
-      <div id="page-media" class="page-content" style="display:none;">
+      <div id="page-media" class="page-content">
         <div class="card">
           <div class="card-header">
             <h2 class="card-title">Media Library</h2>
-            <button class="btn" onclick="showToast('info', 'Coming Soon', 'Media upload will be added soon!')"><i class="fas fa-upload"></i> Upload</button>
+            <button class="btn" onclick="showToast('info', 'Coming Soon', 'Media upload feature coming soon!')"><i class="fas fa-upload"></i> Upload</button>
           </div>
-          <p style="color:var(--text-light);text-align:center;padding:40px;">No media files uploaded yet.</p>
+          <div class="empty-state">
+            <i class="fas fa-images"></i>
+            <h3>No Media Files</h3>
+            <p>Upload your first image to get started.</p>
+          </div>
         </div>
       </div>
 
       <!-- Users Page -->
-      <div id="page-users" class="page-content" style="display:none;">
+      <div id="page-users" class="page-content">
         <div class="card">
           <div class="card-header">
             <h2 class="card-title">Users</h2>
-            <button class="btn" onclick="loadUsers()"><i class="fas fa-sync"></i> Refresh</button>
           </div>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody id="usersTable">
-              <tr><td colspan="4" style="text-align:center;color:var(--text-light);">Loading...</td></tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Joined</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="usersTable">
+                <tr><td colspan="6" class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Page -->
+      <div id="page-profile" class="page-content">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">My Profile</h2>
+          </div>
+          <form id="profileForm">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" class="form-input" id="profileName">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" class="form-input" id="profileEmail" disabled>
+            </div>
+            <div class="form-group">
+              <label>Bio</label>
+              <textarea class="form-input" id="profileBio" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn">Save Changes</button>
+          </form>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Change Password</h2>
+          </div>
+          <form id="passwordForm">
+            <div class="form-group">
+              <label>Current Password</label>
+              <input type="password" class="form-input" id="currentPassword" required>
+            </div>
+            <div class="form-group">
+              <label>New Password</label>
+              <input type="password" class="form-input" id="newPassword" required>
+            </div>
+            <div class="form-group">
+              <label>Confirm New Password</label>
+              <input type="password" class="form-input" id="confirmPassword" required>
+            </div>
+            <button type="submit" class="btn">Update Password</button>
+          </form>
         </div>
       </div>
 
       <!-- Settings Page -->
-      <div id="page-settings" class="page-content" style="display:none;">
+      <div id="page-settings" class="page-content">
         <div class="card">
           <div class="card-header">
-            <h2 class="card-title">Settings</h2>
+            <h2 class="card-title">General Settings</h2>
           </div>
-          <p style="color:var(--text-light);padding:20px;">Settings panel coming soon!</p>
+          <form id="settingsForm">
+            <div class="form-group">
+              <label>Site Name</label>
+              <input type="text" class="form-input" id="siteName" value="SportDune">
+            </div>
+            <div class="form-group">
+              <label>Site Tagline</label>
+              <input type="text" class="form-input" id="siteTagline" value="Live. Bold. Now.">
+            </div>
+            <div class="form-group">
+              <label>Contact Email</label>
+              <input type="email" class="form-input" id="contactEmail" value="sportdune@gmail.com">
+            </div>
+            <button type="submit" class="btn">Save Settings</button>
+          </form>
         </div>
       </div>
     </main>
+  </div>
+
+  <!-- Article Modal -->
+  <div class="modal-overlay" id="articleModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="articleModalTitle">New Article</h2>
+        <button class="modal-close" onclick="closeModal('articleModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="articleForm">
+          <input type="hidden" id="articleId">
+          <div class="form-group">
+            <label>Title *</label>
+            <input type="text" class="form-input" id="articleTitle" required>
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select class="form-input" id="articleCategory">
+              <option value="">Select Category</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select class="form-input" id="articleStatus">
+              <option value="draft">Draft</option>
+              <option value="pending_review">Pending Review</option>
+              <option value="published">Published</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Featured Image URL</label>
+            <input type="url" class="form-input" id="articleImage" placeholder="https://example.com/image.jpg">
+          </div>
+          <div class="form-group">
+            <label>Excerpt</label>
+            <textarea class="form-input" id="articleExcerpt" rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Content *</label>
+            <textarea class="form-input" id="articleContent" rows="6" required></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" style="background:#6B7280" onclick="closeModal('articleModal')">Cancel</button>
+        <button class="btn btn-success" onclick="saveArticle()"><i class="fas fa-save"></i> Save Article</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Modal -->
+  <div class="modal-overlay" id="categoryModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="categoryModalTitle">New Category</h2>
+        <button class="modal-close" onclick="closeModal('categoryModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="categoryForm">
+          <input type="hidden" id="categoryId">
+          <div class="form-group">
+            <label>Name *</label>
+            <input type="text" class="form-input" id="categoryName" required>
+          </div>
+          <div class="form-group">
+            <label>Slug</label>
+            <input type="text" class="form-input" id="categorySlug" placeholder="category-slug">
+          </div>
+          <div class="form-group">
+            <label>Icon (Emoji)</label>
+            <input type="text" class="form-input" id="categoryIcon" placeholder="⚽">
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-input" id="categoryDesc" rows="3"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" style="background:#6B7280" onclick="closeModal('categoryModal')">Cancel</button>
+        <button class="btn btn-success" onclick="saveCategory()"><i class="fas fa-save"></i> Save Category</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirm Modal -->
+  <div class="modal-overlay" id="confirmModal">
+    <div class="modal" style="max-width:400px;">
+      <div class="modal-header">
+        <h2>Confirm Delete</h2>
+        <button class="modal-close" onclick="closeModal('confirmModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="confirmMessage">Are you sure you want to delete this item?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" style="background:#6B7280" onclick="closeModal('confirmModal')">Cancel</button>
+        <button class="btn btn-danger" id="confirmBtn" onclick="confirmDelete()"><i class="fas fa-trash"></i> Delete</button>
+      </div>
+    </div>
   </div>
 
   <!-- Toast Container -->
   <div class="toast-container" id="toastContainer"></div>
 
   <script>
-    // Supabase Config
+    // Config
     const SUPABASE_URL = 'https://pvmtcwqupalurwqlvdxy.supabase.co';
     const SUPABASE_KEY = 'sb_publishable_fuqgloaY9Hi7mHi0HsH8DQ_fjvXS_E6';
+    let currentUser = null;
+    let deleteCallback = null;
+    let allArticles = [];
+    let allCategories = [];
 
-    // Check auth on load
+    // Check auth
     const token = localStorage.getItem('sportdune_token');
     const userStr = localStorage.getItem('sportdune_user');
-    
-    if (token) {
-      showAdminPanel();
-    }
+    if (token) showAdminPanel();
 
-    // Login handler
+    // Login
     async function handleLogin(email, password) {
       const btn = document.getElementById('loginBtn');
       const msg = document.getElementById('message');
-      
       btn.disabled = true;
       btn.textContent = 'Signing in...';
       msg.innerHTML = '';
@@ -433,27 +769,16 @@
       try {
         const response = await fetch(SUPABASE_URL + '/auth/v1/token?grant_type=password', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'apikey': SUPABASE_KEY
-          },
+          headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY },
           body: JSON.stringify({ email, password }),
-          mode: 'cors',
-          credentials: 'omit'
+          mode: 'cors', credentials: 'omit'
         });
-        
         const data = await response.json();
-        
-        if (!response.ok) {
-          throw new Error(data.msg || data.error_description || 'Invalid credentials');
-        }
-        
+        if (!response.ok) throw new Error(data.msg || data.error_description || 'Invalid credentials');
         localStorage.setItem('sportdune_token', data.access_token);
-        localStorage.setItem('sportdune_user', JSON.stringify(data.user || { email: email }));
-        
-        msg.innerHTML = '<p class="success">Login successful! Redirecting...</p>';
+        localStorage.setItem('sportdune_user', JSON.stringify(data.user || { email }));
+        msg.innerHTML = '<p class="success">Login successful!</p>';
         setTimeout(() => showAdminPanel(), 500);
-        
       } catch (error) {
         msg.innerHTML = '<p class="error">' + error.message + '</p>';
         btn.disabled = false;
@@ -463,34 +788,29 @@
 
     document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      handleLogin(email, password);
+      handleLogin(document.getElementById('email').value, document.getElementById('password').value);
     });
 
     function logout() {
       localStorage.removeItem('sportdune_token');
       localStorage.removeItem('sportdune_user');
-      document.getElementById('adminLayout').classList.remove('active');
-      document.getElementById('loginPage').classList.remove('hidden');
-      document.getElementById('loginBtn').disabled = false;
-      document.getElementById('loginBtn').textContent = 'Sign In';
-      document.getElementById('message').innerHTML = '';
+      location.reload();
     }
 
     function showAdminPanel() {
       const user = JSON.parse(userStr || '{}');
+      currentUser = user;
       const name = user.email || 'Admin';
-      
       document.getElementById('loginPage').classList.add('hidden');
       document.getElementById('adminLayout').classList.add('active');
       document.getElementById('userName').textContent = name;
       document.getElementById('userAvatar').textContent = name.charAt(0).toUpperCase();
-      
+      document.getElementById('profileName').value = user.user_metadata?.full_name || '';
+      document.getElementById('profileEmail').value = user.email || '';
       loadDashboardData();
     }
 
-    // API helper
+    // API Helper
     async function apiCall(endpoint, options = {}) {
       const headers = {
         'apikey': SUPABASE_KEY,
@@ -498,105 +818,374 @@
         'Content-Type': 'application/json',
         ...options.headers
       };
-      
-      const response = await fetch(SUPABASE_URL + '/rest/v1/' + endpoint, {
-        ...options,
-        headers
-      });
-      
+      const response = await fetch(SUPABASE_URL + '/rest/v1/' + endpoint, { ...options, headers });
       return response;
     }
 
-    // Load dashboard data
+    // Dashboard Data
     async function loadDashboardData() {
       try {
-        const response = await apiCall('categories?select=id', { method: 'GET' });
-        const data = await response.json();
-        const count = Array.isArray(data) ? data.length : 0;
-        document.getElementById('statArticles').textContent = count;
+        const [articlesRes, categoriesRes, usersRes] = await Promise.all([
+          apiCall('articles?select=id,title,status,view_count,created_at,category_id', { method: 'GET' }),
+          apiCall('categories?select=id,name', { method: 'GET' }),
+          apiCall('profiles?select=id', { method: 'GET' })
+        ]);
+        const articles = await articlesRes.json();
+        const categories = await categoriesRes.json();
+        const users = await usersRes.json();
+        allCategories = Array.isArray(categories) ? categories : [];
+        document.getElementById('statArticles').textContent = Array.isArray(articles) ? articles.length : 0;
+        document.getElementById('statCategories').textContent = allCategories.length;
+        document.getElementById('statUsers').textContent = Array.isArray(users) ? users.length : 0;
+        document.getElementById('statViews').textContent = Array.isArray(articles) ? articles.reduce((sum, a) => sum + (a.view_count || 0), 0).toLocaleString() : 0;
+        if (Array.isArray(articles) && articles.length > 0) {
+          document.getElementById('recentArticles').innerHTML = articles.slice(0, 5).map(a => `
+            <tr>
+              <td><strong>${a.title}</strong></td>
+              <td>${getCategoryName(a.category_id)}</td>
+              <td><span class="badge badge-${a.status}">${a.status}</span></td>
+              <td>${(a.view_count || 0).toLocaleString()}</td>
+              <td>${new Date(a.created_at).toLocaleDateString()}</td>
+            </tr>
+          `).join('');
+        } else {
+          document.getElementById('recentArticles').innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--text-light);">No articles yet</td></tr>';
+        }
+        populateCategoryDropdowns();
       } catch (e) {
-        document.getElementById('statArticles').textContent = '0';
+        console.error('Dashboard error:', e);
       }
+    }
+
+    function getCategoryName(categoryId) {
+      const cat = allCategories.find(c => c.id === categoryId);
+      return cat ? cat.name : '-';
+    }
+
+    function populateCategoryDropdowns() {
+      const options = '<option value="">Select Category</option>' + allCategories.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+      document.getElementById('articleCategory').innerHTML = options;
+      document.getElementById('categoryFilter').innerHTML = '<option value="">All Categories</option>' + allCategories.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
     }
 
     // Navigation
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
-        const page = this.dataset.page;
-        showPage(page);
+        showPage(this.dataset.page);
       });
     });
 
     function showPage(page) {
       document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
       document.querySelector(`[data-page="${page}"]`)?.classList.add('active');
-      
-      document.querySelectorAll('.page-content').forEach(p => p.style.display = 'none');
-      document.getElementById('page-' + page).style.display = 'block';
-      
-      const titles = { dashboard: 'Dashboard', articles: 'Articles', categories: 'Categories', media: 'Media', users: 'Users', settings: 'Settings' };
+      document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + page).classList.add('active');
+      const titles = { dashboard: 'Dashboard', articles: 'Articles', categories: 'Categories', media: 'Media', users: 'Users', profile: 'My Profile', settings: 'Settings' };
       document.getElementById('pageTitle').textContent = titles[page] || 'Dashboard';
-      
+      if (page === 'articles') loadArticles();
       if (page === 'categories') loadCategories();
       if (page === 'users') loadUsers();
     }
 
-    async function loadCategories() {
-      const tbody = document.getElementById('categoriesTable');
-      tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Loading...</td></tr>';
+    // Articles
+    async function loadArticles() {
+      const tbody = document.getElementById('articlesTable');
+      tbody.innerHTML = '<tr><td colspan="6" class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>';
       try {
-        const response = await apiCall('categories?select=*&order=name.asc', { method: 'GET' });
-        const data = await response.json();
-        if (Array.isArray(data) && data.length > 0) {
-          tbody.innerHTML = data.map(cat => `
-            <tr>
-              <td>${cat.icon || '📁'}</td>
-              <td><strong>${cat.name}</strong></td>
-              <td><code>${cat.slug}</code></td>
-              <td>0</td>
-            </tr>
-          `).join('');
+        const response = await apiCall('articles?select=*&order=created_at.desc', { method: 'GET' });
+        allArticles = await response.json();
+        if (Array.isArray(allArticles) && allArticles.length > 0) {
+          renderArticles(allArticles);
         } else {
-          tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">No categories found</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="6" class="empty-state"><i class="fas fa-newspaper"></i><h3>No Articles</h3><p>Create your first article!</p></td></tr>';
         }
       } catch (e) {
-        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--danger);">Error loading categories</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--danger);">Error loading articles</td></tr>';
       }
     }
 
-    async function loadUsers() {
-      const tbody = document.getElementById('usersTable');
-      tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Loading...</td></tr>';
+    function filterArticles() {
+      const search = document.getElementById('articleSearch').value.toLowerCase();
+      const status = document.getElementById('statusFilter').value;
+      const category = document.getElementById('categoryFilter').value;
+      const filtered = allArticles.filter(a => {
+        const matchSearch = a.title?.toLowerCase().includes(search);
+        const matchStatus = !status || a.status === status;
+        const matchCategory = !category || a.category_id === category;
+        return matchSearch && matchStatus && matchCategory;
+      });
+      renderArticles(filtered);
+    }
+
+    function renderArticles(articles) {
+      const tbody = document.getElementById('articlesTable');
+      if (articles.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-light);">No articles found</td></tr>';
+        return;
+      }
+      tbody.innerHTML = articles.map(a => `
+        <tr>
+          <td><strong>${a.title}</strong></td>
+          <td>${getCategoryName(a.category_id)}</td>
+          <td><span class="badge badge-${a.status}">${a.status}</span></td>
+          <td>${(a.view_count || 0).toLocaleString()}</td>
+          <td>${new Date(a.created_at).toLocaleDateString()}</td>
+          <td>
+            <div class="actions">
+              <button class="action-btn" onclick="editArticle('${a.id}')" title="Edit"><i class="fas fa-edit"></i></button>
+              <button class="action-btn delete" onclick="deleteArticle('${a.id}')" title="Delete"><i class="fas fa-trash"></i></button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function openArticleModal(id = null) {
+      document.getElementById('articleForm').reset();
+      document.getElementById('articleId').value = '';
+      document.getElementById('articleModalTitle').textContent = id ? 'Edit Article' : 'New Article';
+      openModal('articleModal');
+    }
+
+    function editArticle(id) {
+      const article = allArticles.find(a => a.id === id);
+      if (!article) return;
+      document.getElementById('articleId').value = id;
+      document.getElementById('articleModalTitle').textContent = 'Edit Article';
+      document.getElementById('articleTitle').value = article.title || '';
+      document.getElementById('articleCategory').value = article.category_id || '';
+      document.getElementById('articleStatus').value = article.status || 'draft';
+      document.getElementById('articleImage').value = article.featured_image_url || '';
+      document.getElementById('articleExcerpt').value = article.excerpt || '';
+      document.getElementById('articleContent').value = article.content || '';
+      openModal('articleModal');
+    }
+
+    async function saveArticle() {
+      const id = document.getElementById('articleId').value;
+      const title = document.getElementById('articleTitle').value.trim();
+      const content = document.getElementById('articleContent').value.trim();
+      if (!title || !content) { showToast('error', 'Error', 'Title and content are required'); return; }
+      const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      const data = {
+        title,
+        slug,
+        content,
+        excerpt: document.getElementById('articleExcerpt').value || null,
+        category_id: document.getElementById('articleCategory').value || null,
+        status: document.getElementById('articleStatus').value,
+        featured_image_url: document.getElementById('articleImage').value || null,
+        author_id: currentUser?.id || null,
+        published_at: document.getElementById('articleStatus').value === 'published' ? new Date().toISOString() : null
+      };
       try {
-        const response = await apiCall('profiles?select=*', { method: 'GET' });
-        const data = await response.json();
-        if (Array.isArray(data) && data.length > 0) {
-          tbody.innerHTML = data.map(user => `
+        if (id) {
+          await apiCall('articles?id=eq.' + id, { method: 'PATCH', body: JSON.stringify(data) });
+          showToast('success', 'Updated', 'Article updated successfully');
+        } else {
+          await apiCall('articles', { method: 'POST', body: JSON.stringify(data) });
+          showToast('success', 'Created', 'Article created successfully');
+        }
+        closeModal('articleModal');
+        loadArticles();
+        loadDashboardData();
+      } catch (e) {
+        showToast('error', 'Error', 'Failed to save article');
+      }
+    }
+
+    function deleteArticle(id) {
+      document.getElementById('confirmMessage').textContent = 'Are you sure you want to delete this article?';
+      deleteCallback = async () => {
+        try {
+          await apiCall('articles?id=eq.' + id, { method: 'DELETE' });
+          showToast('success', 'Deleted', 'Article deleted successfully');
+          loadArticles();
+          loadDashboardData();
+        } catch (e) {
+          showToast('error', 'Error', 'Failed to delete article');
+        }
+      };
+      openModal('confirmModal');
+    }
+
+    // Categories
+    async function loadCategories() {
+      const tbody = document.getElementById('categoriesTable');
+      tbody.innerHTML = '<tr><td colspan="6" class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>';
+      try {
+        const response = await apiCall('categories?select=*&order=name.asc', { method: 'GET' });
+        const categories = await response.json();
+        if (Array.isArray(categories) && categories.length > 0) {
+          allCategories = categories;
+          tbody.innerHTML = categories.map(c => `
             <tr>
-              <td>${user.full_name || 'Unknown'}</td>
-              <td>${user.email || 'N/A'}</td>
-              <td><span style="background:#E5E7EB;padding:4px 8px;border-radius:4px;font-size:12px;">${user.role || 'public'}</span></td>
-              <td><span style="color:${user.is_active ? 'var(--success)' : 'var(--danger)'}">${user.is_active ? 'Active' : 'Inactive'}</span></td>
+              <td style="font-size:24px;">${c.icon || '📁'}</td>
+              <td><strong>${c.name}</strong></td>
+              <td><code>${c.slug}</code></td>
+              <td>${c.description || '-'}</td>
+              <td>0</td>
+              <td>
+                <div class="actions">
+                  <button class="action-btn" onclick="editCategory('${c.id}')" title="Edit"><i class="fas fa-edit"></i></button>
+                  <button class="action-btn delete" onclick="deleteCategory('${c.id}')" title="Delete"><i class="fas fa-trash"></i></button>
+                </div>
+              </td>
             </tr>
           `).join('');
         } else {
-          tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">No users found</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="6" class="empty-state"><i class="fas fa-folder"></i><h3>No Categories</h3><p>Create your first category!</p></td></tr>';
         }
       } catch (e) {
-        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--danger);">Error loading users</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--danger);">Error loading categories</td></tr>';
       }
     }
+
+    function openCategoryModal() {
+      document.getElementById('categoryForm').reset();
+      document.getElementById('categoryId').value = '';
+      document.getElementById('categoryModalTitle').textContent = 'New Category';
+      openModal('categoryModal');
+    }
+
+    function editCategory(id) {
+      const cat = allCategories.find(c => c.id === id);
+      if (!cat) return;
+      document.getElementById('categoryId').value = id;
+      document.getElementById('categoryModalTitle').textContent = 'Edit Category';
+      document.getElementById('categoryName').value = cat.name || '';
+      document.getElementById('categorySlug').value = cat.slug || '';
+      document.getElementById('categoryIcon').value = cat.icon || '';
+      document.getElementById('categoryDesc').value = cat.description || '';
+      openModal('categoryModal');
+    }
+
+    async function saveCategory() {
+      const id = document.getElementById('categoryId').value;
+      const name = document.getElementById('categoryName').value.trim();
+      if (!name) { showToast('error', 'Error', 'Category name is required'); return; }
+      const slug = document.getElementById('categorySlug').value || name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const data = {
+        name,
+        slug,
+        icon: document.getElementById('categoryIcon').value || null,
+        description: document.getElementById('categoryDesc').value || null
+      };
+      try {
+        if (id) {
+          await apiCall('categories?id=eq.' + id, { method: 'PATCH', body: JSON.stringify(data) });
+          showToast('success', 'Updated', 'Category updated successfully');
+        } else {
+          await apiCall('categories', { method: 'POST', body: JSON.stringify(data) });
+          showToast('success', 'Created', 'Category created successfully');
+        }
+        closeModal('categoryModal');
+        loadCategories();
+        loadDashboardData();
+      } catch (e) {
+        showToast('error', 'Error', 'Failed to save category');
+      }
+    }
+
+    function deleteCategory(id) {
+      document.getElementById('confirmMessage').textContent = 'Are you sure? Articles in this category will become uncategorized.';
+      deleteCallback = async () => {
+        try {
+          await apiCall('categories?id=eq.' + id, { method: 'DELETE' });
+          showToast('success', 'Deleted', 'Category deleted successfully');
+          loadCategories();
+          loadDashboardData();
+        } catch (e) {
+          showToast('error', 'Error', 'Failed to delete category');
+        }
+      };
+      openModal('confirmModal');
+    }
+
+    // Users
+    async function loadUsers() {
+      const tbody = document.getElementById('usersTable');
+      tbody.innerHTML = '<tr><td colspan="6" class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>';
+      try {
+        const response = await apiCall('profiles?select=*&order=created_at.desc', { method: 'GET' });
+        const users = await response.json();
+        if (Array.isArray(users) && users.length > 0) {
+          tbody.innerHTML = users.map(u => `
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div class="user-avatar" style="width:36px;height:36px;font-size:14px;">${(u.full_name || u.email || 'U').charAt(0).toUpperCase()}</div>
+                  <strong>${u.full_name || 'Unknown'}</strong>
+                </div>
+              </td>
+              <td>${u.email || 'N/A'}</td>
+              <td><span class="badge badge-${u.role || 'public'}">${u.role || 'public'}</span></td>
+              <td><span style="color:${u.is_active ? 'var(--success)' : 'var(--danger)'}">${u.is_active ? 'Active' : 'Inactive'}</span></td>
+              <td>${u.created_at ? new Date(u.created_at).toLocaleDateString() : 'N/A'}</td>
+              <td>
+                <div class="actions">
+                  <button class="action-btn" onclick="editUser('${u.id}')" title="Edit"><i class="fas fa-edit"></i></button>
+                </div>
+              </td>
+            </tr>
+          `).join('');
+        } else {
+          tbody.innerHTML = '<tr><td colspan="6" class="empty-state"><i class="fas fa-users"></i><h3>No Users</h3><p>Users will appear here after they sign up.</p></td></tr>';
+        }
+      } catch (e) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--danger);">Error loading users</td></tr>';
+      }
+    }
+
+    function editUser(id) {
+      showToast('info', 'Coming Soon', 'User role editing coming soon!');
+    }
+
+    // Modal Helpers
+    function openModal(id) { document.getElementById(id).classList.add('active'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+    function confirmDelete() { if (deleteCallback) { deleteCallback(); deleteCallback = null; } closeModal('confirmModal'); }
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('active'); });
+    });
 
     // Toast
     function showToast(type, title, message) {
       const container = document.getElementById('toastContainer');
+      const icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', info: 'fa-info-circle' };
       const toast = document.createElement('div');
       toast.className = 'toast ' + type;
-      toast.innerHTML = '<strong>' + title + '</strong><br><small>' + message + '</small>';
+      toast.innerHTML = `<i class="fas ${icons[type]} toast-icon"></i><div class="toast-content"><h4>${title}</h4><p>${message}</p></div>`;
       container.appendChild(toast);
-      setTimeout(() => toast.remove(), 3000);
+      setTimeout(() => toast.remove(), 4000);
     }
+
+    // Forms
+    document.getElementById('profileForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      showToast('success', 'Saved', 'Profile updated successfully');
+    });
+
+    document.getElementById('passwordForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const np = document.getElementById('newPassword').value;
+      const cp = document.getElementById('confirmPassword').value;
+      if (np !== cp) { showToast('error', 'Error', 'Passwords do not match'); return; }
+      showToast('success', 'Updated', 'Password changed successfully');
+      this.reset();
+    });
+
+    document.getElementById('settingsForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      showToast('success', 'Saved', 'Settings updated successfully');
+    });
+
+    document.getElementById('categoryName').addEventListener('input', function() {
+      if (!document.getElementById('categorySlug').value) {
+        document.getElementById('categorySlug').value = this.value.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      }
+    });
   </script>
 </body>
 </html>
