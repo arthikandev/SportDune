@@ -1749,55 +1749,48 @@
     }
     
     async function loadUsers() {
-      const { data: users, error } = await supabase
-        .from('profiles')
-        .select('*, articles:articles(count)')
-        .order('created_at', { ascending: false });
-      
-      if (error) {
-        showToast('error', 'Error', 'Failed to load users');
-        return;
-      }
-      
       const tbody = document.getElementById('usersTable');
-      tbody.innerHTML = users.map(user => `
-        <tr>
-          <td>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <div class="user-avatar" style="width: 36px; height: 36px; font-size: 14px;">
-                ${user.avatar_url ? `<img src="${user.avatar_url}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">` : user.full_name?.charAt(0) || 'U'}
-              </div>
-              <strong>${user.full_name || 'Unknown'}</strong>
-            </div>
-          </td>
-          <td>${user.email}</td>
-          <td><span class="role-badge ${user.role}">${user.role}</span></td>
-          <td>${user.articles?.[0]?.count || 0}</td>
-          <td>${new Date(user.created_at).toLocaleDateString()}</td>
-          <td>
-            <span class="status-badge ${user.is_active ? 'published' : 'archived'}">
-              ${user.is_active ? 'Active' : 'Inactive'}
-            </span>
-          </td>
-          <td>
-            <div class="actions">
-              <button class="action-btn" title="Edit" onclick="editUser('${user.id}')">
-                <i class="fas fa-edit"></i>
-              </button>
-              ${user.role !== 'super_admin' ? `
-                <button class="action-btn delete" title="Delete" onclick="deleteUser('${user.id}')">
-                  <i class="fas fa-trash"></i>
-                </button>
-              ` : ''}
-            </div>
-          </td>
-        </tr>
-      `).join('');
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:20px;">Loading users...</td></tr>';
+      try {
+        const response = await apiCall('profiles?select=*&order=created_at.desc', { method: 'GET' });
+        const users = await response.json();
+        if (Array.isArray(users) && users.length > 0) {
+          tbody.innerHTML = users.map(user => `
+            <tr>
+              <td>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <div class="user-avatar" style="width: 36px; height: 36px; font-size: 14px;">
+                    ${user.full_name ? user.full_name.charAt(0).toUpperCase() : 'U'}
+                  </div>
+                  <strong>${user.full_name || 'Unknown'}</strong>
+                </div>
+              </td>
+              <td>${user.email || 'N/A'}</td>
+              <td><span class="role-badge ${user.role}">${user.role || 'public'}</span></td>
+              <td>0</td>
+              <td>${user.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A'}</td>
+              <td>
+                <span class="status-badge ${user.is_active ? 'published' : 'archived'}">
+                  ${user.is_active ? 'Active' : 'Inactive'}
+                </span>
+              </td>
+              <td>
+                <div class="actions">
+                  <button class="action-btn" title="Edit"><i class="fas fa-edit"></i></button>
+                  ${user.role !== 'super_admin' ? `
+                    <button class="action-btn delete" title="Delete"><i class="fas fa-trash"></i></button>
+                  ` : ''}
+                </div>
+              </td>
+            </tr>
+          `).join('');
+        } else {
+          tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:20px;">No users found</td></tr>';
+        }
+      } catch (e) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:20px;color:#EF4444;">Error loading users</td></tr>';
+      }
     }
-    
-    // ================================================
-    // CRUD OPERATIONS
-    // ================================================
     
     async function saveArticle() {
       const title = document.getElementById('articleTitle').value;
@@ -1810,50 +1803,40 @@
         return;
       }
       
-      // Generate slug
-      const slug = title.toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/(^-|-$)/g, '');
+      const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
       
       const article = {
         title,
         slug,
         content,
-        excerpt: document.getElementById('articleExcerpt').value,
+        excerpt: document.getElementById('articleExcerpt').value || null,
         category_id: categoryId || null,
         status,
-        author_id: currentUser.id,
+        author_id: currentUser?.id || null,
         featured_image_url: document.getElementById('articleImage').value || null,
         meta_title: document.getElementById('articleMetaTitle').value || null,
         meta_description: document.getElementById('articleMetaDesc').value || null,
         published_at: status === 'published' ? new Date().toISOString() : null
       };
       
-      const { data, error } = await supabase
-        .from('articles')
-        .insert(article)
-        .select()
-        .single();
-      
-      if (error) {
+      try {
+        const response = await apiCall('articles', {
+          method: 'POST',
+          body: JSON.stringify(article)
+        });
+        if (!response.ok) throw new Error('Failed');
+        showToast('success', 'Success', 'Article created successfully');
+        hideModal('newArticleModal');
+        document.getElementById('articleForm').reset();
+        if (document.getElementById('page-articles').classList.contains('active')) loadArticles();
+      } catch (e) {
         showToast('error', 'Error', 'Failed to create article');
-        console.error(error);
-        return;
-      }
-      
-      showToast('success', 'Success', 'Article created successfully');
-      hideModal('newArticleModal');
-      document.getElementById('articleForm').reset();
-      
-      if (document.getElementById('page-articles').classList.contains('active')) {
-        loadArticles();
       }
     }
     
     async function saveCategory() {
       const name = document.getElementById('categoryName').value;
-      const slug = document.getElementById('categorySlug').value || 
-        name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const slug = document.getElementById('categorySlug').value || name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
       
       if (!name) {
         showToast('error', 'Validation', 'Category name is required');
@@ -1868,133 +1851,56 @@
         description: document.getElementById('categoryDesc').value || null
       };
       
-      const { data, error } = await supabase
-        .from('categories')
-        .insert(category)
-        .select()
-        .single();
-      
-      if (error) {
+      try {
+        const response = await apiCall('categories', {
+          method: 'POST',
+          body: JSON.stringify(category)
+        });
+        if (!response.ok) throw new Error('Failed');
+        showToast('success', 'Success', 'Category created successfully');
+        hideModal('newCategoryModal');
+        document.getElementById('categoryForm').reset();
+        loadCategories();
+      } catch (e) {
         showToast('error', 'Error', 'Failed to create category');
-        console.error(error);
-        return;
       }
-      
-      showToast('success', 'Success', 'Category created successfully');
-      hideModal('newCategoryModal');
-      document.getElementById('categoryForm').reset();
-      loadCategories();
     }
     
     async function saveUser() {
-      const email = document.getElementById('newUserEmail').value;
-      const name = document.getElementById('newUserName').value;
-      const role = document.getElementById('newUserRole').value;
-      
-      if (!email || !name) {
-        showToast('error', 'Validation', 'Name and email are required');
-        return;
-      }
-      
-      // Create user via Supabase Auth
-      const { data, error } = await supabase.auth.admin.createUser({
-        email,
-        user_metadata: { full_name: name },
-        email_confirm: true
-      });
-      
-      if (error) {
-        showToast('error', 'Error', 'Failed to create user: ' + error.message);
-        return;
-      }
-      
-      // Update user role
-      const { error: roleError } = await supabase
-        .from('profiles')
-        .update({ role })
-        .eq('id', data.user.id);
-      
-      if (roleError) {
-        showToast('warning', 'Warning', 'User created but role update failed');
-      }
-      
-      showToast('success', 'Success', 'User created successfully');
-      hideModal('newUserModal');
-      document.getElementById('userForm').reset();
-      loadUsers();
+      showToast('warning', 'Info', 'User creation is disabled. Contact admin.');
     }
     
-    // ================================================
-    // DELETE OPERATIONS
-    // ================================================
-    
     async function deleteArticle(id) {
-      if (!confirm('Are you sure you want to delete this article?')) return;
-      
-      const { error } = await supabase
-        .from('articles')
-        .delete()
-        .eq('id', id);
-      
-      if (error) {
-        showToast('error', 'Error', 'Failed to delete article');
-        return;
+      if (!confirm('Delete this article?')) return;
+      try {
+        await apiCall('articles?id=eq.' + id, { method: 'DELETE' });
+        showToast('success', 'Deleted', 'Article deleted');
+        loadArticles();
+      } catch (e) {
+        showToast('error', 'Error', 'Failed to delete');
       }
-      
-      showToast('success', 'Deleted', 'Article deleted successfully');
-      loadArticles();
     }
     
     async function deleteCategory(id) {
-      if (!confirm('Are you sure? Articles in this category will become uncategorized.')) return;
-      
-      const { error } = await supabase
-        .from('categories')
-        .delete()
-        .eq('id', id);
-      
-      if (error) {
-        showToast('error', 'Error', 'Failed to delete category');
-        return;
+      if (!confirm('Delete this category?')) return;
+      try {
+        await apiCall('categories?id=eq.' + id, { method: 'DELETE' });
+        showToast('success', 'Deleted', 'Category deleted');
+        loadCategories();
+      } catch (e) {
+        showToast('error', 'Error', 'Failed to delete');
       }
-      
-      showToast('success', 'Deleted', 'Category deleted successfully');
-      loadCategories();
     }
     
     async function deleteUser(id) {
-      if (!confirm('Are you sure you want to delete this user?')) return;
-      
-      const { error } = await supabase
-        .from('profiles')
-        .delete()
-        .eq('id', id);
-      
-      if (error) {
-        showToast('error', 'Error', 'Failed to delete user');
-        return;
-      }
-      
-      showToast('success', 'Deleted', 'User deleted successfully');
-      loadUsers();
+      showToast('warning', 'Info', 'User deletion is disabled.');
     }
     
-    // ================================================
-    // FILTER FUNCTIONS
-    // ================================================
-    
     async function filterArticles() {
-      const status = document.getElementById('articleStatusFilter').value;
-      const category = document.getElementById('articleCategoryFilter').value;
-      
-      let query = supabase
-        .from('articles')
-        .select(`
-          *,
-          profiles:author_id (full_name),
-          categories:category_id (name)
-        `)
-        .order('created_at', { ascending: false });
+      const tbody = document.getElementById('articlesTable');
+      tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;">Loading...</td></tr>';
+      loadArticles();
+    }
       
       if (status) query = query.eq('status', status);
       if (category) query = query.eq('category_id', category);
