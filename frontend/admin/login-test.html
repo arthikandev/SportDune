@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SportDune Admin - Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; background: #1E1E2F; color: white; }
+    .login { max-width: 400px; margin: 100px auto; background: white; padding: 40px; border-radius: 12px; }
+    input { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+    button { width: 100%; padding: 14px; background: #FF4C29; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; }
+    button:hover { background: #e03a1a; }
+    button:disabled { background: #ccc; }
+    .error { color: #EF4444; margin-top: 10px; padding: 10px; background: #FEE2E2; border-radius: 6px; }
+    .success { color: #10B981; margin-top: 10px; padding: 10px; background: #D1FAE5; border-radius: 6px; }
+    .loading { color: #FF4C29; }
+  </style>
+</head>
+<body>
+  <div class="login">
+    <h2 style="text-align:center; color:#1E1E2F;">SportDune Admin</h2>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" value="sportdune@gmail.com" required>
+      <input type="password" id="password" placeholder="Password" value="SportDune2026" required>
+      <button type="submit" id="btn">Sign In</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://pvmtcwqupalurwqlvdxy.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_fuqgloaY9Hi7mHi0HsH8DQ_fjvXS_E6';
+    
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const btn = document.getElementById('btn');
+      const result = document.getElementById('result');
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      btn.disabled = true;
+      btn.textContent = 'Signing in...';
+      result.innerHTML = '<p class="loading">Connecting to Supabase...</p>';
+      
+      try {
+        const response = await fetch(SUPABASE_URL + '/auth/v1/token?grant_type=password', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_KEY
+          },
+          body: JSON.stringify({ email, password })
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(data.msg || data.error_description || 'Login failed');
+        }
+        
+        result.innerHTML = '<p class="success">Login successful! Token received.</p>';
+        console.log('Token:', data.access_token);
+        
+        // Store and redirect
+        localStorage.setItem('sportdune_token', data.access_token);
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1000);
+        
+      } catch (error) {
+        result.innerHTML = '<p class="error">Error: ' + error.message + '</p>';
+        btn.disabled = false;
+        btn.textContent = 'Sign In';
+      }
+    });
+  </script>
+</body>
+</html>
