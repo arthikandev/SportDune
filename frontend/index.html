@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SportDune – Live. Bold. Now.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --text: #1E1E2F;
+      --accent: #FF4C29;
+      --link: #3498DB;
+      --card-shadow: rgba(0, 0, 0, 0.07);
+      --light-gray: #A0A0B0;
+      --section-bg: #F7F8FC;
+      --border: #EBEBF0;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #fff;
+      border-bottom: 2px solid var(--border);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-inner {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      height: 62px;
+      gap: 0;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      margin-right: 36px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 2px;
+      flex: 1;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 8px 13px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.18s, color 0.18s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      background: #FFF0ED;
+      color: var(--accent);
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .nav-trending {
+      display: block;
+      padding: 7px 14px;
+      background: var(--accent);
+      color: #fff !important;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .nav-trending:hover {
+      background: #e03a1a !important;
+      color: #fff !important;
+    }
+
+    /* More dropdown */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown>a {
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      padding: 8px 0;
+      min-width: 150px;
+      z-index: 999;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 18px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 0;
+      transition: background 0.15s;
+    }
+
+    .dropdown-menu a:hover {
+      background: #FFF0ED;
+      color: var(--accent);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+      padding-left: 16px;
+    }
+
+    .search-btn {
+      background: none;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      transition: border-color 0.18s;
+    }
+
+    .search-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .live-btn {
+      background: var(--text);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: background 0.18s;
+      white-space: nowrap;
+    }
+
+    .live-btn:hover {
+      background: #FF4C29;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #FF4C29;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(1.3);
+      }
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      margin-left: auto;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2.5px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 62px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px 24px;
+      z-index: 999;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      max-height: calc(100vh - 62px);
+      overflow-y: auto;
+    }
+
+    .mobile-nav.open {
+      display: block;
+    }
+
+    .mobile-nav a {
+      display: block;
+      padding: 12px 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-nav a:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--accent);
+    }
+
+    /* ── HERO SLIDER ── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      height: 520px;
+      background: #1E1E2F;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .slide-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.05);
+      transition: transform 8s ease;
+    }
+
+    .slide.active .slide-bg {
+      transform: scale(1);
+    }
+
+    .slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30, 30, 47, 0.92) 0%, rgba(30, 30, 47, 0.3) 60%, transparent 100%);
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 3;
+      padding: 40px 52px;
+      max-width: 680px;
+    }
+
+    .slide-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .slide-title {
+      font-size: 36px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .slide-meta {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .slide-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .slide-btn:hover {
+      background: #e03a1a;
+      transform: translateY(-1px);
+    }
+
+    .hero-nav {
+      position: absolute;
+      bottom: 36px;
+      right: 52px;
+      z-index: 10;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .hero-dot.active {
+      background: var(--accent);
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    .hero-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.2s;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-arrow:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .hero-arrow.prev {
+      left: 20px;
+    }
+
+    .hero-arrow.next {
+      right: 20px;
+    }
+
+    /* ── TRENDING STRIP ── */
+    .trending-strip {
+      background: var(--section-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .trending-inner {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .trending-label {
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .trending-scroll {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      flex: 1;
+    }
+
+    .trending-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .trending-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border-right: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.18s;
+      min-width: 260px;
+      text-decoration: none;
+      color: inherit;
+      flex-shrink: 0;
+    }
+
+    .trending-card:hover {
+      background: #fff;
+    }
+
+    .trending-card:hover .trending-card-title {
+      color: var(--accent);
+    }
+
+    .trending-thumb {
+      width: 50px;
+      height: 50px;
+      border-radius: 6px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      overflow: hidden;
+    }
+
+    .trending-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.35;
+      transition: color 0.18s;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* ── LAYOUT ── */
+    .page-body {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 36px;
+    }
+
+    .main-content {
+      min-width: 0;
+    }
+
+    /* Section heading */
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      margin-top: 40px;
+    }
+
+    .section-heading:first-child {
+      margin-top: 0;
+    }
+
+    .section-bar {
+      width: 5px;
+      height: 24px;
+      background: var(--accent);
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .section-more {
+      margin-left: auto;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--link);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.18s;
+    }
+
+    .section-more:hover {
+      color: var(--accent);
+    }
+
+    /* Article grid */
+    .article-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .article-grid.three-col {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .article-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 14px var(--card-shadow);
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      background: var(--section-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .card-body {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.35;
+      transition: color 0.18s;
+    }
+
+    .article-card:hover .card-title {
+      color: var(--accent);
+    }
+
+    .card-snippet {
+      font-size: 13px;
+      font-weight: 400;
+      color: #555568;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .card-meta {
+      font-size: 11.5px;
+      color: var(--light-gray);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    /* Featured card (spans 2 cols) */
+    .article-card.featured {
+      grid-column: span 2;
+      flex-direction: row;
+    }
+
+    .article-card.featured .card-img {
+      width: 46%;
+      aspect-ratio: unset;
+      flex-shrink: 0;
+    }
+
+    .article-card.featured .card-body {
+      padding: 24px;
+    }
+
+    .article-card.featured .card-title {
+      font-size: 20px;
+    }
+
+    .article-card.featured .card-snippet {
+      -webkit-line-clamp: 3;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      min-width: 0;
+    }
+
+    .sidebar-widget {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 14px var(--card-shadow);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .widget-header {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .widget-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .widget-badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-left: auto;
+    }
+
+    .widget-badge.blue {
+      background: var(--link);
+    }
+
+    .match-item {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+      cursor: pointer;
+    }
+
+    .match-item:last-child {
+      border-bottom: none;
+    }
+
+    .match-item:hover {
+      background: var(--section-bg);
+    }
+
+    .match-league {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--light-gray);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+
+    .match-teams {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .match-team {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      flex: 1;
+    }
+
+    .match-team.right {
+      text-align: right;
+    }
+
+    .match-score {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--accent);
+      padding: 4px 10px;
+      background: #FFF0ED;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .match-status {
+      font-size: 11px;
+      color: var(--light-gray);
+      font-weight: 500;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .match-status.live {
+      color: #FF4C29;
+      font-weight: 700;
+    }
+
+    /* Poll */
+    .poll-body {
+      padding: 16px 18px;
+    }
+
+    .poll-question {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .poll-option {
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .poll-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .poll-pct {
+      color: var(--light-gray);
+    }
+
+    .poll-bar-bg {
+      height: 8px;
+      background: var(--section-bg);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .poll-bar-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 4px;
+      transition: width 0.6s ease;
+    }
+
+    .poll-bar-fill.blue {
+      background: var(--link);
+    }
+
+    .poll-bar-fill.gray {
+      background: #C0C0D0;
+    }
+
+    .poll-total {
+      font-size: 11.5px;
+      color: var(--light-gray);
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    /* Ads */
+    .ad-slot {
+      background: linear-gradient(135deg, #1E1E2F 0%, #2E2E4F 100%);
+      border-radius: 12px;
+      padding: 28px 20px;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    .ad-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .ad-title {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .ad-sub {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 16px;
+    }
+
+    .ad-cta {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 9px 22px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .ad-cta:hover {
+      background: #e03a1a;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #fff;
+      border-top: 2px solid var(--border);
+      padding: 48px 24px 28px;
+      margin-top: 0;
+    }
+
+    .footer-inner {
+      max-width: 1340px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand .logo {
+      font-size: 24px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      color: #777788;
+      line-height: 1.65;
+      max-width: 260px;
+      margin-bottom: 20px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--section-bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background 0.18s, border-color 0.18s;
+      color: var(--text);
+    }
+
+    .social-link:hover {
+      background: #FFF0ED;
+      border-color: var(--accent);
+    }
+
+    .footer-col-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--link);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-copy {
+      font-size: 12.5px;
+      color: var(--light-gray);
+      font-weight: 500;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-legal a {
+      font-size: 12.5px;
+      color: var(--light-gray);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.18s;
+    }
+
+    .footer-legal a:hover {
+      color: var(--accent);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .page-body {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .sidebar .ad-slot {
+        display: none;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      .nav-links,
+      .nav-right {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero {
+        height: 380px;
+      }
+
+      .slide-content {
+        padding: 28px 24px;
+      }
+
+      .slide-title {
+        font-size: 24px;
+      }
+
+      .hero-nav {
+        right: 24px;
+        bottom: 24px;
+      }
+
+      .hero-arrow {
+        display: none;
+      }
+
+      .article-grid,
+      .article-grid.three-col {
+        grid-template-columns: 1fr;
+      }
+
+      .article-card.featured {
+        flex-direction: column;
+      }
+
+      .article-card.featured .card-img {
+        width: 100%;
+        aspect-ratio: 16/9;
+      }
+
+      .article-card.featured {
+        grid-column: span 1;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        display: block;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.55s ease both;
+    }
+
+    .fade-in-2 {
+      animation: fadeInUp 0.55s 0.1s ease both;
+    }
+
+    .fade-in-3 {
+      animation: fadeInUp 0.55s 0.2s ease both;
+    }
+
+    /* Emoji thumbnail fallback colors */
+    .t1 {
+      background: #FFF0ED;
+    }
+
+    .t2 {
+      background: #EDF6FF;
+    }
+
+    .t3 {
+      background: #EDFFF5;
+    }
+
+    .t4 {
+      background: #FFFBED;
+    }
+
+    .t5 {
+      background: #F5EDFFF5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav>
+    <div class="nav-inner">
+      <a href="sports-homepage.html" class="logo">Sport<span>Dune</span></a>
+      <ul class="nav-links">
+        <li><a href="sports-homepage.html" class="active">Home</a></li>
+        <li><a href="football.html">Football</a></li>
+        <li><a href="cricket.html">Cricket</a></li>
+        <li><a href="basketball.html">Basketball</a></li>
+        <li><a href="f1.html">F1</a></li>
+        <li><a href="tennis.html">Tennis</a></li>
+        <li><a href="hockey.html">Hockey</a></li>
+        <li class="dropdown">
+          <a href="#">More &#9662;</a>
+          <div class="dropdown-menu">
+            <a href="rugby.html">Rugby</a>
+            <a href="esports.html">Esports</a>
+            <a href="combat.html">Combat</a>
+            <a href="nfl.html">NFL</a>
+            <a href="olympics.html">Olympics</a>
+          </div>
+        </li>
+        <li><a href="football.html" class="nav-trending">Trending</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="search-btn" onclick="location.href='search.html'">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          Search
+        </button>
+        <button class="live-btn" onclick="location.href='live.html'">
+          <span class="live-dot"></span>
+          Live Scores
+        </button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="sports-homepage.html">Home</a>
+    <a href="football.html">Football</a>
+    <a href="cricket.html">Cricket</a>
+    <a href="basketball.html">Basketball</a>
+    <a href="f1.html">F1</a>
+    <a href="tennis.html">Tennis</a>
+    <a href="hockey.html">Hockey</a>
+    <a href="rugby.html">Rugby</a>
+    <a href="esports.html">Esports</a>
+    <a href="combat.html">Combat</a>
+    <a href="nfl.html">NFL</a>
+    <a href="olympics.html">Olympics</a>
+    <a href="live.html" style="color:var(--accent);">Live Scores</a>
+  </div>
+
+  <!-- ══ HERO SLIDER ══ -->
+  <section class="hero" id="heroSlider">
+
+    <div class="slide active" data-index="0">
+      <div class="slide-bg"
+        style="background: linear-gradient(135deg, #1a1a3e 0%, #2d1515 50%, #1a1a3e 100%); background-image: url(''); background-color: #1E1E2F; background-image: radial-gradient(ellipse at 60% 40%, #4a1a0a 0%, #1E1E2F 65%);">
+      </div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-tag">Football</span>
+        <h1 class="slide-title">Champions League Semi-Final Draw: Real Madrid vs Man City Rematch Set</h1>
+        <p class="slide-meta">March 27, 2026 &nbsp;&middot;&nbsp; 4 min read</p>
+        <a href="#" class="slide-btn">Read More</a>
+      </div>
+    </div>
+
+    <div class="slide" data-index="1">
+      <div class="slide-bg" style="background: radial-gradient(ellipse at 40% 50%, #0a2a4a 0%, #1E1E2F 70%);"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-tag">Cricket</span>
+        <h1 class="slide-title">Rohit Sharma's Record-Breaking 250 Leads India to Historic Test Victory</h1>
+        <p class="slide-meta">March 26, 2026 &nbsp;&middot;&nbsp; 6 min read</p>
+        <a href="#" class="slide-btn">Read More</a>
+      </div>
+    </div>
+
+    <div class="slide" data-index="2">
+      <div class="slide-bg" style="background: radial-gradient(ellipse at 70% 30%, #1a3a0a 0%, #1E1E2F 70%);"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-tag">F1</span>
+        <h1 class="slide-title">Verstappen Claims Dominant Bahrain Pole as Ferrari Struggles in Qualifying</h1>
+        <p class="slide-meta">March 25, 2026 &nbsp;&middot;&nbsp; 5 min read</p>
+        <a href="#" class="slide-btn">Read More</a>
+      </div>
+    </div>
+
+    <button class="hero-arrow prev" id="heroPrev">&#8249;</button>
+    <button class="hero-arrow next" id="heroNext">&#8250;</button>
+
+    <div class="hero-nav">
+      <button class="hero-dot active" data-slide="0"></button>
+      <button class="hero-dot" data-slide="1"></button>
+      <button class="hero-dot" data-slide="2"></button>
+    </div>
+
+  </section>
+
+  <!-- ══ TRENDING STRIP ══ -->
+  <div class="trending-strip">
+    <div class="trending-inner">
+      <div class="trending-label">Trending</div>
+      <div class="trending-scroll">
+        <a href="#" class="trending-card">
+          <div class="trending-thumb t1">&#9917;</div>
+          <span class="trending-card-title">Mbappe hits hat-trick as PSG thrash Lyon 5–1</span>
+        </a>
+        <a href="#" class="trending-card">
+          <div class="trending-thumb t2">&#127951;</div>
+          <span class="trending-card-title">Kohli announces retirement from T20 internationals</span>
+        </a>
+        <a href="#" class="trending-card">
+          <div class="trending-thumb t3">&#127936;</div>
+          <span class="trending-card-title">LeBron passes 44,000 career points milestone</span>
+        </a>
+        <a href="#" class="trending-card">
+          <div class="trending-thumb t4">&#127950;</div>
+          <span class="trending-card-title">Djokovic withdraws from French Open with knee injury</span>
+        </a>
+        <a href="#" class="trending-card">
+          <div class="trending-thumb t5">&#127941;</div>
+          <span class="trending-card-title">2028 Olympics: Full athletics schedule revealed</span>
+        </a>
+        <a href="#" class="trending-card">
+          <div class="trending-thumb t1">&#127949;</div>
+          <span class="trending-card-title">Verstappen signs massive Red Bull extension until 2030</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PAGE BODY ══ -->
+  <div class="page-body">
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- Football -->
+      <div class="section-heading fade-in">
+        <div class="section-bar"></div>
+        <h2 class="section-title">Football</h2>
+        <a href="football.html" class="section-more">View All &rarr;</a>
+      </div>
+      <div class="article-grid fade-in-2">
+        <a href="#" class="article-card featured">
+          <div class="card-img t1">&#9917;</div>
+          <div class="card-body">
+            <span class="card-tag">Football &middot; Champions League</span>
+            <h3 class="card-title">Bellingham's Last-Minute Header Sends Real Madrid to Semis in Dramatic Fashion</h3>
+            <p class="card-snippet">Jude Bellingham rose highest to nod in the decisive header in the 93rd minute,
+              sending the Santiago Bernabeu into absolute delirium as Madrid overturned a first-leg deficit.</p>
+            <div class="card-meta">March 27, 2026 &nbsp;&middot;&nbsp; 5 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t2">&#127942;</div>
+          <div class="card-body">
+            <span class="card-tag">Football &middot; Premier League</span>
+            <h3 class="card-title">Arsenal Close in on Title After Manchester United Collapse</h3>
+            <p class="card-snippet">A stunning late collapse saw United concede twice in injury time as Arsenal's title
+              dream grows stronger with seven games to play.</p>
+            <div class="card-meta">March 26, 2026 &nbsp;&middot;&nbsp; 4 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t3">&#127937;</div>
+          <div class="card-body">
+            <span class="card-tag">Football &middot; La Liga</span>
+            <h3 class="card-title">Barcelona's Yamal: The 18-Year-Old Rewriting Football History</h3>
+            <p class="card-snippet">Already surpassing Messi's record appearances at his age, Lamine Yamal continues to
+              stun the football world with each passing week.</p>
+            <div class="card-meta">March 25, 2026 &nbsp;&middot;&nbsp; 3 min read</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Cricket -->
+      <div class="section-heading fade-in" style="margin-top:44px;">
+        <div class="section-bar"></div>
+        <h2 class="section-title">Cricket</h2>
+        <a href="cricket.html" class="section-more">View All &rarr;</a>
+      </div>
+      <div class="article-grid three-col fade-in-2">
+        <a href="#" class="article-card">
+          <div class="card-img t2">&#127951;</div>
+          <div class="card-body">
+            <span class="card-tag">Cricket &middot; Test</span>
+            <h3 class="card-title">India Crush England by 400 Runs in Final Test to Seal Series 4–1</h3>
+            <p class="card-snippet">Rohit's double century combined with Bumrah's 9-wicket haul gave India one of their
+              most emphatic wins on English soil.</p>
+            <div class="card-meta">March 27, 2026 &nbsp;&middot;&nbsp; 6 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t4">&#127950;</div>
+          <div class="card-body">
+            <span class="card-tag">Cricket &middot; IPL</span>
+            <h3 class="card-title">IPL 2026 Auction: Record Bids Shake Up the Franchise Landscape</h3>
+            <p class="card-snippet">A mystery overseas spinner shattered all records as five franchises entered a
+              bidding war, pushing the final price to an unprecedented figure.</p>
+            <div class="card-meta">March 25, 2026 &nbsp;&middot;&nbsp; 4 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t5">&#127937;</div>
+          <div class="card-body">
+            <span class="card-tag">Cricket &middot; ODI</span>
+            <h3 class="card-title">Australia's Maxwell Returns with a Masterclass 185 off 100 Balls</h3>
+            <p class="card-snippet">Glenn Maxwell defied the critics in breathtaking fashion, rescuing Australia from
+              90/5 to post a mammoth 340 in the second ODI.</p>
+            <div class="card-meta">March 24, 2026 &nbsp;&middot;&nbsp; 3 min read</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="section-heading" style="margin-top:44px;">
+        <div class="section-bar"></div>
+        <h2 class="section-title">Basketball</h2>
+        <a href="basketball.html" class="section-more">View All &rarr;</a>
+      </div>
+      <div class="article-grid fade-in-2">
+        <a href="#" class="article-card featured">
+          <div class="card-img t3">&#127936;</div>
+          <div class="card-body">
+            <span class="card-tag">Basketball &middot; NBA</span>
+            <h3 class="card-title">Lakers Edge Celtics in Overtime Classic to Claim Top Seed in the West</h3>
+            <p class="card-snippet">In a battle that many are calling the game of the season, the Los Angeles Lakers
+              held on through a chaotic overtime period to secure the Western Conference's top spot heading into the
+              playoffs.</p>
+            <div class="card-meta">March 27, 2026 &nbsp;&middot;&nbsp; 5 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t1">&#127942;</div>
+          <div class="card-body">
+            <span class="card-tag">Basketball &middot; NBA</span>
+            <h3 class="card-title">Wembanyama Hits 30-30 Night: Points and Blocks in Same Game</h3>
+            <p class="card-snippet">The Spurs' generational talent achieved something no player had managed since the
+              1980s, finishing with 31 points and 30 blocks.</p>
+            <div class="card-meta">March 26, 2026 &nbsp;&middot;&nbsp; 3 min read</div>
+          </div>
+        </a>
+        <a href="#" class="article-card">
+          <div class="card-img t2">&#127946;</div>
+          <div class="card-body">
+            <span class="card-tag">Basketball &middot; Playoffs</span>
+            <h3 class="card-title">Golden State's Curry Announces This Will Be His Final Playoff Run</h3>
+            <p class="card-snippet">In an emotional press conference, Stephen Curry confirmed he intends to retire at
+              the end of the current season regardless of results.</p>
+            <div class="card-meta">March 25, 2026 &nbsp;&middot;&nbsp; 4 min read</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- F1 + Tennis row -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:36px; margin-top:44px;" class="sport-pair-grid">
+        <div>
+          <div class="section-heading">
+            <div class="section-bar"></div>
+            <h2 class="section-title">Formula 1</h2>
+            <a href="f1.html" class="section-more">All &rarr;</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <a href="#" class="article-card" style="flex-direction:row; align-items:center; gap:0;">
+              <div class="card-img t4" style="width:90px;aspect-ratio:1;flex-shrink:0;">&#127949;</div>
+              <div class="card-body" style="padding:12px 14px;">
+                <span class="card-tag">F1 &middot; Bahrain GP</span>
+                <h3 class="card-title" style="font-size:13.5px;">Verstappen Fastest in Final Practice</h3>
+                <div class="card-meta">March 27, 2026</div>
+              </div>
+            </a>
+            <a href="#" class="article-card" style="flex-direction:row; align-items:center; gap:0;">
+              <div class="card-img t5" style="width:90px;aspect-ratio:1;flex-shrink:0;">&#127937;</div>
+              <div class="card-body" style="padding:12px 14px;">
+                <span class="card-tag">F1 &middot; Technical</span>
+                <h3 class="card-title" style="font-size:13.5px;">Ferrari's New Floor Upgrade: A Closer Look</h3>
+                <div class="card-meta">March 26, 2026</div>
+              </div>
+            </a>
+            <a href="#" class="article-card" style="flex-direction:row; align-items:center; gap:0;">
+              <div class="card-img t1" style="width:90px;aspect-ratio:1;flex-shrink:0;">&#127941;</div>
+              <div class="card-body" style="padding:12px 14px;">
+                <span class="card-tag">F1 &middot; Driver News</span>
+                <h3 class="card-title" style="font-size:13.5px;">Hamilton's Ferrari Debut: Season Preview</h3>
+                <div class="card-meta">March 25, 2026</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="section-heading">
+            <div class="section-bar"></div>
+            <h2 class="section-title">Tennis</h2>
+            <a href="tennis.html" class="section-more">All &rarr;</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <a href="#" class="article-card" style="flex-direction:row; align-items:center; gap:0;">
+              <div class="card-img t2" style="width:90px;aspect-ratio:1;flex-shrink:0;">&#127950;</div>
+              <div class="card-body" style="padding:12px 14px;">
+                <span class="card-tag">Tennis &middot; ATP</span>
+                <h3 class="card-title" style="font-size:13.5px;">Alcaraz Outlasts Sinner in Five-Set Miami Epic</h3>
+                <div class="card-meta">March 27, 2026</div>
+              </div>
+            </a>
+            <a href="#" class="article-card" style="flex-direction:row; align-items:center; gap:0;">
+              <div class="card-img t3" style="width:90px;aspect-ratio:1;flex-shrink:0;">&#127942;</div>
+              <div class="card-body" style="padding:12px 14px;">
+                <span class="card-tag">Tennis &middot; WTA</span>
+                <h3 class="card-title" style="font-size:13.5px;">Swiatek Claims 5th Miami Open Title in Dominant Display
+                </h3>
+                <div class="card-meta">March 26, 2026</div>
+              </div>
+            </a>
+            <a href="#" class="article-card" style="flex-direction:row; align-items:center; gap:0;">
+              <div class="card-img t4" style="width:90px;aspect-ratio:1;flex-shrink:0;">&#127936;</div>
+              <div class="card-body" style="padding:12px 14px;">
+                <span class="card-tag">Tennis &middot; Rankings</span>
+                <h3 class="card-title" style="font-size:13.5px;">World No.1 Shifts: Updated ATP and WTA Rankings</h3>
+                <div class="card-meta">March 25, 2026</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- Live Scores -->
+      <div class="sidebar-widget">
+        <div class="widget-header">
+          <div class="widget-title">Live Scores</div>
+          <span class="widget-badge">Live</span>
+        </div>
+        <div class="match-item">
+          <div class="match-league">Champions League &middot; Quarter-Final</div>
+          <div class="match-teams">
+            <span class="match-team">Real Madrid</span>
+            <div style="text-align:center;">
+              <div class="match-score">2 – 1</div>
+              <div class="match-status live">76&prime;</div>
+            </div>
+            <span class="match-team right">Man City</span>
+          </div>
+        </div>
+        <div class="match-item">
+          <div class="match-league">Premier League &middot; GW 32</div>
+          <div class="match-teams">
+            <span class="match-team">Arsenal</span>
+            <div style="text-align:center;">
+              <div class="match-score">1 – 0</div>
+              <div class="match-status live">HT</div>
+            </div>
+            <span class="match-team right">Liverpool</span>
+          </div>
+        </div>
+        <div class="match-item">
+          <div class="match-league">IPL 2026 &middot; Match 14</div>
+          <div class="match-teams">
+            <span class="match-team">MI</span>
+            <div style="text-align:center;">
+              <div class="match-score" style="font-size:12px;">186/6 (18.2)</div>
+              <div class="match-status live">Live</div>
+            </div>
+            <span class="match-team right">CSK</span>
+          </div>
+        </div>
+        <div class="match-item">
+          <div class="match-league">NBA &middot; Regular Season</div>
+          <div class="match-teams">
+            <span class="match-team">Lakers</span>
+            <div style="text-align:center;">
+              <div class="match-score">108 – 104</div>
+              <div class="match-status">Final</div>
+            </div>
+            <span class="match-team right">Celtics</span>
+          </div>
+        </div>
+        <div class="match-item">
+          <div class="match-league">F1 &middot; Bahrain GP</div>
+          <div class="match-teams">
+            <span class="match-team">Qualifying</span>
+            <div style="text-align:center;">
+              <div class="match-score" style="font-size:12px; padding:4px 8px;">Tomorrow</div>
+              <div class="match-status">18:00 GST</div>
+            </div>
+            <span class="match-team right">2026 Season</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Poll -->
+      <div class="sidebar-widget">
+        <div class="widget-header">
+          <div class="widget-title">Fan Poll</div>
+          <span class="widget-badge blue">Vote</span>
+        </div>
+        <div class="poll-body">
+          <p class="poll-question">Who will win the 2026 Champions League?</p>
+          <div class="poll-option">
+            <div class="poll-label"><span>Real Madrid</span><span class="poll-pct">42%</span></div>
+            <div class="poll-bar-bg">
+              <div class="poll-bar-fill" style="width:42%"></div>
+            </div>
+          </div>
+          <div class="poll-option">
+            <div class="poll-label"><span>Manchester City</span><span class="poll-pct">31%</span></div>
+            <div class="poll-bar-bg">
+              <div class="poll-bar-fill blue" style="width:31%"></div>
+            </div>
+          </div>
+          <div class="poll-option">
+            <div class="poll-label"><span>Arsenal</span><span class="poll-pct">18%</span></div>
+            <div class="poll-bar-bg">
+              <div class="poll-bar-fill gray" style="width:18%"></div>
+            </div>
+          </div>
+          <div class="poll-option">
+            <div class="poll-label"><span>Other</span><span class="poll-pct">9%</span></div>
+            <div class="poll-bar-bg">
+              <div class="poll-bar-fill gray" style="width:9%"></div>
+            </div>
+          </div>
+          <p class="poll-total">14,382 votes</p>
+        </div>
+      </div>
+
+      <!-- Ad Slot -->
+      <div class="ad-slot">
+        <p class="ad-label">Sponsored</p>
+        <p class="ad-title">Fantasy Sports Pro</p>
+        <p class="ad-sub">Build your dream team and win big this season</p>
+        <a href="#" class="ad-cta">Play Now</a>
+      </div>
+
+      <!-- Upcoming Matches -->
+      <div class="sidebar-widget">
+        <div class="widget-header">
+          <div class="widget-title">Upcoming Matches</div>
+        </div>
+        <div class="match-item">
+          <div class="match-league">La Liga &middot; March 29</div>
+          <div class="match-teams">
+            <span class="match-team">Barcelona</span>
+            <div style="text-align:center;">
+              <div class="match-score" style="font-size:12px;padding:4px 8px;background:#F0F0F8;">vs</div>
+              <div class="match-status">20:00 CET</div>
+            </div>
+            <span class="match-team right">Atletico</span>
+          </div>
+        </div>
+        <div class="match-item">
+          <div class="match-league">Test Cricket &middot; March 30</div>
+          <div class="match-teams">
+            <span class="match-team">Australia</span>
+            <div style="text-align:center;">
+              <div class="match-score" style="font-size:12px;padding:4px 8px;background:#F0F0F8;">vs</div>
+              <div class="match-status">Day 1</div>
+            </div>
+            <span class="match-team right">South Africa</span>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+<a href="sports-homepage.html" class="logo">Sport<span>Dune</span></a>
+          <p>Your definitive source for live scores, breaking news, and in-depth analysis across football, cricket,
+            basketball, F1, and every major sport worldwide.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" title="Twitter">&#120143;</a>
+            <a href="#" class="social-link" title="Facebook">&#102;</a>
+            <a href="#" class="social-link" title="Instagram">&#9825;</a>
+            <a href="#" class="social-link" title="YouTube">&#9654;</a>
+            <a href="#" class="social-link" title="Telegram">&#128225;</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-col-title">Sports</p>
+          <ul class="footer-links">
+            <li><a href="football.html">Football</a></li>
+            <li><a href="cricket.html">Cricket</a></li>
+            <li><a href="basketball.html">Basketball</a></li>
+            <li><a href="f1.html">Formula 1</a></li>
+            <li><a href="tennis.html">Tennis</a></li>
+            <li><a href="hockey.html">Hockey</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">More Sports</p>
+          <ul class="footer-links">
+            <li><a href="esports.html">Esports</a></li>
+            <li><a href="combat.html">Combat Sports</a></li>
+            <li><a href="nfl.html">NFL</a></li>
+            <li><a href="olympics.html">Olympics</a></li>
+            <li><a href="rugby.html">Rugby</a></li>
+            <li><a href="live.html">Live Scores</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Company</p>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Advertise</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Writers</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 SportDune Media. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Cookie Settings</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Hero Slider ──
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    let sliderInterval;
+
+    function goToSlide(n) {
+      slides[currentSlide].classList.remove('active');
+      dots[currentSlide].classList.remove('active');
+      currentSlide = (n + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+
+    function startSlider() {
+      sliderInterval = setInterval(() => goToSlide(currentSlide + 1), 5000);
+    }
+
+    document.getElementById('heroNext').addEventListener('click', () => {
+      clearInterval(sliderInterval);
+      goToSlide(currentSlide + 1);
+      startSlider();
+    });
+
+    document.getElementById('heroPrev').addEventListener('click', () => {
+      clearInterval(sliderInterval);
+      goToSlide(currentSlide - 1);
+      startSlider();
+    });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        clearInterval(sliderInterval);
+        goToSlide(i);
+        startSlider();
+      });
+    });
+
+    startSlider();
+
+    // Touch swipe on hero
+    let touchStartX = 0;
+    const hero = document.getElementById('heroSlider');
+    hero.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX, { passive: true });
+    hero.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        clearInterval(sliderInterval);
+        goToSlide(diff > 0 ? currentSlide + 1 : currentSlide - 1);
+        startSlider();
+      }
+    }, { passive: true });
+
+    // ── Mobile Nav ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+
+    // ── Responsive sport pair grid ──
+    function adjustSportGrid() {
+      const grid = document.querySelector('.sport-pair-grid');
+      if (grid) {
+        if (window.innerWidth < 768) {
+          grid.style.gridTemplateColumns = '1fr';
+        } else {
+          grid.style.gridTemplateColumns = '1fr 1fr';
+        }
+      }
+    }
+    adjustSportGrid();
+    window.addEventListener('resize', adjustSportGrid);
+
+    // ── Intersection Observer animations ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.article-card, .sidebar-widget').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+      observer.observe(el);
+    });
+  </script>
+  <script src="shared.js"></script>
+  <script src="data-service.js"></script>
+  <script>
+    // Load dynamic articles from Supabase
+    document.addEventListener('DOMContentLoaded', async function() {
+      try {
+        // Fetch categories first
+        const categories = await getCategories();
+        const categoryMap = {};
+        if (Array.isArray(categories)) {
+          categories.forEach(cat => categoryMap[cat.id] = cat);
+        }
+        
+        // Fetch published articles
+        const articles = await getArticles({ limit: 20 });
+        
+        if (articles && articles.length > 0) {
+          // Update hero slider
+          const heroSlider = document.getElementById('heroSlider');
+          if (heroSlider) {
+            let heroHTML = '';
+            articles.slice(0, 3).forEach((article, i) => {
+              const cat = article.categories || {};
+              const bgColors = ['#4a1a0a', '#0a2a4a', '#1a3a0a'];
+              heroHTML += `
+                <div class="slide ${i === 0 ? 'active' : ''}" data-index="${i}">
+                  <div class="slide-bg" style="background: radial-gradient(ellipse at 60% 40%, ${bgColors[i]} 0%, #1E1E2F 65%);"></div>
+                  <div class="slide-overlay"></div>
+                  <div class="slide-content">
+                    <span class="slide-tag">${cat.icon || ''} ${cat.name || 'News'}</span>
+                    <h1 class="slide-title">${article.title}</h1>
+                    <p class="slide-meta">${formatDate(article.published_at)} &nbsp;&middot;&nbsp; ${article.read_time || 3} min read</p>
+                    <a href="news-detail.html?slug=${article.slug}" class="slide-btn">Read More</a>
+                  </div>
+                </div>
+              `;
+            });
+            // Keep arrows and nav, replace slides
+            const prevBtn = heroSlider.querySelector('.hero-arrow.prev');
+            const nextBtn = heroSlider.querySelector('.hero-arrow.next');
+            const nav = heroSlider.querySelector('.hero-nav');
+            heroSlider.innerHTML = heroHTML;
+            if (prevBtn) heroSlider.appendChild(prevBtn);
+            if (nextBtn) heroSlider.appendChild(nextBtn);
+            if (nav) heroSlider.appendChild(nav);
+            initHeroSlider();
+          }
+          
+          // Update trending strip
+          const trendingScroll = document.querySelector('.trending-scroll');
+          if (trendingScroll) {
+            let trendingHTML = '';
+            articles.slice(0, 6).forEach(article => {
+              const cat = article.categories || {};
+              trendingHTML += `
+                <a href="news-detail.html?slug=${article.slug}" class="trending-card">
+                  <div class="trending-thumb t${Math.abs(article.slug.charCodeAt(0)) % 5 + 1}">${cat.icon || '📰'}</div>
+                  <span class="trending-card-title">${article.title}</span>
+                </a>
+              `;
+            });
+            trendingScroll.innerHTML = trendingHTML;
+          }
+          
+          // Group articles by category and update sections
+          const byCategory = {};
+          articles.forEach(article => {
+            const catId = article.category_id;
+            if (!byCategory[catId]) byCategory[catId] = [];
+            byCategory[catId].push(article);
+          });
+          
+          // Update specific sections
+          const mainContent = document.querySelector('.main-content');
+          if (mainContent) {
+            // Find and update football section (category with slug 'football')
+            const footballCat = categories?.find(c => c.slug === 'football');
+            const cricketCat = categories?.find(c => c.slug === 'cricket');
+            const basketballCat = categories?.find(c => c.slug === 'basketball');
+            const f1Cat = categories?.find(c => c.slug === 'f1');
+            const tennisCat = categories?.find(c => c.slug === 'tennis');
+            
+            // Update football articles
+            const footballSection = document.querySelector('[data-category="football"]');
+            if (footballSection && footballCat && byCategory[footballCat.id]) {
+              const grid = footballSection.querySelector('.article-grid');
+              if (grid) {
+                let html = '';
+                byCategory[footballCat.id].slice(0, 3).forEach((article, i) => {
+                  const cat = article.categories || {};
+                  html += `
+                    <a href="news-detail.html?slug=${article.slug}" class="article-card ${i === 0 ? 'featured' : ''}">
+                      <div class="card-img t${i + 1}">${cat.icon || '⚽'}</div>
+                      <div class="card-body">
+                        <span class="card-tag">${cat.name || 'Football'}</span>
+                        <h3 class="card-title">${article.title}</h3>
+                        ${i === 0 ? `<p class="card-snippet">${article.excerpt || ''}</p>` : ''}
+                        <div class="card-meta">${formatDate(article.published_at)} &nbsp;·&nbsp; ${article.read_time || 3} min read</div>
+                      </div>
+                    </a>
+                  `;
+                });
+                grid.innerHTML = html;
+              }
+            }
+            
+            // Update cricket articles
+            const cricketSection = document.querySelector('[data-category="cricket"]');
+            if (cricketSection && cricketCat && byCategory[cricketCat.id]) {
+              const grid = cricketSection.querySelector('.article-grid');
+              if (grid) {
+                let html = '';
+                byCategory[cricketCat.id].slice(0, 3).forEach((article, i) => {
+                  const cat = article.categories || {};
+                  html += `
+                    <a href="news-detail.html?slug=${article.slug}" class="article-card">
+                      <div class="card-img t${i + 2}">${cat.icon || '🏏'}</div>
+                      <div class="card-body">
+                        <span class="card-tag">${cat.name || 'Cricket'}</span>
+                        <h3 class="card-title">${article.title}</h3>
+                        ${i === 0 ? `<p class="card-snippet">${article.excerpt || ''}</p>` : ''}
+                        <div class="card-meta">${formatDate(article.published_at)} &nbsp;·&nbsp; ${article.read_time || 3} min read</div>
+                      </div>
+                    </a>
+                  `;
+                });
+                grid.innerHTML = html;
+              }
+            }
+          }
+        }
+      } catch (e) {
+        console.log('Using demo data - Supabase not configured or empty');
+      }
+    });
+    
+    // Hero slider initialization
+    function initHeroSlider() {
+      const slider = document.getElementById('heroSlider');
+      if (!slider) return;
+      
+      const slides = slider.querySelectorAll('.slide');
+      const dots = slider.querySelectorAll('.hero-dot');
+      const prevBtn = slider.querySelector('.hero-arrow.prev');
+      const nextBtn = slider.querySelector('.hero-arrow.next');
+      let currentSlide = 0;
+      
+      function showSlide(index) {
+        if (slides.length === 0) return;
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        currentSlide = index;
+        slides.forEach((s, i) => s.classList.toggle('active', i === index));
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+      }
+      
+      if (prevBtn) prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+      dots.forEach((dot, i) => dot.addEventListener('click', () => showSlide(i)));
+      
+      // Auto slide
+      setInterval(() => showSlide(currentSlide + 1), 5000);
+    }
+  </script>
+</body>
+
+</html>
