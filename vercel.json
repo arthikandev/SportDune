@@ -3,6 +3,11 @@
   "buildCommand": "echo 'No build needed'",
   "outputDirectory": "frontend",
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/sports-homepage.html" },
+    { "source": "/home", "destination": "/sports-homepage.html" },
+    { "source": "/index", "destination": "/sports-homepage.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
