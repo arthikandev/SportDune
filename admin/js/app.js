@@ -300,9 +300,14 @@ const Auth = {
     Router.navigate('/');
   },
 
+  // Get token
+  getToken() {
+    return localStorage.getItem('sportdune_token');
+  },
+
   // Check if authenticated
   isAuthenticated() {
-    return !!this.getToken() && !!this.getUser();
+    return !!Auth.getToken() && !!this.getUser();
   },
 
   // Check if has role
@@ -604,6 +609,7 @@ const Router = {
   init() {
     window.addEventListener('popstate', () => this.handleRoute());
     this.handleRoute();
+    window.__routerInitialized = true;
   },
 };
 
