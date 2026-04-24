@@ -2956,11 +2956,6 @@ const Pages = {
   exportArticles() {
     Toast.info('Coming soon', 'Export functionality will be available soon');
   },
-
-  // Sync live scores
-  syncLiveScores() {
-    Toast.info('Coming soon', 'Score sync will be available soon');
-  },
 };
 
 // ================================================
@@ -2996,11 +2991,6 @@ const SidebarHTML = `
         <a class="nav-item" data-page="leagues">
           <span class="nav-item-icon">🏆</span>
           Leagues
-        </a>
-        <a class="nav-item" data-page="live-scores">
-          <span class="nav-item-icon">🏟️</span>
-          Live Scores
-          <span class="nav-item-badge">LIVE</span>
         </a>
       </div>
       <div class="nav-section">
@@ -3082,7 +3072,6 @@ document.addEventListener('DOMContentLoaded', () => {
   Router.register('/articles/:id/edit', (id) => Pages.articleEditor(id));
   Router.register('/sports', Pages.sports);
   Router.register('/leagues', Pages.leagues);
-  Router.register('/live-scores', Pages.liveScores);
   Router.register('/users', Pages.users);
   Router.register('/settings', Pages.settings);
   Router.register('/audit-logs', Pages.auditLogs);

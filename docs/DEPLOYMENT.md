@@ -137,7 +137,6 @@ const CONFIG = {
    - [ ] Can view/create sports
    - [ ] Can view/create leagues
    - [ ] Can view/create articles
-   - [ ] Can view/create live scores
    - [ ] RLS policies work correctly
    - [ ] Storage upload works
 
