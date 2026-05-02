@@ -66,7 +66,7 @@ nav{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:2px solid v
 .section-more:hover{color:var(--accent);}
 
 /* ARTICLE CARDS */
-.article-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 .article-grid.three-col{grid-template-columns:1fr 1fr 1fr;}
 .article-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 14px var(--card-shadow);border:1px solid var(--border);transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;text-decoration:none;color:inherit;display:flex;flex-direction:column;}
 .article-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.12);}
@@ -77,8 +77,8 @@ nav{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:2px solid v
 .article-card:hover .card-title{color:var(--accent);}
 .card-snippet{font-size:13px;color:#555568;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;}
 .card-meta{font-size:11.5px;color:var(--light-gray);font-weight:500;margin-top:4px;}
-.article-card.featured{grid-column:span 2;flex-direction:row;}
-.article-card.featured .card-img{width:46%;aspect-ratio:unset;font-size:80px;flex-shrink:0;}
+.article-card.featured{grid-column:span 3;flex-direction:row;}
+.article-card.featured .card-img{width:35%;aspect-ratio:unset;font-size:80px;flex-shrink:0;}
 .article-card.featured .card-body{padding:28px;}
 .article-card.featured .card-title{font-size:20px;}
 .article-card.featured .card-snippet{-webkit-line-clamp:4;}
@@ -186,6 +186,8 @@ footer{background:#fff;border-top:2px solid var(--border);padding:48px 24px 28px
   .sidebar{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
   .sidebar .ad-slot{display:none;}
   .footer-grid{grid-template-columns:1fr 1fr;}
+  .article-grid{grid-template-columns:repeat(2,1fr);}
+  .article-card.featured{grid-column:span 2;}
 }
 @media(max-width:768px){
   .nav-links,.nav-right{display:none;}
@@ -219,7 +221,7 @@ body.sports-home .article-grid {
 }
 body.homepage .article-card.featured,
 body.sports-home .article-card.featured {
-  grid-column: span 2;
+  grid-column: span 3;
 }
 @media (max-width: 1100px) {
   body.homepage .article-grid,
