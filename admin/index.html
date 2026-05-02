@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SportDune Admin</title>
     <link rel="stylesheet" href="css/admin.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <div id="app">
@@ -15,7 +14,7 @@
         </div>
         <div id="error-screen" class="error-screen" style="display:none;">
             <div class="error-content">
-                <h2>⚠️ Something went wrong</h2>
+                <h2>Something went wrong</h2>
                 <p id="error-message"></p>
                 <p id="error-details"></p>
                 <button onclick="location.reload()" class="btn btn-primary">Reload Page</button>
@@ -92,7 +91,7 @@
                     <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">☰</button>
                     <h1 class="page-title" id="page-title">Dashboard</h1>
                     <div class="topbar-actions">
-                        <a href="https://sportdune.vercel.app" target="_blank" class="topbar-link" title="View Site">🌐 View Site</a>
+                        <a href="https://sportdune.vercel.app" target="_blank" class="topbar-link" title="View Site">View Site</a>
                     </div>
                 </header>
                 <main class="content" id="content"></main>
@@ -111,12 +110,27 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.js" onerror="window._supabaseLoadError=true"></script>
     <script>
         window.SPORTDUNE_ADMIN_CONFIG = {
             SUPABASE_URL: "https://wivrhymyyipwwppmvmif.supabase.co",
             SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpdnJoeW15eWlwd3dwcG12bWlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU5ODM1MDcsImV4cCI6MjA2MTU1OTUwN30.X7b2hYvZqKp5vXq3xqF7YqZqKp5vXq3xqF7YqZqKp5v",
             MEDIA_BUCKET: "media"
         };
+        setTimeout(function() {
+            var ls = document.getElementById('loading-screen');
+            var es = document.getElementById('error-screen');
+            if (ls && ls.style.display !== 'none') {
+                if (es) {
+                    ls.style.display = 'none';
+                    es.style.display = 'flex';
+                    var msgEl = document.getElementById('error-message');
+                    var detEl = document.getElementById('error-details');
+                    if (msgEl) msgEl.textContent = 'The application timed out during initialization.';
+                    if (detEl) detEl.textContent = 'Check browser console (F12) for details. Common causes: Supabase CDN blocked by network, or database not yet set up.';
+                }
+            }
+        }, 8000);
     </script>
     <script src="js/utils.js"></script>
     <script src="js/supabase-client.js"></script>

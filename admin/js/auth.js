@@ -109,3 +109,4 @@ $('#sidebar-close')?.addEventListener('click', () => $('#sidebar')?.classList.re
 window.currentUser = currentUser;
 window.checkRole = checkRole;
 window.logout = logout;
+if (supabase) { initAuth(); } else { console.error('[Auth] Supabase not initialized:', window.__supabaseInitError || 'No error set'); }
